@@ -1,10 +1,10 @@
-#include <cstdio>
+#include <cstdio> // printf.
 #include <stdexcept>
 #include <string>
 
+#include "chemistry_solver/chemistry_solver.h"
 #include "config.h"
 #include "heg_solver/heg_solver.h"
-#include "chemistry_solver/chemistry_solver.h"
 #include "parallel.h"
 #include "time.h"
 

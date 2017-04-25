@@ -1,6 +1,7 @@
 #ifndef HCI_PARALLEL_H_
 #define HCI_PARALLEL_H_
 
+#include <string>
 #include <boost/mpi.hpp>
 
 class Parallel {

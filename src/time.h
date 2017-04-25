@@ -1,9 +1,10 @@
 #ifndef HCI_TIMER_H_
 #define HCI_TIMER_H_
 
-#include <chrono>
+#include <chrono> // high_resolution_clock, duration
 #include <string>
 #include <unordered_map>
+#include <cstdio> // printf.
 
 #include "parallel.h"
 
@@ -32,7 +33,7 @@ class Time {
     Time::get_time(event) = now;
     const duration<double> since_init = duration_cast<duration<double>>(now - init_time);
 
-    printf("[%.3f/0.000] BEG %s.\n", since_init.count(), event.c_str());
+    printf("BEG %s. [%.3f/0.000]\n", event.c_str(), since_init.count());
   };
 
   static void end(const std::string& event) {
@@ -46,7 +47,7 @@ class Time {
     const duration<double> since_start = duration_cast<duration<double>>(now - start_time);
     const duration<double> since_init = duration_cast<duration<double>>(now - init_time);
 
-    printf("[%.3f/%.3f] END %s.\n", since_init.count(), since_start.count(), event.c_str());
+    printf("END %s. [%.3f/%.3f] \n", event.c_str(), since_init.count(), since_start.count());
   }
 };
 

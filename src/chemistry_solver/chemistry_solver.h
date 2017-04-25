@@ -10,6 +10,7 @@ class ChemistrySolver : public Solver {
     return chemistry_solver;
   }
 
+  void solve() {}
   void setup() {}
 
  public:

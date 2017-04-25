@@ -44,6 +44,10 @@
     "utility": "cpp",
     "valarray": "cpp",
     "codecvt": "cpp",
-    "cstddef": "cpp"
+    "cstddef": "cpp",
+    "memory": "cpp",
+    "hashtable": "cpp",
+    "unordered_map": "cpp",
+    "unordered_set": "cpp"
   }
 }

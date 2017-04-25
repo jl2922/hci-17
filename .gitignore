@@ -1,4 +1,6 @@
 hci
+.DS_Store
+*.dSYM
 
 # Compiled Object files
 *.slo
