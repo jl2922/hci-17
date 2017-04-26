@@ -15,6 +15,7 @@ void HEGSolver::setup() {
   const double cell_length = pow(n_elecs / density, 1.0 / 3);
   rcut_var = Config::get<double>("runtime.rcut_var");
   k_unit = 2 * M_PI / cell_length;
+  H_unit = 1.0 / (M_PI * cell_length);
 
   generate_k_points(rcut_var);
   n_orbs_var = k_points.size();
@@ -83,7 +84,6 @@ void HEGSolver::generate_hci_queue(const double rcut) {
   max_abs_H = 0.0;
 
   // Common dependencies.
-  const double prefactor = k_unit / (2 * M_PI * M_PI);
   const auto& k_diffs = get_k_diffs(k_points);
 
   // Same spin.
@@ -93,7 +93,7 @@ void HEGSolver::generate_hci_queue(const double rcut) {
       if (norm(diff_sr) > rcut) continue;
       const auto& diff_ps = diff_pr - diff_sr;
       const double abs_H =
-          prefactor * fabs(1.0 / sum(square(diff_pr)) - 1.0 / sum(square(diff_ps)));
+          H_unit * fabs(1.0 / sum(square(diff_pr)) - 1.0 / sum(square(diff_ps)));
       if (abs_H < EPSILON) continue;
       const auto& item = TinyInt3Double(cast<TinyInt>(diff_pr), abs_H);
       same_spin_hci_queue[cast<TinyInt>(diff_pq)].push_back(item);
@@ -112,7 +112,7 @@ void HEGSolver::generate_hci_queue(const double rcut) {
 
   // Opposite spin.
   for (const auto& diff_pr : k_diffs) {
-    const double abs_H = prefactor / sum(square(diff_pr));
+    const double abs_H = H_unit / sum(square(diff_pr));
     if (abs_H < EPSILON) continue;
     const auto& item = TinyInt3Double(cast<TinyInt>(diff_pr), abs_H);
     opposite_spin_hci_queue.push_back(item);

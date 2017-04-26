@@ -2,6 +2,7 @@
 #define HCI_TYPES_H_
 
 #include <array>
+#include <list>
 #include <string>
 #include <unordered_map>
 #include <unordered_set>
@@ -9,6 +10,7 @@
 #include <vector>
 
 using std::array;
+using std::list;
 using std::string;
 using std::unordered_map;
 using std::unordered_set;

@@ -1,0 +1,451 @@
+src/heg_solver/heg_solver_hamiltonian.cc: In member function 'virtual double HEGSolver::get_H_elem(const Det&, const Det&) const':
+src/heg_solver/heg_solver_hamiltonian.cc:14:35: error: no match for 'operator*' (operand types are 'const value_type {aka const std::array<int, 3ul>}' and 'const double')
+       H += sum(square(k_points[p] * k_unit) * 0.5);
+                                    
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_hamiltonian.cc:1:
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/complex:404:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator*(const _Tp&, const std::complex<_Tp>&)
+     operator*(const _Tp& __x, const complex<_Tp>& __y)
+     ^~~~~~~~
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/complex:404:5: note:   template argument deduction/substitution failed:
+src/heg_solver/heg_solver_hamiltonian.cc:14:37: note:   mismatched types 'const std::complex<_Tp>' and 'const double'
+       H += sum(square(k_points[p] * k_unit) * 0.5);
+                                     ^~~~~~
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_hamiltonian.cc:1:
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/complex:395:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator*(const std::complex<_Tp>&, const _Tp&)
+     operator*(const complex<_Tp>& __x, const _Tp& __y)
+     ^~~~~~~~
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/complex:395:5: note:   template argument deduction/substitution failed:
+src/heg_solver/heg_solver_hamiltonian.cc:14:37: note:   'const value_type {aka const std::array<int, 3ul>}' is not derived from 'const std::complex<_Tp>'
+       H += sum(square(k_points[p] * k_unit) * 0.5);
+                                     ^~~~~~
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_hamiltonian.cc:1:
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/complex:386:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator*(const std::complex<_Tp>&, const std::complex<_Tp>&)
+     operator*(const complex<_Tp>& __x, const complex<_Tp>& __y)
+     ^~~~~~~~
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/complex:386:5: note:   template argument deduction/substitution failed:
+src/heg_solver/heg_solver_hamiltonian.cc:14:37: note:   'const value_type {aka const std::array<int, 3ul>}' is not derived from 'const std::complex<_Tp>'
+       H += sum(square(k_points[p] * k_unit) * 0.5);
+                                     ^~~~~~
+src/heg_solver/heg_solver_hamiltonian.cc:14:43: error: 'square' was not declared in this scope
+       H += sum(square(k_points[p] * k_unit) * 0.5);
+                                           ^
+src/heg_solver/heg_solver_hamiltonian.cc:14:50: error: 'sum' was not declared in this scope
+       H += sum(square(k_points[p] * k_unit) * 0.5);
+                                                  ^
+src/heg_solver/heg_solver_hamiltonian.cc:17:35: error: no match for 'operator*' (operand types are 'const value_type {aka const std::array<int, 3ul>}' and 'const double')
+       H += sum(square(k_points[p] * k_unit) * 0.5);
+                                    
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_hamiltonian.cc:1:
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/complex:404:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator*(const _Tp&, const std::complex<_Tp>&)
+     operator*(const _Tp& __x, const complex<_Tp>& __y)
+     ^~~~~~~~
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/complex:404:5: note:   template argument deduction/substitution failed:
+src/heg_solver/heg_solver_hamiltonian.cc:17:37: note:   mismatched types 'const std::complex<_Tp>' and 'const double'
+       H += sum(square(k_points[p] * k_unit) * 0.5);
+                                     ^~~~~~
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_hamiltonian.cc:1:
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/complex:395:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator*(const std::complex<_Tp>&, const _Tp&)
+     operator*(const complex<_Tp>& __x, const _Tp& __y)
+     ^~~~~~~~
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/complex:395:5: note:   template argument deduction/substitution failed:
+src/heg_solver/heg_solver_hamiltonian.cc:17:37: note:   'const value_type {aka const std::array<int, 3ul>}' is not derived from 'const std::complex<_Tp>'
+       H += sum(square(k_points[p] * k_unit) * 0.5);
+                                     ^~~~~~
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_hamiltonian.cc:1:
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/complex:386:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator*(const std::complex<_Tp>&, const std::complex<_Tp>&)
+     operator*(const complex<_Tp>& __x, const complex<_Tp>& __y)
+     ^~~~~~~~
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/complex:386:5: note:   template argument deduction/substitution failed:
+src/heg_solver/heg_solver_hamiltonian.cc:17:37: note:   'const value_type {aka const std::array<int, 3ul>}' is not derived from 'const std::complex<_Tp>'
+       H += sum(square(k_points[p] * k_unit) * 0.5);
+                                     ^~~~~~
+src/heg_solver/heg_solver_hamiltonian.cc:17:43: error: 'square' was not declared in this scope
+       H += sum(square(k_points[p] * k_unit) * 0.5);
+                                           ^
+src/heg_solver/heg_solver_hamiltonian.cc:17:50: error: 'sum' was not declared in this scope
+       H += sum(square(k_points[p] * k_unit) * 0.5);
+                                                  ^
+src/heg_solver/heg_solver_hamiltonian.cc:21:25: error: 'n_occ_up' was not declared in this scope
+     for (int i = 0; i < n_occ_up; i++) {
+                         ^~~~~~~~
+src/heg_solver/heg_solver_hamiltonian.cc:25:46: error: no match for 'operator-' (operand types are 'const value_type {aka const std::array<int, 3ul>}' and 'const value_type {aka const std::array<int, 3ul>}')
+         H -= H_unit / sum(square(k_points[p] - k_points[q]));
+                                               
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_hamiltonian.cc:1:
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/complex:451:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator-(const std::complex<_Tp>&)
+     operator-(const complex<_Tp>& __x)
+     ^~~~~~~~
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/complex:451:5: note:   template argument deduction/substitution failed:
+src/heg_solver/heg_solver_hamiltonian.cc:25:58: note:   'const value_type {aka const std::array<int, 3ul>}' is not derived from 'const std::complex<_Tp>'
+         H -= H_unit / sum(square(k_points[p] - k_points[q]));
+                                                          ^
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_hamiltonian.cc:1:
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/complex:374:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator-(const _Tp&, const std::complex<_Tp>&)
+     operator-(const _Tp& __x, const complex<_Tp>& __y)
+     ^~~~~~~~
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/complex:374:5: note:   template argument deduction/substitution failed:
+src/heg_solver/heg_solver_hamiltonian.cc:25:58: note:   'const value_type {aka const std::array<int, 3ul>}' is not derived from 'const std::complex<_Tp>'
+         H -= H_unit / sum(square(k_points[p] - k_points[q]));
+                                                          ^
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_hamiltonian.cc:1:
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/complex:365:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator-(const std::complex<_Tp>&, const _Tp&)
+     operator-(const complex<_Tp>& __x, const _Tp& __y)
+     ^~~~~~~~
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/complex:365:5: note:   template argument deduction/substitution failed:
+src/heg_solver/heg_solver_hamiltonian.cc:25:58: note:   'const value_type {aka const std::array<int, 3ul>}' is not derived from 'const std::complex<_Tp>'
+         H -= H_unit / sum(square(k_points[p] - k_points[q]));
+                                                          ^
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_hamiltonian.cc:1:
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/complex:356:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator-(const std::complex<_Tp>&, const std::complex<_Tp>&)
+     operator-(const complex<_Tp>& __x, const complex<_Tp>& __y)
+     ^~~~~~~~
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/complex:356:5: note:   template argument deduction/substitution failed:
+src/heg_solver/heg_solver_hamiltonian.cc:25:58: note:   'const value_type {aka const std::array<int, 3ul>}' is not derived from 'const std::complex<_Tp>'
+         H -= H_unit / sum(square(k_points[p] - k_points[q]));
+                                                          ^
+In file included from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/vector:65:0,
+                 from /usr/local/include/boost/detail/container_fwd.hpp:93,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_hamiltonian.cc:1:
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/stl_bvector.h:208:3: note: candidate: std::ptrdiff_t std::operator-(const std::_Bit_iterator_base&, const std::_Bit_iterator_base&)
+   operator-(const _Bit_iterator_base& __x, const _Bit_iterator_base& __y)
+   ^~~~~~~~
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/stl_bvector.h:208:3: note:   no known conversion for argument 1 from 'const value_type {aka const std::array<int, 3ul>}' to 'const std::_Bit_iterator_base&'
+In file included from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/deque:64:0,
+                 from /usr/local/include/boost/detail/container_fwd.hpp:91,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_hamiltonian.cc:1:
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/stl_deque.h:361:5: note: candidate: template<class _Tp, class _RefL, class _PtrL, class _RefR, class _PtrR> typename std::_Deque_iterator<_Tp, _Ref, _Ptr>::difference_type std::operator-(const std::_Deque_iterator<_Tp, _Ref, _Ptr>&, const std::_Deque_iterator<_Tp, _RefR, _PtrR>&)
+     operator-(const _Deque_iterator<_Tp, _RefL, _PtrL>& __x,
+     ^~~~~~~~
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/stl_deque.h:361:5: note:   template argument deduction/substitution failed:
+src/heg_solver/heg_solver_hamiltonian.cc:25:58: note:   'const value_type {aka const std::array<int, 3ul>}' is not derived from 'const std::_Deque_iterator<_Tp, _Ref, _Ptr>'
+         H -= H_unit / sum(square(k_points[p] - k_points[q]));
+                                                          ^
+In file included from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/deque:64:0,
+                 from /usr/local/include/boost/detail/container_fwd.hpp:91,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_hamiltonian.cc:1:
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/stl_deque.h:349:5: note: candidate: template<class _Tp, class _Ref, class _Ptr> typename std::_Deque_iterator<_Tp, _Ref, _Ptr>::difference_type std::operator-(const std::_Deque_iterator<_Tp, _Ref, _Ptr>&, const std::_Deque_iterator<_Tp, _Ref, _Ptr>&)
+     operator-(const _Deque_iterator<_Tp, _Ref, _Ptr>& __x,
+     ^~~~~~~~
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/stl_deque.h:349:5: note:   template argument deduction/substitution failed:
+src/heg_solver/heg_solver_hamiltonian.cc:25:58: note:   'const value_type {aka const std::array<int, 3ul>}' is not derived from 'const std::_Deque_iterator<_Tp, _Ref, _Ptr>'
+         H -= H_unit / sum(square(k_points[p] - k_points[q]));
+                                                          ^
+In file included from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/stl_algobase.h:67:0,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/char_traits.h:39,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/string:40,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/stdexcept:39,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/array:39,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/tuple:39,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_hamiltonian.cc:1:
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/stl_iterator.h:1193:5: note: candidate: template<class _Iterator> decltype ((__x.base() - __y.base())) std::operator-(const std::move_iterator<_IteratorL>&, const std::move_iterator<_IteratorL>&)
+     operator-(const move_iterator<_Iterator>& __x,
+     ^~~~~~~~
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/stl_iterator.h:1193:5: note:   template argument deduction/substitution failed:
+src/heg_solver/heg_solver_hamiltonian.cc:25:58: note:   'const value_type {aka const std::array<int, 3ul>}' is not derived from 'const std::move_iterator<_IteratorL>'
+         H -= H_unit / sum(square(k_points[p] - k_points[q]));
+                                                          ^
+In file included from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/stl_algobase.h:67:0,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/char_traits.h:39,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/string:40,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/stdexcept:39,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/array:39,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/tuple:39,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_hamiltonian.cc:1:
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/stl_iterator.h:1186:5: note: candidate: template<class _IteratorL, class _IteratorR> decltype ((__x.base() - __y.base())) std::operator-(const std::move_iterator<_IteratorL>&, const std::move_iterator<_IteratorR>&)
+     operator-(const move_iterator<_IteratorL>& __x,
+     ^~~~~~~~
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/stl_iterator.h:1186:5: note:   template argument deduction/substitution failed:
+src/heg_solver/heg_solver_hamiltonian.cc:25:58: note:   'const value_type {aka const std::array<int, 3ul>}' is not derived from 'const std::move_iterator<_IteratorL>'
+         H -= H_unit / sum(square(k_points[p] - k_points[q]));
+                                                          ^
+In file included from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/stl_algobase.h:67:0,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/char_traits.h:39,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/string:40,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/stdexcept:39,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/array:39,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/tuple:39,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_hamiltonian.cc:1:
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/stl_iterator.h:387:5: note: candidate: template<class _IteratorL, class _IteratorR> decltype ((__y.base() - __x.base())) std::operator-(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_IteratorR>&)
+     operator-(const reverse_iterator<_IteratorL>& __x,
+     ^~~~~~~~
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/stl_iterator.h:387:5: note:   template argument deduction/substitution failed:
+src/heg_solver/heg_solver_hamiltonian.cc:25:58: note:   'const value_type {aka const std::array<int, 3ul>}' is not derived from 'const std::reverse_iterator<_Iterator>'
+         H -= H_unit / sum(square(k_points[p] - k_points[q]));
+                                                          ^
+In file included from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/stl_algobase.h:67:0,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/char_traits.h:39,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/string:40,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/stdexcept:39,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/array:39,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/tuple:39,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_hamiltonian.cc:1:
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/stl_iterator.h:333:5: note: candidate: template<class _Iterator> decltype ((__x.base() - __y.base())) std::operator-(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_Iterator>&)
+     operator-(const reverse_iterator<_Iterator>& __x,
+     ^~~~~~~~
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/stl_iterator.h:333:5: note:   template argument deduction/substitution failed:
+src/heg_solver/heg_solver_hamiltonian.cc:25:58: note:   'const value_type {aka const std::array<int, 3ul>}' is not derived from 'const std::reverse_iterator<_Iterator>'
+         H -= H_unit / sum(square(k_points[p] - k_points[q]));
+                                                          ^
+src/heg_solver/heg_solver_hamiltonian.cc:25:59: error: 'square' was not declared in this scope
+         H -= H_unit / sum(square(k_points[p] - k_points[q]));
+                                                           ^
+src/heg_solver/heg_solver_hamiltonian.cc:25:60: error: 'sum' was not declared in this scope
+         H -= H_unit / sum(square(k_points[p] - k_points[q]));
+                                                            ^
+src/heg_solver/heg_solver_hamiltonian.cc:28:25: error: 'n_occ_dn' was not declared in this scope
+     for (int i = 0; i < n_occ_dn; i++) {
+                         ^~~~~~~~
+src/heg_solver/heg_solver_hamiltonian.cc:32:46: error: no match for 'operator-' (operand types are 'const value_type {aka const std::array<int, 3ul>}' and 'const value_type {aka const std::array<int, 3ul>}')
+         H -= H_unit / sum(square(k_points[p] - k_points[q]));
+                                               
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_hamiltonian.cc:1:
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/complex:451:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator-(const std::complex<_Tp>&)
+     operator-(const complex<_Tp>& __x)
+     ^~~~~~~~
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/complex:451:5: note:   template argument deduction/substitution failed:
+src/heg_solver/heg_solver_hamiltonian.cc:32:58: note:   'const value_type {aka const std::array<int, 3ul>}' is not derived from 'const std::complex<_Tp>'
+         H -= H_unit / sum(square(k_points[p] - k_points[q]));
+                                                          ^
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_hamiltonian.cc:1:
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/complex:374:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator-(const _Tp&, const std::complex<_Tp>&)
+     operator-(const _Tp& __x, const complex<_Tp>& __y)
+     ^~~~~~~~
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/complex:374:5: note:   template argument deduction/substitution failed:
+src/heg_solver/heg_solver_hamiltonian.cc:32:58: note:   'const value_type {aka const std::array<int, 3ul>}' is not derived from 'const std::complex<_Tp>'
+         H -= H_unit / sum(square(k_points[p] - k_points[q]));
+                                                          ^
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_hamiltonian.cc:1:
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/complex:365:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator-(const std::complex<_Tp>&, const _Tp&)
+     operator-(const complex<_Tp>& __x, const _Tp& __y)
+     ^~~~~~~~
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/complex:365:5: note:   template argument deduction/substitution failed:
+src/heg_solver/heg_solver_hamiltonian.cc:32:58: note:   'const value_type {aka const std::array<int, 3ul>}' is not derived from 'const std::complex<_Tp>'
+         H -= H_unit / sum(square(k_points[p] - k_points[q]));
+                                                          ^
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_hamiltonian.cc:1:
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/complex:356:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator-(const std::complex<_Tp>&, const std::complex<_Tp>&)
+     operator-(const complex<_Tp>& __x, const complex<_Tp>& __y)
+     ^~~~~~~~
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/complex:356:5: note:   template argument deduction/substitution failed:
+src/heg_solver/heg_solver_hamiltonian.cc:32:58: note:   'const value_type {aka const std::array<int, 3ul>}' is not derived from 'const std::complex<_Tp>'
+         H -= H_unit / sum(square(k_points[p] - k_points[q]));
+                                                          ^
+In file included from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/vector:65:0,
+                 from /usr/local/include/boost/detail/container_fwd.hpp:93,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_hamiltonian.cc:1:
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/stl_bvector.h:208:3: note: candidate: std::ptrdiff_t std::operator-(const std::_Bit_iterator_base&, const std::_Bit_iterator_base&)
+   operator-(const _Bit_iterator_base& __x, const _Bit_iterator_base& __y)
+   ^~~~~~~~
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/stl_bvector.h:208:3: note:   no known conversion for argument 1 from 'const value_type {aka const std::array<int, 3ul>}' to 'const std::_Bit_iterator_base&'
+In file included from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/deque:64:0,
+                 from /usr/local/include/boost/detail/container_fwd.hpp:91,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_hamiltonian.cc:1:
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/stl_deque.h:361:5: note: candidate: template<class _Tp, class _RefL, class _PtrL, class _RefR, class _PtrR> typename std::_Deque_iterator<_Tp, _Ref, _Ptr>::difference_type std::operator-(const std::_Deque_iterator<_Tp, _Ref, _Ptr>&, const std::_Deque_iterator<_Tp, _RefR, _PtrR>&)
+     operator-(const _Deque_iterator<_Tp, _RefL, _PtrL>& __x,
+     ^~~~~~~~
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/stl_deque.h:361:5: note:   template argument deduction/substitution failed:
+src/heg_solver/heg_solver_hamiltonian.cc:32:58: note:   'const value_type {aka const std::array<int, 3ul>}' is not derived from 'const std::_Deque_iterator<_Tp, _Ref, _Ptr>'
+         H -= H_unit / sum(square(k_points[p] - k_points[q]));
+                                                          ^
+In file included from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/deque:64:0,
+                 from /usr/local/include/boost/detail/container_fwd.hpp:91,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_hamiltonian.cc:1:
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/stl_deque.h:349:5: note: candidate: template<class _Tp, class _Ref, class _Ptr> typename std::_Deque_iterator<_Tp, _Ref, _Ptr>::difference_type std::operator-(const std::_Deque_iterator<_Tp, _Ref, _Ptr>&, const std::_Deque_iterator<_Tp, _Ref, _Ptr>&)
+     operator-(const _Deque_iterator<_Tp, _Ref, _Ptr>& __x,
+     ^~~~~~~~
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/stl_deque.h:349:5: note:   template argument deduction/substitution failed:
+src/heg_solver/heg_solver_hamiltonian.cc:32:58: note:   'const value_type {aka const std::array<int, 3ul>}' is not derived from 'const std::_Deque_iterator<_Tp, _Ref, _Ptr>'
+         H -= H_unit / sum(square(k_points[p] - k_points[q]));
+                                                          ^
+In file included from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/stl_algobase.h:67:0,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/char_traits.h:39,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/string:40,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/stdexcept:39,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/array:39,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/tuple:39,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_hamiltonian.cc:1:
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/stl_iterator.h:1193:5: note: candidate: template<class _Iterator> decltype ((__x.base() - __y.base())) std::operator-(const std::move_iterator<_IteratorL>&, const std::move_iterator<_IteratorL>&)
+     operator-(const move_iterator<_Iterator>& __x,
+     ^~~~~~~~
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/stl_iterator.h:1193:5: note:   template argument deduction/substitution failed:
+src/heg_solver/heg_solver_hamiltonian.cc:32:58: note:   'const value_type {aka const std::array<int, 3ul>}' is not derived from 'const std::move_iterator<_IteratorL>'
+         H -= H_unit / sum(square(k_points[p] - k_points[q]));
+                                                          ^
+In file included from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/stl_algobase.h:67:0,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/char_traits.h:39,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/string:40,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/stdexcept:39,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/array:39,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/tuple:39,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_hamiltonian.cc:1:
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/stl_iterator.h:1186:5: note: candidate: template<class _IteratorL, class _IteratorR> decltype ((__x.base() - __y.base())) std::operator-(const std::move_iterator<_IteratorL>&, const std::move_iterator<_IteratorR>&)
+     operator-(const move_iterator<_IteratorL>& __x,
+     ^~~~~~~~
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/stl_iterator.h:1186:5: note:   template argument deduction/substitution failed:
+src/heg_solver/heg_solver_hamiltonian.cc:32:58: note:   'const value_type {aka const std::array<int, 3ul>}' is not derived from 'const std::move_iterator<_IteratorL>'
+         H -= H_unit / sum(square(k_points[p] - k_points[q]));
+                                                          ^
+In file included from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/stl_algobase.h:67:0,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/char_traits.h:39,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/string:40,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/stdexcept:39,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/array:39,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/tuple:39,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_hamiltonian.cc:1:
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/stl_iterator.h:387:5: note: candidate: template<class _IteratorL, class _IteratorR> decltype ((__y.base() - __x.base())) std::operator-(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_IteratorR>&)
+     operator-(const reverse_iterator<_IteratorL>& __x,
+     ^~~~~~~~
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/stl_iterator.h:387:5: note:   template argument deduction/substitution failed:
+src/heg_solver/heg_solver_hamiltonian.cc:32:58: note:   'const value_type {aka const std::array<int, 3ul>}' is not derived from 'const std::reverse_iterator<_Iterator>'
+         H -= H_unit / sum(square(k_points[p] - k_points[q]));
+                                                          ^
+In file included from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/stl_algobase.h:67:0,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/char_traits.h:39,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/string:40,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/stdexcept:39,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/array:39,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/tuple:39,
+                 from /usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_hamiltonian.cc:1:
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/stl_iterator.h:333:5: note: candidate: template<class _Iterator> decltype ((__x.base() - __y.base())) std::operator-(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_Iterator>&)
+     operator-(const reverse_iterator<_Iterator>& __x,
+     ^~~~~~~~
+/usr/local/Cellar/gcc/6.3.0_1/include/c++/6.3.0/bits/stl_iterator.h:333:5: note:   template argument deduction/substitution failed:
+src/heg_solver/heg_solver_hamiltonian.cc:32:58: note:   'const value_type {aka const std::array<int, 3ul>}' is not derived from 'const std::reverse_iterator<_Iterator>'
+         H -= H_unit / sum(square(k_points[p] - k_points[q]));
+                                                          ^
+src/heg_solver/heg_solver_hamiltonian.cc:32:59: error: 'square' was not declared in this scope
+         H -= H_unit / sum(square(k_points[p] - k_points[q]));
+                                                           ^
+src/heg_solver/heg_solver_hamiltonian.cc:32:60: error: 'sum' was not declared in this scope
+         H -= H_unit / sum(square(k_points[p] - k_points[q]));
+                                                            ^
+src/heg_solver/heg_solver_hamiltonian.cc:40:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+make: *** [build/heg_solver/heg_solver_hamiltonian.o] Error 1

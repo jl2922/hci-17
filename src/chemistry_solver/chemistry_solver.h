@@ -1,6 +1,7 @@
 #ifndef HCI_CHEMISTRY_SOLVER_H_
 #define HCI_CHEMISTRY_SOLVER_H_
 
+#include "../det/det.h"
 #include "../solver/solver.h"
 
 class ChemistrySolver : public Solver {
@@ -12,6 +13,7 @@ class ChemistrySolver : public Solver {
 
   void solve() {}
   void setup() {}
+  double get_H_elem(const Det&, const Det&) const { return 0.0; };
 
  public:
   static void run() { ChemistrySolver::get_instance().solve(); }
