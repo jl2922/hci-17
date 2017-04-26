@@ -1,6 +1,4 @@
-#include <cstdio> // printf.
-#include <stdexcept>
-#include <string>
+#include "std.h"
 
 #include "chemistry_solver/chemistry_solver.h"
 #include "config.h"

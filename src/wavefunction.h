@@ -1,28 +1,28 @@
 #ifndef HCI_WAVEFUNCTION_H_
 #define HCI_WAVEFUNCTION_H_
 
-#include <cstddef>
+#include "std.h"
 
 #include "det/det.h"
-#include "types.h"
 
 class Wavefunction {
  private:
-  std::size_t n;
-  list<Det> dets;
-  list<double> coefs;
+  std::list<std::pair<Det, double>> terms;
 
  public:
-  Wavefunction() { n = 0; }
+  Wavefunction() {}
 
-  std::size_t size() { return n; }
+  std::size_t size() { return terms.size(); }
 
-  Det& append_det(const Det& det, const double coef) {
-    dets.push_back(det);
-    coefs.push_back(coef);
-    n++;
-    return dets.back();
+  void append_term(const Det& det, const double coef) {
+    terms.push_back(std::pair<Det, double>(det, coef));
   }
+
+  const std::list<std::pair<Det, double>>& get_terms() const { return terms; }
+
+  Det& get_last_det() { return terms.back().first; }
+
+  void clear() { terms.clear(); }
 };
 
 #endif

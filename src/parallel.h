@@ -1,8 +1,8 @@
 #ifndef HCI_PARALLEL_H_
 #define HCI_PARALLEL_H_
 
-#include <string>
 #include <boost/mpi.hpp>
+#include "std.h"
 
 class Parallel {
  private:
@@ -27,7 +27,7 @@ class Parallel {
 
   static int get_n() { return Parallel::get_instance().n; }
 
-  static std::string get_proc_name() { return Parallel::get_instance().env.processor_name(); }
+  static std::string get_host() { return Parallel::get_instance().env.processor_name(); }
 
   static void barrier() {
     fflush(stdout);

@@ -13,10 +13,6 @@ OBJS := $(SRCS:$(SRC_DIR)/%.cc=$(OBJ_DIR)/%.o)
 MAIN := src/main.cc
 EXE := hci
 
-ifeq ($(wildcard $(OBJ_DIR)),)
-$(shell mkdir $(OBJ_DIR))
-endif
-
 .PHONY: all clean
 
 all: $(EXE)

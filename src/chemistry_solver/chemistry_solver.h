@@ -13,7 +13,10 @@ class ChemistrySolver : public Solver {
 
   void solve() {}
   void setup() {}
-  double get_H_elem(const Det&, const Det&) const { return 0.0; };
+  double hamiltonian(const Det&, const Det&) const { return 0.0; };
+  std::list<Det> find_connected_dets(const Det&, const double) const override {
+    return std::list<Det>();
+  }
 
  public:
   static void run() { ChemistrySolver::get_instance().solve(); }

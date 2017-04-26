@@ -1,9 +1,7 @@
 #ifndef HCI_ARRAY_MATH_H_
 #define HCI_ARRAY_MATH_H_
 
-#include <array>
-#include <cmath>  // sqrt.
-#include <cstddef>  // size_t.
+#include "std.h"
 
 template <class T, std::size_t N>
 std::array<T, N> operator+(const std::array<T, N> &lhs, const std::array<T, N> &rhs) {

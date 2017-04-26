@@ -13,10 +13,12 @@ class Solver {
   double energy_hf;
   double energy_var;
   double energy_pt;
+  double eps_var;
 
   virtual void solve() = 0;  // Controls the general solving procedure.
   virtual void setup() = 0;  // Generate hci queues and starting wavefunction.
-  virtual double get_H_elem(const Det&, const Det&) const = 0;
+  virtual double hamiltonian(const Det&, const Det&) const = 0;
+  virtual std::list<Det> find_connected_dets(const Det&, const double eps) const = 0;
 
   void variation();
 };

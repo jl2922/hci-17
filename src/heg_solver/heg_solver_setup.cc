@@ -1,19 +1,14 @@
 #include "heg_solver.h"
 
-#include <cmath>  // pow, M_PI.
-#include <cstdio>  // printf.
-
 #include "../array_math.h"
 #include "../config.h"
 #include "../time.h"
-#include "../types.h"
 
 void HEGSolver::setup() {
   const double r_s = Config::get<double>("r_s");
   const int n_elecs = n_up + n_dn;
   const double density = 3.0 / (4.0 * M_PI * pow(r_s, 3));
   const double cell_length = pow(n_elecs / density, 1.0 / 3);
-  rcut_var = Config::get<double>("runtime.rcut_var");
   k_unit = 2 * M_PI / cell_length;
   H_unit = 1.0 / (M_PI * cell_length);
 
@@ -53,10 +48,10 @@ void HEGSolver::generate_k_points(const double rcut) {
   for (int i = 0; i < static_cast<int>(k_points.size()); i++) k_lut[k_points[i]] = i;
 }
 
-vector<Int3> get_k_diffs(const vector<Int3>& k_points) {
-  // Generate all possible differences between two k points.
-  unordered_set<Int3, boost::hash<Int3>> k_diffs_set;
-  vector<Int3> k_diffs;
+std::vector<Int3> get_k_diffs(const std::vector<Int3>& k_points) {
+  // Generate all possible differences between two different k points.
+  std::unordered_set<Int3, boost::hash<Int3>> k_diffs_set;
+  std::vector<Int3> k_diffs;
   const int n_orbs = static_cast<int>(k_points.size());
   for (int p = 0; p < n_orbs; p++) {
     for (int q = 0; q < n_orbs; q++) {
@@ -90,18 +85,19 @@ void HEGSolver::generate_hci_queue(const double rcut) {
   for (const auto& diff_pq : k_diffs) {
     for (const auto& diff_pr : k_diffs) {
       const auto& diff_sr = diff_pr + diff_pr - diff_pq;  // Momentum conservation.
-      if (norm(diff_sr) > rcut) continue;
+      if (diff_sr == 0 || norm(diff_sr) > rcut * 2) continue;
       const auto& diff_ps = diff_pr - diff_sr;
-      const double abs_H =
-          H_unit * fabs(1.0 / sum(square(diff_pr)) - 1.0 / sum(square(diff_ps)));
-      if (abs_H < EPSILON) continue;
-      const auto& item = TinyInt3Double(cast<TinyInt>(diff_pr), abs_H);
+      if (diff_ps == 0) continue;
+      if (sum(square(diff_pr)) == sum(square(diff_ps))) continue;
+      const double abs_H = fabs(1.0 / sum(square(diff_pr)) - 1.0 / sum(square(diff_ps)));
+      if (abs_H < DBL_EPSILON) continue;
+      const auto& item = TinyInt3Double(cast<TinyInt>(diff_pr), abs_H * H_unit);
       same_spin_hci_queue[cast<TinyInt>(diff_pq)].push_back(item);
     }
   }
   for (auto& kv : same_spin_hci_queue) {
     auto& items = kv.second;
-    std::sort(
+    std::stable_sort(
         items.begin(),
         items.end(),
         [](const TinyInt3Double& a, const TinyInt3Double& b) -> bool {
@@ -112,12 +108,12 @@ void HEGSolver::generate_hci_queue(const double rcut) {
 
   // Opposite spin.
   for (const auto& diff_pr : k_diffs) {
-    const double abs_H = H_unit / sum(square(diff_pr));
-    if (abs_H < EPSILON) continue;
-    const auto& item = TinyInt3Double(cast<TinyInt>(diff_pr), abs_H);
+    const double abs_H = 1.0 / sum(square(diff_pr));
+    if (abs_H < DBL_EPSILON) continue;
+    const auto& item = TinyInt3Double(cast<TinyInt>(diff_pr), abs_H * H_unit);
     opposite_spin_hci_queue.push_back(item);
   }
-  std::sort(
+  std::stable_sort(
       opposite_spin_hci_queue.begin(),
       opposite_spin_hci_queue.end(),
       [](const TinyInt3Double& a, const TinyInt3Double& b) -> bool {
