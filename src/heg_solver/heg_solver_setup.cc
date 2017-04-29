@@ -2,6 +2,7 @@
 
 #include "../array_math.h"
 #include "../config.h"
+#include "../parallel.h"
 #include "../time.h"
 
 void HEGSolver::setup() {
@@ -14,7 +15,7 @@ void HEGSolver::setup() {
   generate_k_points(rcut_var);
   n_orbs_var = k_points.size();
 
-  printf("Number of variational spin orbitals: %d\n", n_orbs_var * 2);
+  if (Parallel::get_id == 0) printf("Number of variational spin orbitals: %d\n", n_orbs_var * 2);
 
   Time::start("Generate HCI queue.");
   generate_hci_queue(rcut_var);

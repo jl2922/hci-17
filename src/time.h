@@ -22,7 +22,7 @@ class Time {
     return ss.str() + " ";
   }
 
-  static std::chrono::high_resolution_clock::time_point& get_time(const std::string& event) {
+  static std::chrono::high_resolution_clock::time_point& get_timer(const std::string& event) {
     using namespace std::chrono;
     static std::unordered_map<std::string, high_resolution_clock::time_point> times;
     return times[event];
@@ -33,7 +33,7 @@ class Time {
     using namespace std::chrono;
 
     if (Parallel::get_id() != 0) return;
-    Time::get_time("init") = high_resolution_clock::now();
+    Time::get_timer("init") = high_resolution_clock::now();
   }
 
   static void start(const std::string& event) {
@@ -43,8 +43,8 @@ class Time {
     if (Parallel::get_id() != 0) return;
 
     const auto now = high_resolution_clock::now();
-    const auto init_time = Time::get_time("init");
-    Time::get_time(event) = now;
+    const auto init_time = Time::get_timer("init");
+    Time::get_timer(event) = now;
     const duration<double> since_init = duration_cast<duration<double>>(now - init_time);
     auto& index = Time::get_index();
     index.back()++;
@@ -63,8 +63,8 @@ class Time {
     if (Parallel::get_id() != 0) return;
 
     const auto now = high_resolution_clock::now();
-    const auto start_time = Time::get_time(event);
-    const auto init_time = Time::get_time("init");
+    const auto start_time = Time::get_timer(event);
+    const auto init_time = Time::get_timer("init");
     const duration<double> since_start = duration_cast<duration<double>>(now - start_time);
     const duration<double> since_init = duration_cast<duration<double>>(now - init_time);
     printf(

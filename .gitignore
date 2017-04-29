@@ -3,6 +3,8 @@ hci
 *.dSYM
 .log
 *.txt
+amplxe*
+massif*
 
 # Compiled Object files
 *.slo

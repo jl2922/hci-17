@@ -45,7 +45,7 @@ void Davidson::diagonalize(const std::vector<double>& initial_vector) {
   h_krylov(0, 0) = lowest_eigenvalue;
   w = v.col(0);
   Hw = Hv.col(0);
-  if (verbose) printf("Davidson Iteration #1. Eigenvalue: %.10f\n", lowest_eigenvalue);
+  if (verbose) printf("Davidson Iteration #1. Eigenvalue: %.15g\n", lowest_eigenvalue);
 
   residual_norm = 1.0;  // So at least one iteration is done.
   int n_iter = std::min(n, iterations + 1);
@@ -97,14 +97,14 @@ void Davidson::diagonalize(const std::vector<double>& initial_vector) {
     w = v.leftCols(it) * eigenvectors.col(lowest_id).topRows(it);
     Hw = Hv.leftCols(it) * eigenvectors.col(lowest_id).topRows(it);
 
-    if (it > 1 && fabs(lowest_eigenvalue - lowest_eigenvalue_prev) < 1.0e-6) {
+    if (it > 1 && fabs(lowest_eigenvalue - lowest_eigenvalue_prev) < 1.0e-7) {
       converged = true;
       break;
     } else {
       lowest_eigenvalue_prev = lowest_eigenvalue;
       n_diagonalize++;
       if (verbose)
-        printf("Davidson Iteration #%d. Eigenvalue: %.10f\n", n_diagonalize, lowest_eigenvalue);
+        printf("Davidson Iteration #%d. Eigenvalue: %.15g\n", n_diagonalize, lowest_eigenvalue);
     }
 
     if (converged) break;

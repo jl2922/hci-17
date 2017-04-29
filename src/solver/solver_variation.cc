@@ -27,7 +27,7 @@ void Solver::variation() {
     const Det& det_hf = generate_hf_det(n_up, n_dn);
     wf.append_term(det_hf, 1.0);
     energy_hf = energy_var = hamiltonian(det_hf, det_hf);
-    if (Parallel::get_id() == 0) printf("HF energy: %.10f\n", energy_hf);
+    if (Parallel::get_id() == 0) printf("HF energy: %.15g Ha\n", energy_hf);
   }
 
   double energy_var_new = 0.0;  // Ensures the first iteration will run.
@@ -55,14 +55,14 @@ void Solver::variation() {
       printf("Number of dets: %d\n", static_cast<int>(var_dets_set.size()));
     }
     energy_var_new = diagonalize();
-    if (Parallel::get_id() == 0) printf("Variation energy: %.10f\n", energy_var_new);
+    if (Parallel::get_id() == 0) printf("Variation energy: %.15g Ha\n", energy_var_new);
 
     Time::end("Variation Iteration: " + std::to_string(iteration));
     iteration++;
   }
 
   energy_var = energy_var_new;
-  if (Parallel::get_id() == 0) printf("Final variation energy: %.10f\n", energy_var);
+  if (Parallel::get_id() == 0) printf("Final variation energy: %.15g Ha\n", energy_var);
 }
 
 double Solver::diagonalize() {
@@ -78,12 +78,15 @@ double Solver::diagonalize() {
   HelperStrings helper_strings(wf.get_dets());
   std::function<std::vector<double>(std::vector<double>)> apply_hamiltonian_func =
       std::bind(&Solver::apply_hamiltonian, this, std::placeholders::_1, helper_strings);
+
   Davidson davidson(diagonal, apply_hamiltonian_func, wf.size());
   if (Parallel::get_id() == 0) davidson.set_verbose(true);
   davidson.diagonalize(initial_vector);
+
   double energy_var = davidson.get_lowest_eigenvalue();
   const auto& coefs_new = davidson.get_lowest_eigenvector();
   wf.set_coefs(coefs_new);
   wf.sort_by_coefs();
+
   return energy_var;
 }

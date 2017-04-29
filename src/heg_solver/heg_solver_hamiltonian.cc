@@ -24,12 +24,8 @@ double HEGSolver::hamiltonian(const Det& det_pq, const Det& det_rs) const {
     const auto& occ_pq_dn = det_pq.dn.get_elec_orbs();
 
     // One electron operator.
-    for (const int p : occ_pq_up) {
-      H += sum(square(k_points[p] * k_unit) * 0.5);
-    }
-    for (const int p : occ_pq_dn) {
-      H += sum(square(k_points[p] * k_unit) * 0.5);
-    }
+    for (const int p : occ_pq_up) H += sum(square(k_points[p] * k_unit) * 0.5);
+    for (const int p : occ_pq_dn) H += sum(square(k_points[p] * k_unit) * 0.5);
 
     // Two electrons operator.
     for (int i = 0; i < n_up; i++) {
@@ -100,9 +96,8 @@ double HEGSolver::hamiltonian(const Det& det_pq, const Det& det_rs) const {
     if (k_change != 0) return 0.0;
 
     H = H_unit / sum(square(k_points[orb_p] - k_points[orb_r]));
-    if (n_eor_up != 2) {
-      H -= H_unit / sum(square(k_points[orb_p] - k_points[orb_s]));
-    }
+    if (n_eor_up != 2) H -= H_unit / sum(square(k_points[orb_p] - k_points[orb_s]));
+
     const int gamma_exp =
         get_gamma_exp(det_pq.up, eor_up_set_bits) + get_gamma_exp(det_pq.dn, eor_dn_set_bits) +
         get_gamma_exp(det_rs.up, eor_up_set_bits) + get_gamma_exp(det_rs.dn, eor_dn_set_bits);

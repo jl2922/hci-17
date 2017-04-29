@@ -37,10 +37,7 @@ void HelperStrings::shrink(
   std::list<Orbitals> remove_list;
   for (auto& kv : helper_strings) {
     auto& value = kv.second;
-    if (value.first.size() <= 1 && value.second.size() <= 1) {
-      remove_list.push_back(kv.first);
-      continue;
-    }
+    if (value.first.size() <= 1 && value.second.size() <= 1) remove_list.push_back(kv.first);
   }
   for (const auto& det : remove_list) helper_strings.erase(det);
 }
@@ -80,8 +77,9 @@ Ints HelperStrings::find_potential_connections(const int i) {
   for (std::size_t i = 0; i < up_elecs.size(); i++) {
     det_up.set_orb(up_elecs[i], false);
     const auto& key_up = det_up.get_elec_orbs();
-    if (ab_m1.find(key_up) != ab_m1.end()) {
-      for (const int orb_id : ab_m1.find(key_up)->second.first) one_up[orb_id] = true;
+    const auto& kv_up = ab_m1.find(key_up);
+    if (kv_up != ab_m1.end()) {
+      for (const int orb_id : kv_up->second.first) one_up[orb_id] = true;
       for (std::size_t j = 0; j < dn_elecs.size(); j++) {
         det_dn.set_orb(dn_elecs[j], false);
         const auto& key_dn = det_dn.get_elec_orbs();
@@ -95,7 +93,7 @@ Ints HelperStrings::find_potential_connections(const int i) {
         }
         det_dn.set_orb(dn_elecs[j], true);
       }
-      for (const int orb_id : ab_m1.find(key_up)->second.first) one_up[orb_id] = false;
+      for (const int orb_id : kv_up->second.first) one_up[orb_id] = false;
     }
     det_up.set_orb(up_elecs[i], true);
   }
