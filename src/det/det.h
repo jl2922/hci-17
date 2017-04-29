@@ -12,11 +12,8 @@ class Det {
   SpinDet dn;
 
   bool get_orb(const int orb_id, const int dn_offset) const {
-    if (orb_id < dn_offset) {
-      return up.get_orb(orb_id);
-    } else {
-      return dn.get_orb(orb_id - dn_offset);
-    }
+    if (orb_id < dn_offset) return up.get_orb(orb_id);
+    return dn.get_orb(orb_id - dn_offset);
   }
 
   void set_orb(const int orb_id, const int dn_offset, const bool occ) {

@@ -33,6 +33,12 @@ class Parallel {
     fflush(stdout);
     Parallel::get_instance().world.barrier();
   }
+
+  template <class T>
+  static void all_reduce(T& t) {
+    T t_local = t;
+    boost::mpi::all_reduce(Parallel::get_instance().world, t_local, t, std::plus<T>());
+  }
 };
 
 #endif

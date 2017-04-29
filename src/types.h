@@ -10,6 +10,7 @@ typedef std::array<int, 3> Int3;
 typedef std::pair<int, int> IntPair;
 typedef std::array<TinyInt, 3> TinyInt3;
 typedef std::pair<TinyInt3, double> TinyInt3Double;
+typedef std::vector<int> Ints;
 typedef std::vector<Orbital> Orbitals;
 
 #endif

@@ -20,12 +20,7 @@ class SpinDet {
 
   void from_eor(const SpinDet&, const SpinDet&);
 
-  std::vector<int> get_elec_orbs() const {
-    std::vector<int> elecs_cast;
-    elecs_cast.reserve(elecs.size());
-    for (const auto elec : elecs) elecs_cast.push_back(static_cast<int>(elec));
-    return elecs_cast;
-  }
+  const Orbitals& get_elec_orbs() const { return elecs; }
 
   const Orbitals& encode() const { return elecs; }
 

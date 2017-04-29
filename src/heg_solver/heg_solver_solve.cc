@@ -7,7 +7,7 @@
 void HEGSolver::solve() {
   printf("Proc %d running on %s\n", Parallel::get_id(), Parallel::get_host().c_str());
 
-  Time::start("solve");
+  Time::start("variation all");
   this->n_up = Config::get<int>("n_up");
   this->n_dn = Config::get<int>("n_dn");
   const auto& rcuts_var = Config::get_array<double>("rcuts_var");
@@ -16,10 +16,9 @@ void HEGSolver::solve() {
     Time::start(rcut_var_event);
     this->rcut_var = rcut_var;
     setup();
-    wf.clear();
     const auto& epss_var = Config::get_array<double>("epss_var");
     for (const double eps_var : epss_var) {
-      std::string eps_var_event = "  eps_var: " + std::to_string(eps_var);
+      std::string eps_var_event = "eps_var: " + std::to_string(eps_var);
       Time::start(eps_var_event);
       this->eps_var = eps_var;
       variation();
@@ -28,5 +27,8 @@ void HEGSolver::solve() {
     }
     Time::end(rcut_var_event);
   }
-  Time::end("solve");
+  Time::end("variation all");
+
+  Time::start("perturbation all");
+  Time::end("perturbation all");
 }

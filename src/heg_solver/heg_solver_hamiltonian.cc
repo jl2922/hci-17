@@ -4,11 +4,11 @@
 #include "../det/det.h"
 #include "../det/spin_det.h"
 
-int get_gamma_exp(const SpinDet& spin_det, const std::vector<int>& eor) {
+int get_gamma_exp(const SpinDet& spin_det, const std::vector<Orbital>& eor) {
   int gamma_exp = 0;
   int ptr = 0;
   const auto& occ = spin_det.get_elec_orbs();
-  for (const int orb_id : eor) {
+  for (const Orbital orb_id : eor) {
     if (!spin_det.get_orb(orb_id)) continue;
     while (occ[ptr] < orb_id) ptr++;
     gamma_exp += ptr;
@@ -103,10 +103,9 @@ double HEGSolver::hamiltonian(const Det& det_pq, const Det& det_rs) const {
     if (n_eor_up != 2) {
       H -= H_unit / sum(square(k_points[orb_p] - k_points[orb_s]));
     }
-    const int gamma_exp = get_gamma_exp(det_pq.up, eor_up_set_bits) +
-                          get_gamma_exp(det_pq.dn, eor_dn_set_bits) +
-                          get_gamma_exp(det_rs.up, eor_up_set_bits) +
-                          get_gamma_exp(det_rs.dn, eor_dn_set_bits);
+    const int gamma_exp =
+        get_gamma_exp(det_pq.up, eor_up_set_bits) + get_gamma_exp(det_pq.dn, eor_dn_set_bits) +
+        get_gamma_exp(det_rs.up, eor_up_set_bits) + get_gamma_exp(det_rs.dn, eor_dn_set_bits);
     if ((gamma_exp & 1) == 1) H = -H;
   }
   return H;

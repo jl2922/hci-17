@@ -6,9 +6,8 @@
 
 void HEGSolver::setup() {
   const double r_s = Config::get<double>("r_s");
-  const int n_elecs = n_up + n_dn;
   const double density = 3.0 / (4.0 * M_PI * pow(r_s, 3));
-  const double cell_length = pow(n_elecs / density, 1.0 / 3);
+  const double cell_length = pow((n_up + n_dn) / density, 1.0 / 3);
   k_unit = 2 * M_PI / cell_length;
   H_unit = 1.0 / (M_PI * cell_length);
 
@@ -20,6 +19,8 @@ void HEGSolver::setup() {
   Time::start("Generate HCI queue.");
   generate_hci_queue(rcut_var);
   Time::end("Generate HCI queue.");
+
+  wf.clear();
 }
 
 // Generate k vectors in ascending order of magnitude, and then x, y, z.
@@ -30,18 +31,16 @@ void HEGSolver::generate_k_points(const double rcut) {
   for (int i = -n_max; i <= n_max; i++) {
     for (int j = -n_max; j <= n_max; j++) {
       for (int k = -n_max; k <= n_max; k++) {
-        const int length2 = i * i + j * j + k * k;
-        if (length2 > pow(rcut, 2)) continue;
+        if (i * i + j * j + k * k > pow(rcut, 2)) continue;
         k_points.push_back(Int3({i, j, k}));
       }
     }
   }
 
   // Sort.
-  std::stable_sort(
-      k_points.begin(), k_points.end(), [](const Int3& a, const Int3& b) -> bool {
-        return sum(square(a)) < sum(square(b));
-      });
+  std::stable_sort(k_points.begin(), k_points.end(), [](const Int3& a, const Int3& b) -> bool {
+    return sum(square(a)) < sum(square(b));
+  });
 
   // Generate look-up table.
   k_lut.clear();
@@ -65,10 +64,9 @@ std::vector<Int3> get_k_diffs(const std::vector<Int3>& k_points) {
   k_diffs_set.clear();
 
   // Sort k_diffs into ascending order so that later sorting hci queue will be faster.
-  std::stable_sort(
-      k_diffs.begin(), k_diffs.end(), [](const Int3& a, const Int3& b) -> bool {
-        return norm(a) < norm(b);
-      });
+  std::stable_sort(k_diffs.begin(), k_diffs.end(), [](const Int3& a, const Int3& b) -> bool {
+    return norm(a) < norm(b);
+  });
 
   return k_diffs;
 }
@@ -98,9 +96,7 @@ void HEGSolver::generate_hci_queue(const double rcut) {
   for (auto& kv : same_spin_hci_queue) {
     auto& items = kv.second;
     std::stable_sort(
-        items.begin(),
-        items.end(),
-        [](const TinyInt3Double& a, const TinyInt3Double& b) -> bool {
+        items.begin(), items.end(), [](const TinyInt3Double& a, const TinyInt3Double& b) -> bool {
           return a.second > b.second;
         });
     max_abs_H = std::max(max_abs_H, items.front().second);
@@ -116,8 +112,6 @@ void HEGSolver::generate_hci_queue(const double rcut) {
   std::stable_sort(
       opposite_spin_hci_queue.begin(),
       opposite_spin_hci_queue.end(),
-      [](const TinyInt3Double& a, const TinyInt3Double& b) -> bool {
-        return a.second > b.second;
-      });
+      [](const TinyInt3Double& a, const TinyInt3Double& b) -> bool { return a.second > b.second; });
   max_abs_H = std::max(max_abs_H, opposite_spin_hci_queue.front().second);
 }

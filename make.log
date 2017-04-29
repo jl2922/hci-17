@@ -1,0 +1,1939 @@
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h: In instantiation of ‘void std::__inplace_stable_sort(_RandomAccessIterator, _RandomAccessIterator, _Compare) [with _RandomAccessIterator = std::_List_iterator<Term>; _Compare = __gnu_cxx::__ops::_Iter_comp_iter<Wavefunction::sort()::<lambda(Term&, Term&)> >]’:
+/usr/include/c++/6/bits/stl_algo.h:4877:28:   required from ‘void std::__stable_sort(_RandomAccessIterator, _RandomAccessIterator, _Compare) [with _RandomAccessIterator = std::_List_iterator<Term>; _Compare = __gnu_cxx::__ops::_Iter_comp_iter<Wavefunction::sort()::<lambda(Term&, Term&)> >]’
+/usr/include/c++/6/bits/stl_algo.h:4948:36:   required from ‘void std::stable_sort(_RAIter, _RAIter, _Compare) [with _RAIter = std::_List_iterator<Term>; _Compare = Wavefunction::sort()::<lambda(Term&, Term&)>]’
+src/heg_solver/../solver/../wavefunction/wavefunction.h:37:6:   required from here
+/usr/include/c++/6/bits/stl_algo.h:2761:18: error: no match for ‘operator-’ (operand types are ‘std::_List_iterator<Term>’ and ‘std::_List_iterator<Term>’)
+       if (__last - __first < 15)
+           ~~~~~~~^~~~~~~~~
+In file included from /usr/include/c++/6/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/6/bits/char_traits.h:39,
+                 from /usr/include/c++/6/string:40,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_iterator.h:333:5: note: candidate: template<class _Iterator> decltype ((__x.base() - __y.base())) std::operator-(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_Iterator>&)
+     operator-(const reverse_iterator<_Iterator>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_iterator.h:333:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2761:18: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::reverse_iterator<_Iterator>’
+       if (__last - __first < 15)
+           ~~~~~~~^~~~~~~~~
+In file included from /usr/include/c++/6/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/6/bits/char_traits.h:39,
+                 from /usr/include/c++/6/string:40,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_iterator.h:387:5: note: candidate: template<class _IteratorL, class _IteratorR> decltype ((__y.base() - __x.base())) std::operator-(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_IteratorR>&)
+     operator-(const reverse_iterator<_IteratorL>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_iterator.h:387:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2761:18: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::reverse_iterator<_Iterator>’
+       if (__last - __first < 15)
+           ~~~~~~~^~~~~~~~~
+In file included from /usr/include/c++/6/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/6/bits/char_traits.h:39,
+                 from /usr/include/c++/6/string:40,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_iterator.h:1186:5: note: candidate: template<class _IteratorL, class _IteratorR> decltype ((__x.base() - __y.base())) std::operator-(const std::move_iterator<_IteratorL>&, const std::move_iterator<_IteratorR>&)
+     operator-(const move_iterator<_IteratorL>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_iterator.h:1186:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2761:18: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::move_iterator<_IteratorL>’
+       if (__last - __first < 15)
+           ~~~~~~~^~~~~~~~~
+In file included from /usr/include/c++/6/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/6/bits/char_traits.h:39,
+                 from /usr/include/c++/6/string:40,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_iterator.h:1193:5: note: candidate: template<class _Iterator> decltype ((__x.base() - __y.base())) std::operator-(const std::move_iterator<_IteratorL>&, const std::move_iterator<_IteratorL>&)
+     operator-(const move_iterator<_Iterator>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_iterator.h:1193:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2761:18: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::move_iterator<_IteratorL>’
+       if (__last - __first < 15)
+           ~~~~~~~^~~~~~~~~
+In file included from /usr/include/c++/6/deque:64:0,
+                 from /usr/local/include/boost/detail/container_fwd.hpp:91,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_deque.h:349:5: note: candidate: template<class _Tp, class _Ref, class _Ptr> typename std::_Deque_iterator<_Tp, _Ref, _Ptr>::difference_type std::operator-(const std::_Deque_iterator<_Tp, _Ref, _Ptr>&, const std::_Deque_iterator<_Tp, _Ref, _Ptr>&)
+     operator-(const _Deque_iterator<_Tp, _Ref, _Ptr>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_deque.h:349:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2761:18: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::_Deque_iterator<_Tp, _Ref, _Ptr>’
+       if (__last - __first < 15)
+           ~~~~~~~^~~~~~~~~
+In file included from /usr/include/c++/6/deque:64:0,
+                 from /usr/local/include/boost/detail/container_fwd.hpp:91,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_deque.h:361:5: note: candidate: template<class _Tp, class _RefL, class _PtrL, class _RefR, class _PtrR> typename std::_Deque_iterator<_Tp, _Ref, _Ptr>::difference_type std::operator-(const std::_Deque_iterator<_Tp, _Ref, _Ptr>&, const std::_Deque_iterator<_Tp, _RefR, _PtrR>&)
+     operator-(const _Deque_iterator<_Tp, _RefL, _PtrL>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_deque.h:361:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2761:18: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::_Deque_iterator<_Tp, _Ref, _Ptr>’
+       if (__last - __first < 15)
+           ~~~~~~~^~~~~~~~~
+In file included from /usr/include/c++/6/vector:65:0,
+                 from /usr/local/include/boost/detail/container_fwd.hpp:93,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_bvector.h:208:3: note: candidate: std::ptrdiff_t std::operator-(const std::_Bit_iterator_base&, const std::_Bit_iterator_base&)
+   operator-(const _Bit_iterator_base& __x, const _Bit_iterator_base& __y)
+   ^~~~~~~~
+/usr/include/c++/6/bits/stl_bvector.h:208:3: note:   no known conversion for argument 1 from ‘std::_List_iterator<Term>’ to ‘const std::_Bit_iterator_base&’
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/complex:356:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator-(const std::complex<_Tp>&, const std::complex<_Tp>&)
+     operator-(const complex<_Tp>& __x, const complex<_Tp>& __y)
+     ^~~~~~~~
+/usr/include/c++/6/complex:356:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2761:18: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::complex<_Tp>’
+       if (__last - __first < 15)
+           ~~~~~~~^~~~~~~~~
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/complex:365:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator-(const std::complex<_Tp>&, const _Tp&)
+     operator-(const complex<_Tp>& __x, const _Tp& __y)
+     ^~~~~~~~
+/usr/include/c++/6/complex:365:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2761:18: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::complex<_Tp>’
+       if (__last - __first < 15)
+           ~~~~~~~^~~~~~~~~
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/complex:374:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator-(const _Tp&, const std::complex<_Tp>&)
+     operator-(const _Tp& __x, const complex<_Tp>& __y)
+     ^~~~~~~~
+/usr/include/c++/6/complex:374:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2761:18: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::complex<_Tp>’
+       if (__last - __first < 15)
+           ~~~~~~~^~~~~~~~~
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/complex:451:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator-(const std::complex<_Tp>&)
+     operator-(const complex<_Tp>& __x)
+     ^~~~~~~~
+/usr/include/c++/6/complex:451:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2761:18: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::complex<_Tp>’
+       if (__last - __first < 15)
+           ~~~~~~~^~~~~~~~~
+In file included from src/heg_solver/heg_solver_find_connected_dets.cc:3:0:
+src/heg_solver/../array_math.h:14:18: note: candidate: template<class T, long unsigned int N> std::array<_Tp, _Nm> operator-(const std::array<_Tp, _Nm>&, const std::array<_Tp, _Nm>&)
+ std::array<T, N> operator-(const std::array<T, N> &lhs, const std::array<T, N> &rhs) {
+                  ^~~~~~~~
+src/heg_solver/../array_math.h:14:18: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2761:18: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::array<_Tp, _Nm>’
+       if (__last - __first < 15)
+           ~~~~~~~^~~~~~~~~
+/usr/include/c++/6/bits/stl_algo.h:2766:58: error: no match for ‘operator-’ (operand types are ‘std::_List_iterator<Term>’ and ‘std::_List_iterator<Term>’)
+       _RandomAccessIterator __middle = __first + (__last - __first) / 2;
+                                                  ~~~~~~~~^~~~~~~~~~
+In file included from /usr/include/c++/6/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/6/bits/char_traits.h:39,
+                 from /usr/include/c++/6/string:40,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_iterator.h:333:5: note: candidate: template<class _Iterator> decltype ((__x.base() - __y.base())) std::operator-(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_Iterator>&)
+     operator-(const reverse_iterator<_Iterator>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_iterator.h:333:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2766:58: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::reverse_iterator<_Iterator>’
+       _RandomAccessIterator __middle = __first + (__last - __first) / 2;
+                                                  ~~~~~~~~^~~~~~~~~~
+In file included from /usr/include/c++/6/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/6/bits/char_traits.h:39,
+                 from /usr/include/c++/6/string:40,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_iterator.h:387:5: note: candidate: template<class _IteratorL, class _IteratorR> decltype ((__y.base() - __x.base())) std::operator-(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_IteratorR>&)
+     operator-(const reverse_iterator<_IteratorL>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_iterator.h:387:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2766:58: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::reverse_iterator<_Iterator>’
+       _RandomAccessIterator __middle = __first + (__last - __first) / 2;
+                                                  ~~~~~~~~^~~~~~~~~~
+In file included from /usr/include/c++/6/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/6/bits/char_traits.h:39,
+                 from /usr/include/c++/6/string:40,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_iterator.h:1186:5: note: candidate: template<class _IteratorL, class _IteratorR> decltype ((__x.base() - __y.base())) std::operator-(const std::move_iterator<_IteratorL>&, const std::move_iterator<_IteratorR>&)
+     operator-(const move_iterator<_IteratorL>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_iterator.h:1186:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2766:58: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::move_iterator<_IteratorL>’
+       _RandomAccessIterator __middle = __first + (__last - __first) / 2;
+                                                  ~~~~~~~~^~~~~~~~~~
+In file included from /usr/include/c++/6/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/6/bits/char_traits.h:39,
+                 from /usr/include/c++/6/string:40,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_iterator.h:1193:5: note: candidate: template<class _Iterator> decltype ((__x.base() - __y.base())) std::operator-(const std::move_iterator<_IteratorL>&, const std::move_iterator<_IteratorL>&)
+     operator-(const move_iterator<_Iterator>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_iterator.h:1193:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2766:58: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::move_iterator<_IteratorL>’
+       _RandomAccessIterator __middle = __first + (__last - __first) / 2;
+                                                  ~~~~~~~~^~~~~~~~~~
+In file included from /usr/include/c++/6/deque:64:0,
+                 from /usr/local/include/boost/detail/container_fwd.hpp:91,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_deque.h:349:5: note: candidate: template<class _Tp, class _Ref, class _Ptr> typename std::_Deque_iterator<_Tp, _Ref, _Ptr>::difference_type std::operator-(const std::_Deque_iterator<_Tp, _Ref, _Ptr>&, const std::_Deque_iterator<_Tp, _Ref, _Ptr>&)
+     operator-(const _Deque_iterator<_Tp, _Ref, _Ptr>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_deque.h:349:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2766:58: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::_Deque_iterator<_Tp, _Ref, _Ptr>’
+       _RandomAccessIterator __middle = __first + (__last - __first) / 2;
+                                                  ~~~~~~~~^~~~~~~~~~
+In file included from /usr/include/c++/6/deque:64:0,
+                 from /usr/local/include/boost/detail/container_fwd.hpp:91,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_deque.h:361:5: note: candidate: template<class _Tp, class _RefL, class _PtrL, class _RefR, class _PtrR> typename std::_Deque_iterator<_Tp, _Ref, _Ptr>::difference_type std::operator-(const std::_Deque_iterator<_Tp, _Ref, _Ptr>&, const std::_Deque_iterator<_Tp, _RefR, _PtrR>&)
+     operator-(const _Deque_iterator<_Tp, _RefL, _PtrL>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_deque.h:361:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2766:58: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::_Deque_iterator<_Tp, _Ref, _Ptr>’
+       _RandomAccessIterator __middle = __first + (__last - __first) / 2;
+                                                  ~~~~~~~~^~~~~~~~~~
+In file included from /usr/include/c++/6/vector:65:0,
+                 from /usr/local/include/boost/detail/container_fwd.hpp:93,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_bvector.h:208:3: note: candidate: std::ptrdiff_t std::operator-(const std::_Bit_iterator_base&, const std::_Bit_iterator_base&)
+   operator-(const _Bit_iterator_base& __x, const _Bit_iterator_base& __y)
+   ^~~~~~~~
+/usr/include/c++/6/bits/stl_bvector.h:208:3: note:   no known conversion for argument 1 from ‘std::_List_iterator<Term>’ to ‘const std::_Bit_iterator_base&’
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/complex:356:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator-(const std::complex<_Tp>&, const std::complex<_Tp>&)
+     operator-(const complex<_Tp>& __x, const complex<_Tp>& __y)
+     ^~~~~~~~
+/usr/include/c++/6/complex:356:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2766:58: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::complex<_Tp>’
+       _RandomAccessIterator __middle = __first + (__last - __first) / 2;
+                                                  ~~~~~~~~^~~~~~~~~~
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/complex:365:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator-(const std::complex<_Tp>&, const _Tp&)
+     operator-(const complex<_Tp>& __x, const _Tp& __y)
+     ^~~~~~~~
+/usr/include/c++/6/complex:365:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2766:58: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::complex<_Tp>’
+       _RandomAccessIterator __middle = __first + (__last - __first) / 2;
+                                                  ~~~~~~~~^~~~~~~~~~
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/complex:374:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator-(const _Tp&, const std::complex<_Tp>&)
+     operator-(const _Tp& __x, const complex<_Tp>& __y)
+     ^~~~~~~~
+/usr/include/c++/6/complex:374:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2766:58: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::complex<_Tp>’
+       _RandomAccessIterator __middle = __first + (__last - __first) / 2;
+                                                  ~~~~~~~~^~~~~~~~~~
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/complex:451:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator-(const std::complex<_Tp>&)
+     operator-(const complex<_Tp>& __x)
+     ^~~~~~~~
+/usr/include/c++/6/complex:451:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2766:58: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::complex<_Tp>’
+       _RandomAccessIterator __middle = __first + (__last - __first) / 2;
+                                                  ~~~~~~~~^~~~~~~~~~
+In file included from src/heg_solver/heg_solver_find_connected_dets.cc:3:0:
+src/heg_solver/../array_math.h:14:18: note: candidate: template<class T, long unsigned int N> std::array<_Tp, _Nm> operator-(const std::array<_Tp, _Nm>&, const std::array<_Tp, _Nm>&)
+ std::array<T, N> operator-(const std::array<T, N> &lhs, const std::array<T, N> &rhs) {
+                  ^~~~~~~~
+src/heg_solver/../array_math.h:14:18: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2766:58: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::array<_Tp, _Nm>’
+       _RandomAccessIterator __middle = __first + (__last - __first) / 2;
+                                                  ~~~~~~~~^~~~~~~~~~
+/usr/include/c++/6/bits/stl_algo.h:2770:16: error: no match for ‘operator-’ (operand types are ‘std::_List_iterator<Term>’ and ‘std::_List_iterator<Term>’)
+       __middle - __first,
+       ~~~~~~~~~^~~~~~~~~
+In file included from /usr/include/c++/6/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/6/bits/char_traits.h:39,
+                 from /usr/include/c++/6/string:40,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_iterator.h:333:5: note: candidate: template<class _Iterator> decltype ((__x.base() - __y.base())) std::operator-(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_Iterator>&)
+     operator-(const reverse_iterator<_Iterator>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_iterator.h:333:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2770:16: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::reverse_iterator<_Iterator>’
+       __middle - __first,
+       ~~~~~~~~~^~~~~~~~~
+In file included from /usr/include/c++/6/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/6/bits/char_traits.h:39,
+                 from /usr/include/c++/6/string:40,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_iterator.h:387:5: note: candidate: template<class _IteratorL, class _IteratorR> decltype ((__y.base() - __x.base())) std::operator-(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_IteratorR>&)
+     operator-(const reverse_iterator<_IteratorL>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_iterator.h:387:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2770:16: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::reverse_iterator<_Iterator>’
+       __middle - __first,
+       ~~~~~~~~~^~~~~~~~~
+In file included from /usr/include/c++/6/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/6/bits/char_traits.h:39,
+                 from /usr/include/c++/6/string:40,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_iterator.h:1186:5: note: candidate: template<class _IteratorL, class _IteratorR> decltype ((__x.base() - __y.base())) std::operator-(const std::move_iterator<_IteratorL>&, const std::move_iterator<_IteratorR>&)
+     operator-(const move_iterator<_IteratorL>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_iterator.h:1186:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2770:16: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::move_iterator<_IteratorL>’
+       __middle - __first,
+       ~~~~~~~~~^~~~~~~~~
+In file included from /usr/include/c++/6/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/6/bits/char_traits.h:39,
+                 from /usr/include/c++/6/string:40,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_iterator.h:1193:5: note: candidate: template<class _Iterator> decltype ((__x.base() - __y.base())) std::operator-(const std::move_iterator<_IteratorL>&, const std::move_iterator<_IteratorL>&)
+     operator-(const move_iterator<_Iterator>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_iterator.h:1193:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2770:16: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::move_iterator<_IteratorL>’
+       __middle - __first,
+       ~~~~~~~~~^~~~~~~~~
+In file included from /usr/include/c++/6/deque:64:0,
+                 from /usr/local/include/boost/detail/container_fwd.hpp:91,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_deque.h:349:5: note: candidate: template<class _Tp, class _Ref, class _Ptr> typename std::_Deque_iterator<_Tp, _Ref, _Ptr>::difference_type std::operator-(const std::_Deque_iterator<_Tp, _Ref, _Ptr>&, const std::_Deque_iterator<_Tp, _Ref, _Ptr>&)
+     operator-(const _Deque_iterator<_Tp, _Ref, _Ptr>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_deque.h:349:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2770:16: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::_Deque_iterator<_Tp, _Ref, _Ptr>’
+       __middle - __first,
+       ~~~~~~~~~^~~~~~~~~
+In file included from /usr/include/c++/6/deque:64:0,
+                 from /usr/local/include/boost/detail/container_fwd.hpp:91,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_deque.h:361:5: note: candidate: template<class _Tp, class _RefL, class _PtrL, class _RefR, class _PtrR> typename std::_Deque_iterator<_Tp, _Ref, _Ptr>::difference_type std::operator-(const std::_Deque_iterator<_Tp, _Ref, _Ptr>&, const std::_Deque_iterator<_Tp, _RefR, _PtrR>&)
+     operator-(const _Deque_iterator<_Tp, _RefL, _PtrL>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_deque.h:361:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2770:16: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::_Deque_iterator<_Tp, _Ref, _Ptr>’
+       __middle - __first,
+       ~~~~~~~~~^~~~~~~~~
+In file included from /usr/include/c++/6/vector:65:0,
+                 from /usr/local/include/boost/detail/container_fwd.hpp:93,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_bvector.h:208:3: note: candidate: std::ptrdiff_t std::operator-(const std::_Bit_iterator_base&, const std::_Bit_iterator_base&)
+   operator-(const _Bit_iterator_base& __x, const _Bit_iterator_base& __y)
+   ^~~~~~~~
+/usr/include/c++/6/bits/stl_bvector.h:208:3: note:   no known conversion for argument 1 from ‘std::_List_iterator<Term>’ to ‘const std::_Bit_iterator_base&’
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/complex:356:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator-(const std::complex<_Tp>&, const std::complex<_Tp>&)
+     operator-(const complex<_Tp>& __x, const complex<_Tp>& __y)
+     ^~~~~~~~
+/usr/include/c++/6/complex:356:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2770:16: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::complex<_Tp>’
+       __middle - __first,
+       ~~~~~~~~~^~~~~~~~~
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/complex:365:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator-(const std::complex<_Tp>&, const _Tp&)
+     operator-(const complex<_Tp>& __x, const _Tp& __y)
+     ^~~~~~~~
+/usr/include/c++/6/complex:365:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2770:16: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::complex<_Tp>’
+       __middle - __first,
+       ~~~~~~~~~^~~~~~~~~
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/complex:374:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator-(const _Tp&, const std::complex<_Tp>&)
+     operator-(const _Tp& __x, const complex<_Tp>& __y)
+     ^~~~~~~~
+/usr/include/c++/6/complex:374:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2770:16: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::complex<_Tp>’
+       __middle - __first,
+       ~~~~~~~~~^~~~~~~~~
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/complex:451:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator-(const std::complex<_Tp>&)
+     operator-(const complex<_Tp>& __x)
+     ^~~~~~~~
+/usr/include/c++/6/complex:451:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2770:16: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::complex<_Tp>’
+       __middle - __first,
+       ~~~~~~~~~^~~~~~~~~
+In file included from src/heg_solver/heg_solver_find_connected_dets.cc:3:0:
+src/heg_solver/../array_math.h:14:18: note: candidate: template<class T, long unsigned int N> std::array<_Tp, _Nm> operator-(const std::array<_Tp, _Nm>&, const std::array<_Tp, _Nm>&)
+ std::array<T, N> operator-(const std::array<T, N> &lhs, const std::array<T, N> &rhs) {
+                  ^~~~~~~~
+src/heg_solver/../array_math.h:14:18: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2770:16: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::array<_Tp, _Nm>’
+       __middle - __first,
+       ~~~~~~~~~^~~~~~~~~
+/usr/include/c++/6/bits/stl_algo.h:2771:14: error: no match for ‘operator-’ (operand types are ‘std::_List_iterator<Term>’ and ‘std::_List_iterator<Term>’)
+       __last - __middle,
+       ~~~~~~~^~~~~~~~~~
+In file included from /usr/include/c++/6/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/6/bits/char_traits.h:39,
+                 from /usr/include/c++/6/string:40,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_iterator.h:333:5: note: candidate: template<class _Iterator> decltype ((__x.base() - __y.base())) std::operator-(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_Iterator>&)
+     operator-(const reverse_iterator<_Iterator>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_iterator.h:333:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2771:14: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::reverse_iterator<_Iterator>’
+       __last - __middle,
+       ~~~~~~~^~~~~~~~~~
+In file included from /usr/include/c++/6/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/6/bits/char_traits.h:39,
+                 from /usr/include/c++/6/string:40,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_iterator.h:387:5: note: candidate: template<class _IteratorL, class _IteratorR> decltype ((__y.base() - __x.base())) std::operator-(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_IteratorR>&)
+     operator-(const reverse_iterator<_IteratorL>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_iterator.h:387:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2771:14: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::reverse_iterator<_Iterator>’
+       __last - __middle,
+       ~~~~~~~^~~~~~~~~~
+In file included from /usr/include/c++/6/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/6/bits/char_traits.h:39,
+                 from /usr/include/c++/6/string:40,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_iterator.h:1186:5: note: candidate: template<class _IteratorL, class _IteratorR> decltype ((__x.base() - __y.base())) std::operator-(const std::move_iterator<_IteratorL>&, const std::move_iterator<_IteratorR>&)
+     operator-(const move_iterator<_IteratorL>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_iterator.h:1186:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2771:14: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::move_iterator<_IteratorL>’
+       __last - __middle,
+       ~~~~~~~^~~~~~~~~~
+In file included from /usr/include/c++/6/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/6/bits/char_traits.h:39,
+                 from /usr/include/c++/6/string:40,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_iterator.h:1193:5: note: candidate: template<class _Iterator> decltype ((__x.base() - __y.base())) std::operator-(const std::move_iterator<_IteratorL>&, const std::move_iterator<_IteratorL>&)
+     operator-(const move_iterator<_Iterator>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_iterator.h:1193:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2771:14: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::move_iterator<_IteratorL>’
+       __last - __middle,
+       ~~~~~~~^~~~~~~~~~
+In file included from /usr/include/c++/6/deque:64:0,
+                 from /usr/local/include/boost/detail/container_fwd.hpp:91,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_deque.h:349:5: note: candidate: template<class _Tp, class _Ref, class _Ptr> typename std::_Deque_iterator<_Tp, _Ref, _Ptr>::difference_type std::operator-(const std::_Deque_iterator<_Tp, _Ref, _Ptr>&, const std::_Deque_iterator<_Tp, _Ref, _Ptr>&)
+     operator-(const _Deque_iterator<_Tp, _Ref, _Ptr>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_deque.h:349:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2771:14: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::_Deque_iterator<_Tp, _Ref, _Ptr>’
+       __last - __middle,
+       ~~~~~~~^~~~~~~~~~
+In file included from /usr/include/c++/6/deque:64:0,
+                 from /usr/local/include/boost/detail/container_fwd.hpp:91,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_deque.h:361:5: note: candidate: template<class _Tp, class _RefL, class _PtrL, class _RefR, class _PtrR> typename std::_Deque_iterator<_Tp, _Ref, _Ptr>::difference_type std::operator-(const std::_Deque_iterator<_Tp, _Ref, _Ptr>&, const std::_Deque_iterator<_Tp, _RefR, _PtrR>&)
+     operator-(const _Deque_iterator<_Tp, _RefL, _PtrL>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_deque.h:361:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2771:14: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::_Deque_iterator<_Tp, _Ref, _Ptr>’
+       __last - __middle,
+       ~~~~~~~^~~~~~~~~~
+In file included from /usr/include/c++/6/vector:65:0,
+                 from /usr/local/include/boost/detail/container_fwd.hpp:93,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_bvector.h:208:3: note: candidate: std::ptrdiff_t std::operator-(const std::_Bit_iterator_base&, const std::_Bit_iterator_base&)
+   operator-(const _Bit_iterator_base& __x, const _Bit_iterator_base& __y)
+   ^~~~~~~~
+/usr/include/c++/6/bits/stl_bvector.h:208:3: note:   no known conversion for argument 1 from ‘std::_List_iterator<Term>’ to ‘const std::_Bit_iterator_base&’
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/complex:356:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator-(const std::complex<_Tp>&, const std::complex<_Tp>&)
+     operator-(const complex<_Tp>& __x, const complex<_Tp>& __y)
+     ^~~~~~~~
+/usr/include/c++/6/complex:356:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2771:14: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::complex<_Tp>’
+       __last - __middle,
+       ~~~~~~~^~~~~~~~~~
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/complex:365:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator-(const std::complex<_Tp>&, const _Tp&)
+     operator-(const complex<_Tp>& __x, const _Tp& __y)
+     ^~~~~~~~
+/usr/include/c++/6/complex:365:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2771:14: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::complex<_Tp>’
+       __last - __middle,
+       ~~~~~~~^~~~~~~~~~
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/complex:374:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator-(const _Tp&, const std::complex<_Tp>&)
+     operator-(const _Tp& __x, const complex<_Tp>& __y)
+     ^~~~~~~~
+/usr/include/c++/6/complex:374:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2771:14: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::complex<_Tp>’
+       __last - __middle,
+       ~~~~~~~^~~~~~~~~~
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/complex:451:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator-(const std::complex<_Tp>&)
+     operator-(const complex<_Tp>& __x)
+     ^~~~~~~~
+/usr/include/c++/6/complex:451:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2771:14: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::complex<_Tp>’
+       __last - __middle,
+       ~~~~~~~^~~~~~~~~~
+In file included from src/heg_solver/heg_solver_find_connected_dets.cc:3:0:
+src/heg_solver/../array_math.h:14:18: note: candidate: template<class T, long unsigned int N> std::array<_Tp, _Nm> operator-(const std::array<_Tp, _Nm>&, const std::array<_Tp, _Nm>&)
+ std::array<T, N> operator-(const std::array<T, N> &lhs, const std::array<T, N> &rhs) {
+                  ^~~~~~~~
+src/heg_solver/../array_math.h:14:18: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2771:14: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::array<_Tp, _Nm>’
+       __last - __middle,
+       ~~~~~~~^~~~~~~~~~
+/usr/include/c++/6/bits/stl_algo.h: In instantiation of ‘void std::__stable_sort_adaptive(_RandomAccessIterator, _RandomAccessIterator, _Pointer, _Distance, _Compare) [with _RandomAccessIterator = std::_List_iterator<Term>; _Pointer = Term*; _Distance = long int; _Compare = __gnu_cxx::__ops::_Iter_comp_iter<Wavefunction::sort()::<lambda(Term&, Term&)> >]’:
+/usr/include/c++/6/bits/stl_algo.h:4879:29:   required from ‘void std::__stable_sort(_RandomAccessIterator, _RandomAccessIterator, _Compare) [with _RandomAccessIterator = std::_List_iterator<Term>; _Compare = __gnu_cxx::__ops::_Iter_comp_iter<Wavefunction::sort()::<lambda(Term&, Term&)> >]’
+/usr/include/c++/6/bits/stl_algo.h:4948:36:   required from ‘void std::stable_sort(_RAIter, _RAIter, _Compare) [with _RAIter = std::_List_iterator<Term>; _Compare = Wavefunction::sort()::<lambda(Term&, Term&)>]’
+src/heg_solver/../solver/../wavefunction/wavefunction.h:37:6:   required from here
+/usr/include/c++/6/bits/stl_algo.h:2734:39: error: no match for ‘operator-’ (operand types are ‘std::_List_iterator<Term>’ and ‘std::_List_iterator<Term>’)
+       const _Distance __len = (__last - __first + 1) / 2;
+                                ~~~~~~~^~~~~~~~~
+In file included from /usr/include/c++/6/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/6/bits/char_traits.h:39,
+                 from /usr/include/c++/6/string:40,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_iterator.h:333:5: note: candidate: template<class _Iterator> decltype ((__x.base() - __y.base())) std::operator-(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_Iterator>&)
+     operator-(const reverse_iterator<_Iterator>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_iterator.h:333:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2734:39: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::reverse_iterator<_Iterator>’
+       const _Distance __len = (__last - __first + 1) / 2;
+                                ~~~~~~~^~~~~~~~~
+In file included from /usr/include/c++/6/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/6/bits/char_traits.h:39,
+                 from /usr/include/c++/6/string:40,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_iterator.h:387:5: note: candidate: template<class _IteratorL, class _IteratorR> decltype ((__y.base() - __x.base())) std::operator-(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_IteratorR>&)
+     operator-(const reverse_iterator<_IteratorL>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_iterator.h:387:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2734:39: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::reverse_iterator<_Iterator>’
+       const _Distance __len = (__last - __first + 1) / 2;
+                                ~~~~~~~^~~~~~~~~
+In file included from /usr/include/c++/6/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/6/bits/char_traits.h:39,
+                 from /usr/include/c++/6/string:40,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_iterator.h:1186:5: note: candidate: template<class _IteratorL, class _IteratorR> decltype ((__x.base() - __y.base())) std::operator-(const std::move_iterator<_IteratorL>&, const std::move_iterator<_IteratorR>&)
+     operator-(const move_iterator<_IteratorL>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_iterator.h:1186:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2734:39: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::move_iterator<_IteratorL>’
+       const _Distance __len = (__last - __first + 1) / 2;
+                                ~~~~~~~^~~~~~~~~
+In file included from /usr/include/c++/6/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/6/bits/char_traits.h:39,
+                 from /usr/include/c++/6/string:40,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_iterator.h:1193:5: note: candidate: template<class _Iterator> decltype ((__x.base() - __y.base())) std::operator-(const std::move_iterator<_IteratorL>&, const std::move_iterator<_IteratorL>&)
+     operator-(const move_iterator<_Iterator>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_iterator.h:1193:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2734:39: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::move_iterator<_IteratorL>’
+       const _Distance __len = (__last - __first + 1) / 2;
+                                ~~~~~~~^~~~~~~~~
+In file included from /usr/include/c++/6/deque:64:0,
+                 from /usr/local/include/boost/detail/container_fwd.hpp:91,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_deque.h:349:5: note: candidate: template<class _Tp, class _Ref, class _Ptr> typename std::_Deque_iterator<_Tp, _Ref, _Ptr>::difference_type std::operator-(const std::_Deque_iterator<_Tp, _Ref, _Ptr>&, const std::_Deque_iterator<_Tp, _Ref, _Ptr>&)
+     operator-(const _Deque_iterator<_Tp, _Ref, _Ptr>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_deque.h:349:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2734:39: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::_Deque_iterator<_Tp, _Ref, _Ptr>’
+       const _Distance __len = (__last - __first + 1) / 2;
+                                ~~~~~~~^~~~~~~~~
+In file included from /usr/include/c++/6/deque:64:0,
+                 from /usr/local/include/boost/detail/container_fwd.hpp:91,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_deque.h:361:5: note: candidate: template<class _Tp, class _RefL, class _PtrL, class _RefR, class _PtrR> typename std::_Deque_iterator<_Tp, _Ref, _Ptr>::difference_type std::operator-(const std::_Deque_iterator<_Tp, _Ref, _Ptr>&, const std::_Deque_iterator<_Tp, _RefR, _PtrR>&)
+     operator-(const _Deque_iterator<_Tp, _RefL, _PtrL>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_deque.h:361:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2734:39: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::_Deque_iterator<_Tp, _Ref, _Ptr>’
+       const _Distance __len = (__last - __first + 1) / 2;
+                                ~~~~~~~^~~~~~~~~
+In file included from /usr/include/c++/6/vector:65:0,
+                 from /usr/local/include/boost/detail/container_fwd.hpp:93,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_bvector.h:208:3: note: candidate: std::ptrdiff_t std::operator-(const std::_Bit_iterator_base&, const std::_Bit_iterator_base&)
+   operator-(const _Bit_iterator_base& __x, const _Bit_iterator_base& __y)
+   ^~~~~~~~
+/usr/include/c++/6/bits/stl_bvector.h:208:3: note:   no known conversion for argument 1 from ‘std::_List_iterator<Term>’ to ‘const std::_Bit_iterator_base&’
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/complex:356:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator-(const std::complex<_Tp>&, const std::complex<_Tp>&)
+     operator-(const complex<_Tp>& __x, const complex<_Tp>& __y)
+     ^~~~~~~~
+/usr/include/c++/6/complex:356:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2734:39: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::complex<_Tp>’
+       const _Distance __len = (__last - __first + 1) / 2;
+                                ~~~~~~~^~~~~~~~~
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/complex:365:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator-(const std::complex<_Tp>&, const _Tp&)
+     operator-(const complex<_Tp>& __x, const _Tp& __y)
+     ^~~~~~~~
+/usr/include/c++/6/complex:365:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2734:39: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::complex<_Tp>’
+       const _Distance __len = (__last - __first + 1) / 2;
+                                ~~~~~~~^~~~~~~~~
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/complex:374:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator-(const _Tp&, const std::complex<_Tp>&)
+     operator-(const _Tp& __x, const complex<_Tp>& __y)
+     ^~~~~~~~
+/usr/include/c++/6/complex:374:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2734:39: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::complex<_Tp>’
+       const _Distance __len = (__last - __first + 1) / 2;
+                                ~~~~~~~^~~~~~~~~
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/complex:451:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator-(const std::complex<_Tp>&)
+     operator-(const complex<_Tp>& __x)
+     ^~~~~~~~
+/usr/include/c++/6/complex:451:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2734:39: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::complex<_Tp>’
+       const _Distance __len = (__last - __first + 1) / 2;
+                                ~~~~~~~^~~~~~~~~
+In file included from src/heg_solver/heg_solver_find_connected_dets.cc:3:0:
+src/heg_solver/../array_math.h:14:18: note: candidate: template<class T, long unsigned int N> std::array<_Tp, _Nm> operator-(const std::array<_Tp, _Nm>&, const std::array<_Tp, _Nm>&)
+ std::array<T, N> operator-(const std::array<T, N> &lhs, const std::array<T, N> &rhs) {
+                  ^~~~~~~~
+src/heg_solver/../array_math.h:14:18: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2734:39: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::array<_Tp, _Nm>’
+       const _Distance __len = (__last - __first + 1) / 2;
+                                ~~~~~~~^~~~~~~~~
+/usr/include/c++/6/bits/stl_algo.h:2735:54: error: no match for ‘operator+’ (operand types are ‘std::_List_iterator<Term>’ and ‘const long int’)
+       const _RandomAccessIterator __middle = __first + __len;
+                                              ~~~~~~~~^~~~~~~
+In file included from /usr/include/c++/6/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/6/bits/char_traits.h:39,
+                 from /usr/include/c++/6/string:40,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_iterator.h:341:5: note: candidate: template<class _Iterator> std::reverse_iterator<_Iterator> std::operator+(typename std::reverse_iterator<_Iterator>::difference_type, const std::reverse_iterator<_Iterator>&)
+     operator+(typename reverse_iterator<_Iterator>::difference_type __n,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_iterator.h:341:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2735:54: note:   mismatched types ‘const std::reverse_iterator<_Iterator>’ and ‘const long int’
+       const _RandomAccessIterator __middle = __first + __len;
+                                              ~~~~~~~~^~~~~~~
+In file included from /usr/include/c++/6/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/6/bits/char_traits.h:39,
+                 from /usr/include/c++/6/string:40,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_iterator.h:1200:5: note: candidate: template<class _Iterator> std::move_iterator<_IteratorL> std::operator+(typename std::move_iterator<_IteratorL>::difference_type, const std::move_iterator<_IteratorL>&)
+     operator+(typename move_iterator<_Iterator>::difference_type __n,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_iterator.h:1200:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2735:54: note:   mismatched types ‘const std::move_iterator<_IteratorL>’ and ‘const long int’
+       const _RandomAccessIterator __middle = __first + __len;
+                                              ~~~~~~~~^~~~~~~
+In file included from /usr/include/c++/6/string:52:0,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/basic_string.h:4929:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> std::basic_string<_CharT, _Traits, _Alloc> std::operator+(const std::basic_string<_CharT, _Traits, _Alloc>&, const std::basic_string<_CharT, _Traits, _Alloc>&)
+     operator+(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
+     ^~~~~~~~
+/usr/include/c++/6/bits/basic_string.h:4929:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2735:54: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::basic_string<_CharT, _Traits, _Alloc>’
+       const _RandomAccessIterator __middle = __first + __len;
+                                              ~~~~~~~~^~~~~~~
+In file included from /usr/include/c++/6/string:53:0,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/basic_string.tcc:1147:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> std::basic_string<_CharT, _Traits, _Alloc> std::operator+(const _CharT*, const std::basic_string<_CharT, _Traits, _Alloc>&)
+     operator+(const _CharT* __lhs,
+     ^~~~~~~~
+/usr/include/c++/6/bits/basic_string.tcc:1147:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2735:54: note:   mismatched types ‘const _CharT*’ and ‘std::_List_iterator<Term>’
+       const _RandomAccessIterator __middle = __first + __len;
+                                              ~~~~~~~~^~~~~~~
+In file included from /usr/include/c++/6/string:53:0,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/basic_string.tcc:1163:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> std::basic_string<_CharT, _Traits, _Alloc> std::operator+(_CharT, const std::basic_string<_CharT, _Traits, _Alloc>&)
+     operator+(_CharT __lhs, const basic_string<_CharT, _Traits, _Alloc>& __rhs)
+     ^~~~~~~~
+/usr/include/c++/6/bits/basic_string.tcc:1163:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2735:54: note:   mismatched types ‘const std::basic_string<_CharT, _Traits, _Alloc>’ and ‘const long int’
+       const _RandomAccessIterator __middle = __first + __len;
+                                              ~~~~~~~~^~~~~~~
+In file included from /usr/include/c++/6/string:52:0,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/basic_string.h:4966:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> std::basic_string<_CharT, _Traits, _Alloc> std::operator+(const std::basic_string<_CharT, _Traits, _Alloc>&, const _CharT*)
+     operator+(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
+     ^~~~~~~~
+/usr/include/c++/6/bits/basic_string.h:4966:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2735:54: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::basic_string<_CharT, _Traits, _Alloc>’
+       const _RandomAccessIterator __middle = __first + __len;
+                                              ~~~~~~~~^~~~~~~
+In file included from /usr/include/c++/6/string:52:0,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/basic_string.h:4982:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> std::basic_string<_CharT, _Traits, _Alloc> std::operator+(const std::basic_string<_CharT, _Traits, _Alloc>&, _CharT)
+     operator+(const basic_string<_CharT, _Traits, _Alloc>& __lhs, _CharT __rhs)
+     ^~~~~~~~
+/usr/include/c++/6/bits/basic_string.h:4982:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2735:54: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::basic_string<_CharT, _Traits, _Alloc>’
+       const _RandomAccessIterator __middle = __first + __len;
+                                              ~~~~~~~~^~~~~~~
+In file included from /usr/include/c++/6/string:52:0,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/basic_string.h:4994:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> std::basic_string<_CharT, _Traits, _Alloc> std::operator+(std::basic_string<_CharT, _Traits, _Alloc>&&, const std::basic_string<_CharT, _Traits, _Alloc>&)
+     operator+(basic_string<_CharT, _Traits, _Alloc>&& __lhs,
+     ^~~~~~~~
+/usr/include/c++/6/bits/basic_string.h:4994:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2735:54: note:   ‘std::_List_iterator<Term>’ is not derived from ‘std::basic_string<_CharT, _Traits, _Alloc>’
+       const _RandomAccessIterator __middle = __first + __len;
+                                              ~~~~~~~~^~~~~~~
+In file included from /usr/include/c++/6/string:52:0,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/basic_string.h:5000:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> std::basic_string<_CharT, _Traits, _Alloc> std::operator+(const std::basic_string<_CharT, _Traits, _Alloc>&, std::basic_string<_CharT, _Traits, _Alloc>&&)
+     operator+(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
+     ^~~~~~~~
+/usr/include/c++/6/bits/basic_string.h:5000:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2735:54: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::basic_string<_CharT, _Traits, _Alloc>’
+       const _RandomAccessIterator __middle = __first + __len;
+                                              ~~~~~~~~^~~~~~~
+In file included from /usr/include/c++/6/string:52:0,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/basic_string.h:5006:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> std::basic_string<_CharT, _Traits, _Alloc> std::operator+(std::basic_string<_CharT, _Traits, _Alloc>&&, std::basic_string<_CharT, _Traits, _Alloc>&&)
+     operator+(basic_string<_CharT, _Traits, _Alloc>&& __lhs,
+     ^~~~~~~~
+/usr/include/c++/6/bits/basic_string.h:5006:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2735:54: note:   ‘std::_List_iterator<Term>’ is not derived from ‘std::basic_string<_CharT, _Traits, _Alloc>’
+       const _RandomAccessIterator __middle = __first + __len;
+                                              ~~~~~~~~^~~~~~~
+In file included from /usr/include/c++/6/string:52:0,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/basic_string.h:5018:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> std::basic_string<_CharT, _Traits, _Alloc> std::operator+(const _CharT*, std::basic_string<_CharT, _Traits, _Alloc>&&)
+     operator+(const _CharT* __lhs,
+     ^~~~~~~~
+/usr/include/c++/6/bits/basic_string.h:5018:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2735:54: note:   mismatched types ‘const _CharT*’ and ‘std::_List_iterator<Term>’
+       const _RandomAccessIterator __middle = __first + __len;
+                                              ~~~~~~~~^~~~~~~
+In file included from /usr/include/c++/6/string:52:0,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/basic_string.h:5024:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> std::basic_string<_CharT, _Traits, _Alloc> std::operator+(_CharT, std::basic_string<_CharT, _Traits, _Alloc>&&)
+     operator+(_CharT __lhs,
+     ^~~~~~~~
+/usr/include/c++/6/bits/basic_string.h:5024:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2735:54: note:   mismatched types ‘std::basic_string<_CharT, _Traits, _Alloc>’ and ‘const long int’
+       const _RandomAccessIterator __middle = __first + __len;
+                                              ~~~~~~~~^~~~~~~
+In file included from /usr/include/c++/6/string:52:0,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/basic_string.h:5030:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> std::basic_string<_CharT, _Traits, _Alloc> std::operator+(std::basic_string<_CharT, _Traits, _Alloc>&&, const _CharT*)
+     operator+(basic_string<_CharT, _Traits, _Alloc>&& __lhs,
+     ^~~~~~~~
+/usr/include/c++/6/bits/basic_string.h:5030:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2735:54: note:   ‘std::_List_iterator<Term>’ is not derived from ‘std::basic_string<_CharT, _Traits, _Alloc>’
+       const _RandomAccessIterator __middle = __first + __len;
+                                              ~~~~~~~~^~~~~~~
+In file included from /usr/include/c++/6/string:52:0,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/basic_string.h:5036:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> std::basic_string<_CharT, _Traits, _Alloc> std::operator+(std::basic_string<_CharT, _Traits, _Alloc>&&, _CharT)
+     operator+(basic_string<_CharT, _Traits, _Alloc>&& __lhs,
+     ^~~~~~~~
+/usr/include/c++/6/bits/basic_string.h:5036:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2735:54: note:   ‘std::_List_iterator<Term>’ is not derived from ‘std::basic_string<_CharT, _Traits, _Alloc>’
+       const _RandomAccessIterator __middle = __first + __len;
+                                              ~~~~~~~~^~~~~~~
+In file included from /usr/include/c++/6/deque:64:0,
+                 from /usr/local/include/boost/detail/container_fwd.hpp:91,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_deque.h:372:5: note: candidate: template<class _Tp, class _Ref, class _Ptr> std::_Deque_iterator<_Tp, _Ref, _Ptr> std::operator+(std::ptrdiff_t, const std::_Deque_iterator<_Tp, _Ref, _Ptr>&)
+     operator+(ptrdiff_t __n, const _Deque_iterator<_Tp, _Ref, _Ptr>& __x)
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_deque.h:372:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2735:54: note:   mismatched types ‘const std::_Deque_iterator<_Tp, _Ref, _Ptr>’ and ‘const long int’
+       const _RandomAccessIterator __middle = __first + __len;
+                                              ~~~~~~~~^~~~~~~
+In file included from /usr/include/c++/6/vector:65:0,
+                 from /usr/local/include/boost/detail/container_fwd.hpp:93,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_bvector.h:297:3: note: candidate: std::_Bit_iterator std::operator+(std::ptrdiff_t, const std::_Bit_iterator&)
+   operator+(ptrdiff_t __n, const _Bit_iterator& __x)
+   ^~~~~~~~
+/usr/include/c++/6/bits/stl_bvector.h:297:3: note:   no known conversion for argument 1 from ‘std::_List_iterator<Term>’ to ‘std::ptrdiff_t {aka long int}’
+/usr/include/c++/6/bits/stl_bvector.h:387:3: note: candidate: std::_Bit_const_iterator std::operator+(std::ptrdiff_t, const std::_Bit_const_iterator&)
+   operator+(ptrdiff_t __n, const _Bit_const_iterator& __x)
+   ^~~~~~~~
+/usr/include/c++/6/bits/stl_bvector.h:387:3: note:   no known conversion for argument 1 from ‘std::_List_iterator<Term>’ to ‘std::ptrdiff_t {aka long int}’
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/complex:326:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator+(const std::complex<_Tp>&, const std::complex<_Tp>&)
+     operator+(const complex<_Tp>& __x, const complex<_Tp>& __y)
+     ^~~~~~~~
+/usr/include/c++/6/complex:326:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2735:54: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::complex<_Tp>’
+       const _RandomAccessIterator __middle = __first + __len;
+                                              ~~~~~~~~^~~~~~~
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/complex:335:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator+(const std::complex<_Tp>&, const _Tp&)
+     operator+(const complex<_Tp>& __x, const _Tp& __y)
+     ^~~~~~~~
+/usr/include/c++/6/complex:335:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2735:54: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::complex<_Tp>’
+       const _RandomAccessIterator __middle = __first + __len;
+                                              ~~~~~~~~^~~~~~~
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/complex:344:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator+(const _Tp&, const std::complex<_Tp>&)
+     operator+(const _Tp& __x, const complex<_Tp>& __y)
+     ^~~~~~~~
+/usr/include/c++/6/complex:344:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2735:54: note:   mismatched types ‘const std::complex<_Tp>’ and ‘const long int’
+       const _RandomAccessIterator __middle = __first + __len;
+                                              ~~~~~~~~^~~~~~~
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/complex:445:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator+(const std::complex<_Tp>&)
+     operator+(const complex<_Tp>& __x)
+     ^~~~~~~~
+/usr/include/c++/6/complex:445:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2735:54: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::complex<_Tp>’
+       const _RandomAccessIterator __middle = __first + __len;
+                                              ~~~~~~~~^~~~~~~
+In file included from src/heg_solver/heg_solver_find_connected_dets.cc:3:0:
+src/heg_solver/../array_math.h:7:18: note: candidate: template<class T, long unsigned int N> std::array<_Tp, _Nm> operator+(const std::array<_Tp, _Nm>&, const std::array<_Tp, _Nm>&)
+ std::array<T, N> operator+(const std::array<T, N> &lhs, const std::array<T, N> &rhs) {
+                  ^~~~~~~~
+src/heg_solver/../array_math.h:7:18: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2735:54: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::array<_Tp, _Nm>’
+       const _RandomAccessIterator __middle = __first + __len;
+                                              ~~~~~~~~^~~~~~~
+/usr/include/c++/6/bits/stl_algo.h:2749:27: error: no match for ‘operator-’ (operand types are ‘const std::_List_iterator<Term>’ and ‘std::_List_iterator<Term>’)
+        _Distance(__middle - __first),
+                  ~~~~~~~~~^~~~~~~~~
+In file included from /usr/include/c++/6/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/6/bits/char_traits.h:39,
+                 from /usr/include/c++/6/string:40,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_iterator.h:333:5: note: candidate: template<class _Iterator> decltype ((__x.base() - __y.base())) std::operator-(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_Iterator>&)
+     operator-(const reverse_iterator<_Iterator>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_iterator.h:333:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2749:27: note:   ‘const std::_List_iterator<Term>’ is not derived from ‘const std::reverse_iterator<_Iterator>’
+        _Distance(__middle - __first),
+                  ~~~~~~~~~^~~~~~~~~
+In file included from /usr/include/c++/6/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/6/bits/char_traits.h:39,
+                 from /usr/include/c++/6/string:40,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_iterator.h:387:5: note: candidate: template<class _IteratorL, class _IteratorR> decltype ((__y.base() - __x.base())) std::operator-(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_IteratorR>&)
+     operator-(const reverse_iterator<_IteratorL>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_iterator.h:387:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2749:27: note:   ‘const std::_List_iterator<Term>’ is not derived from ‘const std::reverse_iterator<_Iterator>’
+        _Distance(__middle - __first),
+                  ~~~~~~~~~^~~~~~~~~
+In file included from /usr/include/c++/6/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/6/bits/char_traits.h:39,
+                 from /usr/include/c++/6/string:40,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_iterator.h:1186:5: note: candidate: template<class _IteratorL, class _IteratorR> decltype ((__x.base() - __y.base())) std::operator-(const std::move_iterator<_IteratorL>&, const std::move_iterator<_IteratorR>&)
+     operator-(const move_iterator<_IteratorL>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_iterator.h:1186:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2749:27: note:   ‘const std::_List_iterator<Term>’ is not derived from ‘const std::move_iterator<_IteratorL>’
+        _Distance(__middle - __first),
+                  ~~~~~~~~~^~~~~~~~~
+In file included from /usr/include/c++/6/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/6/bits/char_traits.h:39,
+                 from /usr/include/c++/6/string:40,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_iterator.h:1193:5: note: candidate: template<class _Iterator> decltype ((__x.base() - __y.base())) std::operator-(const std::move_iterator<_IteratorL>&, const std::move_iterator<_IteratorL>&)
+     operator-(const move_iterator<_Iterator>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_iterator.h:1193:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2749:27: note:   ‘const std::_List_iterator<Term>’ is not derived from ‘const std::move_iterator<_IteratorL>’
+        _Distance(__middle - __first),
+                  ~~~~~~~~~^~~~~~~~~
+In file included from /usr/include/c++/6/deque:64:0,
+                 from /usr/local/include/boost/detail/container_fwd.hpp:91,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_deque.h:349:5: note: candidate: template<class _Tp, class _Ref, class _Ptr> typename std::_Deque_iterator<_Tp, _Ref, _Ptr>::difference_type std::operator-(const std::_Deque_iterator<_Tp, _Ref, _Ptr>&, const std::_Deque_iterator<_Tp, _Ref, _Ptr>&)
+     operator-(const _Deque_iterator<_Tp, _Ref, _Ptr>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_deque.h:349:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2749:27: note:   ‘const std::_List_iterator<Term>’ is not derived from ‘const std::_Deque_iterator<_Tp, _Ref, _Ptr>’
+        _Distance(__middle - __first),
+                  ~~~~~~~~~^~~~~~~~~
+In file included from /usr/include/c++/6/deque:64:0,
+                 from /usr/local/include/boost/detail/container_fwd.hpp:91,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_deque.h:361:5: note: candidate: template<class _Tp, class _RefL, class _PtrL, class _RefR, class _PtrR> typename std::_Deque_iterator<_Tp, _Ref, _Ptr>::difference_type std::operator-(const std::_Deque_iterator<_Tp, _Ref, _Ptr>&, const std::_Deque_iterator<_Tp, _RefR, _PtrR>&)
+     operator-(const _Deque_iterator<_Tp, _RefL, _PtrL>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_deque.h:361:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2749:27: note:   ‘const std::_List_iterator<Term>’ is not derived from ‘const std::_Deque_iterator<_Tp, _Ref, _Ptr>’
+        _Distance(__middle - __first),
+                  ~~~~~~~~~^~~~~~~~~
+In file included from /usr/include/c++/6/vector:65:0,
+                 from /usr/local/include/boost/detail/container_fwd.hpp:93,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_bvector.h:208:3: note: candidate: std::ptrdiff_t std::operator-(const std::_Bit_iterator_base&, const std::_Bit_iterator_base&)
+   operator-(const _Bit_iterator_base& __x, const _Bit_iterator_base& __y)
+   ^~~~~~~~
+/usr/include/c++/6/bits/stl_bvector.h:208:3: note:   no known conversion for argument 1 from ‘const std::_List_iterator<Term>’ to ‘const std::_Bit_iterator_base&’
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/complex:356:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator-(const std::complex<_Tp>&, const std::complex<_Tp>&)
+     operator-(const complex<_Tp>& __x, const complex<_Tp>& __y)
+     ^~~~~~~~
+/usr/include/c++/6/complex:356:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2749:27: note:   ‘const std::_List_iterator<Term>’ is not derived from ‘const std::complex<_Tp>’
+        _Distance(__middle - __first),
+                  ~~~~~~~~~^~~~~~~~~
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/complex:365:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator-(const std::complex<_Tp>&, const _Tp&)
+     operator-(const complex<_Tp>& __x, const _Tp& __y)
+     ^~~~~~~~
+/usr/include/c++/6/complex:365:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2749:27: note:   ‘const std::_List_iterator<Term>’ is not derived from ‘const std::complex<_Tp>’
+        _Distance(__middle - __first),
+                  ~~~~~~~~~^~~~~~~~~
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/complex:374:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator-(const _Tp&, const std::complex<_Tp>&)
+     operator-(const _Tp& __x, const complex<_Tp>& __y)
+     ^~~~~~~~
+/usr/include/c++/6/complex:374:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2749:27: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::complex<_Tp>’
+        _Distance(__middle - __first),
+                  ~~~~~~~~~^~~~~~~~~
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/complex:451:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator-(const std::complex<_Tp>&)
+     operator-(const complex<_Tp>& __x)
+     ^~~~~~~~
+/usr/include/c++/6/complex:451:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2749:27: note:   ‘const std::_List_iterator<Term>’ is not derived from ‘const std::complex<_Tp>’
+        _Distance(__middle - __first),
+                  ~~~~~~~~~^~~~~~~~~
+In file included from src/heg_solver/heg_solver_find_connected_dets.cc:3:0:
+src/heg_solver/../array_math.h:14:18: note: candidate: template<class T, long unsigned int N> std::array<_Tp, _Nm> operator-(const std::array<_Tp, _Nm>&, const std::array<_Tp, _Nm>&)
+ std::array<T, N> operator-(const std::array<T, N> &lhs, const std::array<T, N> &rhs) {
+                  ^~~~~~~~
+src/heg_solver/../array_math.h:14:18: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2749:27: note:   ‘const std::_List_iterator<Term>’ is not derived from ‘const std::array<_Tp, _Nm>’
+        _Distance(__middle - __first),
+                  ~~~~~~~~~^~~~~~~~~
+/usr/include/c++/6/bits/stl_algo.h:2750:25: error: no match for ‘operator-’ (operand types are ‘std::_List_iterator<Term>’ and ‘const std::_List_iterator<Term>’)
+        _Distance(__last - __middle),
+                  ~~~~~~~^~~~~~~~~~
+In file included from /usr/include/c++/6/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/6/bits/char_traits.h:39,
+                 from /usr/include/c++/6/string:40,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_iterator.h:333:5: note: candidate: template<class _Iterator> decltype ((__x.base() - __y.base())) std::operator-(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_Iterator>&)
+     operator-(const reverse_iterator<_Iterator>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_iterator.h:333:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2750:25: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::reverse_iterator<_Iterator>’
+        _Distance(__last - __middle),
+                  ~~~~~~~^~~~~~~~~~
+In file included from /usr/include/c++/6/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/6/bits/char_traits.h:39,
+                 from /usr/include/c++/6/string:40,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_iterator.h:387:5: note: candidate: template<class _IteratorL, class _IteratorR> decltype ((__y.base() - __x.base())) std::operator-(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_IteratorR>&)
+     operator-(const reverse_iterator<_IteratorL>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_iterator.h:387:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2750:25: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::reverse_iterator<_Iterator>’
+        _Distance(__last - __middle),
+                  ~~~~~~~^~~~~~~~~~
+In file included from /usr/include/c++/6/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/6/bits/char_traits.h:39,
+                 from /usr/include/c++/6/string:40,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_iterator.h:1186:5: note: candidate: template<class _IteratorL, class _IteratorR> decltype ((__x.base() - __y.base())) std::operator-(const std::move_iterator<_IteratorL>&, const std::move_iterator<_IteratorR>&)
+     operator-(const move_iterator<_IteratorL>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_iterator.h:1186:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2750:25: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::move_iterator<_IteratorL>’
+        _Distance(__last - __middle),
+                  ~~~~~~~^~~~~~~~~~
+In file included from /usr/include/c++/6/bits/stl_algobase.h:67:0,
+                 from /usr/include/c++/6/bits/char_traits.h:39,
+                 from /usr/include/c++/6/string:40,
+                 from /usr/include/c++/6/stdexcept:39,
+                 from /usr/include/c++/6/array:39,
+                 from /usr/include/c++/6/tuple:39,
+                 from /usr/include/c++/6/functional:55,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:20,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_iterator.h:1193:5: note: candidate: template<class _Iterator> decltype ((__x.base() - __y.base())) std::operator-(const std::move_iterator<_IteratorL>&, const std::move_iterator<_IteratorL>&)
+     operator-(const move_iterator<_Iterator>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_iterator.h:1193:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2750:25: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::move_iterator<_IteratorL>’
+        _Distance(__last - __middle),
+                  ~~~~~~~^~~~~~~~~~
+In file included from /usr/include/c++/6/deque:64:0,
+                 from /usr/local/include/boost/detail/container_fwd.hpp:91,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_deque.h:349:5: note: candidate: template<class _Tp, class _Ref, class _Ptr> typename std::_Deque_iterator<_Tp, _Ref, _Ptr>::difference_type std::operator-(const std::_Deque_iterator<_Tp, _Ref, _Ptr>&, const std::_Deque_iterator<_Tp, _Ref, _Ptr>&)
+     operator-(const _Deque_iterator<_Tp, _Ref, _Ptr>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_deque.h:349:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2750:25: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::_Deque_iterator<_Tp, _Ref, _Ptr>’
+        _Distance(__last - __middle),
+                  ~~~~~~~^~~~~~~~~~
+In file included from /usr/include/c++/6/deque:64:0,
+                 from /usr/local/include/boost/detail/container_fwd.hpp:91,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_deque.h:361:5: note: candidate: template<class _Tp, class _RefL, class _PtrL, class _RefR, class _PtrR> typename std::_Deque_iterator<_Tp, _Ref, _Ptr>::difference_type std::operator-(const std::_Deque_iterator<_Tp, _Ref, _Ptr>&, const std::_Deque_iterator<_Tp, _RefR, _PtrR>&)
+     operator-(const _Deque_iterator<_Tp, _RefL, _PtrL>& __x,
+     ^~~~~~~~
+/usr/include/c++/6/bits/stl_deque.h:361:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2750:25: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::_Deque_iterator<_Tp, _Ref, _Ptr>’
+        _Distance(__last - __middle),
+                  ~~~~~~~^~~~~~~~~~
+In file included from /usr/include/c++/6/vector:65:0,
+                 from /usr/local/include/boost/detail/container_fwd.hpp:93,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_bvector.h:208:3: note: candidate: std::ptrdiff_t std::operator-(const std::_Bit_iterator_base&, const std::_Bit_iterator_base&)
+   operator-(const _Bit_iterator_base& __x, const _Bit_iterator_base& __y)
+   ^~~~~~~~
+/usr/include/c++/6/bits/stl_bvector.h:208:3: note:   no known conversion for argument 1 from ‘std::_List_iterator<Term>’ to ‘const std::_Bit_iterator_base&’
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/complex:356:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator-(const std::complex<_Tp>&, const std::complex<_Tp>&)
+     operator-(const complex<_Tp>& __x, const complex<_Tp>& __y)
+     ^~~~~~~~
+/usr/include/c++/6/complex:356:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2750:25: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::complex<_Tp>’
+        _Distance(__last - __middle),
+                  ~~~~~~~^~~~~~~~~~
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/complex:365:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator-(const std::complex<_Tp>&, const _Tp&)
+     operator-(const complex<_Tp>& __x, const _Tp& __y)
+     ^~~~~~~~
+/usr/include/c++/6/complex:365:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2750:25: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::complex<_Tp>’
+        _Distance(__last - __middle),
+                  ~~~~~~~^~~~~~~~~~
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/complex:374:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator-(const _Tp&, const std::complex<_Tp>&)
+     operator-(const _Tp& __x, const complex<_Tp>& __y)
+     ^~~~~~~~
+/usr/include/c++/6/complex:374:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2750:25: note:   ‘const std::_List_iterator<Term>’ is not derived from ‘const std::complex<_Tp>’
+        _Distance(__last - __middle),
+                  ~~~~~~~^~~~~~~~~~
+In file included from /usr/local/include/boost/detail/container_fwd.hpp:98:0,
+                 from /usr/local/include/boost/functional/hash/extensions.hpp:22,
+                 from /usr/local/include/boost/functional/hash/hash.hpp:560,
+                 from /usr/local/include/boost/functional/hash.hpp:6,
+                 from src/heg_solver/heg_solver.h:4,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/complex:451:5: note: candidate: template<class _Tp> std::complex<_Tp> std::operator-(const std::complex<_Tp>&)
+     operator-(const complex<_Tp>& __x)
+     ^~~~~~~~
+/usr/include/c++/6/complex:451:5: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2750:25: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::complex<_Tp>’
+        _Distance(__last - __middle),
+                  ~~~~~~~^~~~~~~~~~
+In file included from src/heg_solver/heg_solver_find_connected_dets.cc:3:0:
+src/heg_solver/../array_math.h:14:18: note: candidate: template<class T, long unsigned int N> std::array<_Tp, _Nm> operator-(const std::array<_Tp, _Nm>&, const std::array<_Tp, _Nm>&)
+ std::array<T, N> operator-(const std::array<T, N> &lhs, const std::array<T, N> &rhs) {
+                  ^~~~~~~~
+src/heg_solver/../array_math.h:14:18: note:   template argument deduction/substitution failed:
+In file included from /usr/include/c++/6/algorithm:62:0,
+                 from src/heg_solver/../std.h:1,
+                 from src/heg_solver/heg_solver.h:5,
+                 from src/heg_solver/heg_solver_find_connected_dets.cc:1:
+/usr/include/c++/6/bits/stl_algo.h:2750:25: note:   ‘std::_List_iterator<Term>’ is not derived from ‘const std::array<_Tp, _Nm>’
+        _Distance(__last - __middle),
+                  ~~~~~~~^~~~~~~~~~
+make: *** [build/heg_solver/heg_solver_find_connected_dets.o] Error 1
