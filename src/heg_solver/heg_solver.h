@@ -26,6 +26,7 @@ class HEGSolver : public Solver {
   }
 
   void solve() override;
+  void dump_variation_result();
 
   void setup() override;
   void generate_k_points(const double rcut);

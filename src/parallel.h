@@ -8,12 +8,12 @@ class Parallel {
  private:
   int id;
   int n;
-  boost::mpi::environment env;
+  boost::mpi::environment* env;  // For MPI 1.1.
   boost::mpi::communicator world;
 
   Parallel() {
-    this->id = this->world.rank();
-    this->n = this->world.size();
+    id = this->world.rank();
+    n = this->world.size();
   }
 
   // Singleton pattern.
@@ -23,11 +23,13 @@ class Parallel {
   }
 
  public:
+  static void init(boost::mpi::environment& env) { Parallel::get_instance().env = &env; }
+
   static int get_id() { return Parallel::get_instance().id; }
 
   static int get_n() { return Parallel::get_instance().n; }
 
-  static std::string get_host() { return Parallel::get_instance().env.processor_name(); }
+  static std::string get_host() { return Parallel::get_instance().env->processor_name(); }
 
   static void barrier() {
     fflush(stdout);

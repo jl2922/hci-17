@@ -54,3 +54,10 @@ void SpinDet::from_eor(const SpinDet& lhs, const SpinDet& rhs) {
 }
 
 bool operator==(const SpinDet& lhs, const SpinDet& rhs) { return lhs.elecs == rhs.elecs; }
+
+std::ostream& operator<<(std::ostream& os, const SpinDet& spin_det) {
+  for (const Orbital orbital : spin_det.elecs) {
+    os << orbital << " ";
+  }
+  return os;
+}

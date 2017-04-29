@@ -12,5 +12,6 @@ typedef std::array<TinyInt, 3> TinyInt3;
 typedef std::pair<TinyInt3, double> TinyInt3Double;
 typedef std::vector<int> Ints;
 typedef std::vector<Orbital> Orbitals;
+typedef std::pair<Orbitals, Orbitals> OrbitalsPair;
 
 #endif

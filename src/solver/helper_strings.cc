@@ -8,9 +8,7 @@ void HelperStrings::setup_ab() {
     const auto& dn_elecs = dets[i].dn.get_elec_orbs();
     ab[dn_elecs].second.push_back(i);
   }
-  printf("ab: %lu\n", ab.size());
   shrink(ab);
-  printf("ab: %lu\n", ab.size());
 }
 
 void HelperStrings::setup_ab_m1() {
@@ -31,9 +29,7 @@ void HelperStrings::setup_ab_m1() {
       det_dn.set_orb(dn_elecs[j], true);
     }
   }
-  printf("ab_m1: %lu\n", ab_m1.size());
   shrink(ab_m1);
-  printf("ab_m1: %lu\n", ab_m1.size());
 }
 
 void HelperStrings::shrink(

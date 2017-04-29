@@ -30,6 +30,8 @@ class Solver {
 
   void variation();
 
+  double diagonalize();
+
   std::list<Det> find_next_dets();
 };
 

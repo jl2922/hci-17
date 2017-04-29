@@ -27,8 +27,10 @@ class SpinDet {
   void decode(const Orbitals& elecs) { this->elecs = elecs; }
 
   friend bool operator==(const SpinDet&, const SpinDet&);
+  friend std::ostream& operator<<(std::ostream&, const SpinDet&);
 };
 
 bool operator==(const SpinDet&, const SpinDet&);
+std::ostream& operator<<(std::ostream&, const SpinDet&);
 
 #endif
