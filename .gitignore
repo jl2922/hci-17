@@ -2,6 +2,7 @@ hci
 .DS_Store
 *.dSYM
 .log
+*.txt
 
 # Compiled Object files
 *.slo
