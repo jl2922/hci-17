@@ -1,6 +1,9 @@
 #include "davidson.h"
 
 void Davidson::diagonalize(const std::vector<double>& initial_vector) {
+  const double TOLERANCE = 5.0e-7;
+  const int MAX_ITERATIONS = 5;  // Good choice for direct evaluation of the hamiltonian.
+
   if (n == 1) {
     lowest_eigenvalue = diagonal[0];
     lowest_eigenvector = std::vector<double>(1, 1.0);
@@ -8,7 +11,7 @@ void Davidson::diagonalize(const std::vector<double>& initial_vector) {
     return;
   }
 
-  const int iterations = std::min(n, 50);
+  const int iterations = std::min(n, MAX_ITERATIONS);
   double lowest_eigenvalue = 0.0;
   double lowest_eigenvalue_prev = 0.0;
   double residual_norm = 0.0;
@@ -48,7 +51,7 @@ void Davidson::diagonalize(const std::vector<double>& initial_vector) {
   if (verbose) printf("Davidson Iteration #1. Eigenvalue: %.15g\n", lowest_eigenvalue);
 
   residual_norm = 1.0;  // So at least one iteration is done.
-  int n_iter = std::min(n, iterations + 1);
+  int n_iter = std::min(n, iterations);
   int n_diagonalize = 1;
 
   for (int it = 1; it < n_iter; it++) {
@@ -97,7 +100,7 @@ void Davidson::diagonalize(const std::vector<double>& initial_vector) {
     w = v.leftCols(it) * eigenvectors.col(lowest_id).topRows(it);
     Hw = Hv.leftCols(it) * eigenvectors.col(lowest_id).topRows(it);
 
-    if (it > 1 && fabs(lowest_eigenvalue - lowest_eigenvalue_prev) < 1.0e-7) {
+    if (it > 1 && fabs(lowest_eigenvalue - lowest_eigenvalue_prev) < TOLERANCE) {
       converged = true;
       break;
     } else {

@@ -1,9 +1,12 @@
 #ifndef HCI_PARALLEL_H_
 #define HCI_PARALLEL_H_
 
+#ifdef MPI_VERSION
 #include <boost/mpi.hpp>
+#endif
 #include "std.h"
 
+#ifdef MPI_VERSION
 class Parallel {
  private:
   int id;
@@ -42,5 +45,32 @@ class Parallel {
     boost::mpi::all_reduce(Parallel::get_instance().world, t_local, t, std::plus<T>());
   }
 };
+#else
+// Non-MPI stub for debugging and memory profiling.
+class Parallel {
+ private:
+  Parallel() {}
+
+  // Singleton pattern.
+  static Parallel& get_instance() {
+    static Parallel instance;
+    return instance;
+  }
+
+ public:
+  static int get_id() { return 0; }
+
+  static int get_n() { return 1; }
+
+  static std::string get_host() { return "localhost"; }
+
+  static void barrier() { return; }
+
+  template <class T>
+  static void all_reduce(T& t) {
+    return;
+  }
+};
+#endif
 
 #endif

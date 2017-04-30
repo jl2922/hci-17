@@ -6,6 +6,7 @@ hci
 amplxe*
 massif*
 config.json
+Makefile.config
 
 # Compiled Object files
 *.slo
