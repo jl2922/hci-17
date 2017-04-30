@@ -5,6 +5,7 @@ hci
 *.txt
 amplxe*
 massif*
+config.json
 
 # Compiled Object files
 *.slo
