@@ -1,21 +1,21 @@
+# Default options.
+CC := mpic++
+CFLAGS := -std=c++11 -g -Wall -O3
+SRC_DIR := src
+OBJ_DIR := build
+
+# Load Makefile.config if exists.
 CONFIG_FILE := Makefile.config
 ifneq ($(wildcard $(CONFIG_FILE)),)
 include $(CONFIG_FILE)
 endif
 
-CC := mpic++
-CFLAGS := -std=c++11 -g -Wall -O3
-SRC_DIR := src
-OBJ_DIR := build
+# Determine sources and targets.
 SRCS := $(shell find $(SRC_DIR) ! -name "main.cc" ! -name "*test.cc" -name "*.cc")
 HEADERS := $(shell find $(SRC_DIR) -name "*.h")
 OBJS := $(SRCS:$(SRC_DIR)/%.cc=$(OBJ_DIR)/%.o)
-MAIN := src/main.cc
+MAIN := $(SRC_DIR)/main.cc
 EXE := hci
-
-ifeq ($(wildcard $(OBJ_DIR)),)
-$(shell mkdir $(OBJ_DIR))
-endif
 
 .PHONY: all clean
 
