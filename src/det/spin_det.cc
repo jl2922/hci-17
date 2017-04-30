@@ -25,10 +25,10 @@ void SpinDet::from_eor(const SpinDet& lhs, const SpinDet& rhs) {
   // Store in ascending order.
   const auto& lhs_elecs = lhs.elecs;
   const auto& rhs_elecs = rhs.elecs;
-  const int lhs_size = lhs_elecs.size();
-  const int rhs_size = rhs_elecs.size();
-  int lhs_ptr = 0;
-  int rhs_ptr = 0;
+  const std::size_t lhs_size = lhs_elecs.size();
+  const std::size_t rhs_size = rhs_elecs.size();
+  std::size_t lhs_ptr = 0;
+  std::size_t rhs_ptr = 0;
   elecs.clear();
   elecs.reserve(lhs_size + rhs_size);
   while (lhs_ptr < lhs_size && rhs_ptr < rhs_size) {

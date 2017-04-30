@@ -7,10 +7,10 @@
 #include "../time.h"
 #include "diagonalization/davidson.h"
 
-Det generate_hf_det(const int n_up, const int n_dn) {
+Det generate_hf_det(const std::size_t n_up, const std::size_t n_dn) {
   Det det;
-  for (int i = 0; i < n_up; i++) det.up.set_orb(i, true);
-  for (int i = 0; i < n_dn; i++) det.dn.set_orb(i, true);
+  for (std::size_t i = 0; i < n_up; i++) det.up.set_orb(i, true);
+  for (std::size_t i = 0; i < n_dn; i++) det.dn.set_orb(i, true);
   return det;
 }
 
@@ -27,7 +27,7 @@ void Solver::variation() {
     const Det& det_hf = generate_hf_det(n_up, n_dn);
     wf.append_term(det_hf, 1.0);
     energy_hf = energy_var = hamiltonian(det_hf, det_hf);
-    if (Parallel::get_id() == 0) printf("HF energy: %.15g Ha\n", energy_hf);
+    if (Parallel::get_id() == 0) printf("HF energy: %#.15g Ha\n", energy_hf);
   }
 
   double energy_var_new = 0.0;  // Ensures the first iteration will run.
@@ -52,17 +52,17 @@ void Solver::variation() {
     for (const auto& det : new_dets) wf.append_term(det, 0.0);
     new_dets.clear();
     if (Parallel::get_id() == 0) {
-      printf("Number of dets: %d\n", static_cast<int>(var_dets_set.size()));
+      printf("Number of dets: %'llu\n", static_cast<BigUnsignedInt>(var_dets_set.size()));
     }
     energy_var_new = diagonalize();
-    if (Parallel::get_id() == 0) printf("Variation energy: %.15g Ha\n", energy_var_new);
+    if (Parallel::get_id() == 0) printf("Variation energy: %#.15g Ha\n", energy_var_new);
 
     Time::end("Variation Iteration: " + std::to_string(iteration));
     iteration++;
   }
 
   energy_var = energy_var_new;
-  if (Parallel::get_id() == 0) printf("Final variation energy: %.15g Ha\n", energy_var);
+  if (Parallel::get_id() == 0) printf("Final variation energy: %#.15g Ha\n", energy_var);
 }
 
 double Solver::diagonalize() {

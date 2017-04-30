@@ -10,7 +10,7 @@ class Davidson {
   Davidson(
       std::vector<double>& diagonal,
       std::function<std::vector<double>(std::vector<double>)>& apply_hamiltonian,
-      const int n)
+      const std::size_t n)
       : diagonal(diagonal), apply_hamiltonian(apply_hamiltonian) {
     this->n = n;
     diagonalized = false;
@@ -37,7 +37,7 @@ class Davidson {
   std::function<std::vector<double>(std::vector<double>)>& apply_hamiltonian;
 
   // Length in each direction.
-  int n;
+  std::size_t n;
 
   // Solutions.
   double lowest_eigenvalue;

@@ -6,23 +6,23 @@
 std::list<IntPair> get_pq_pairs(const Det& det, const int dn_offset) {
   const auto& occ_up = det.up.get_elec_orbs();
   const auto& occ_dn = det.dn.get_elec_orbs();
-  const int n_up = det.up.get_n_elecs();
-  const int n_dn = det.dn.get_n_elecs();
+  const std::size_t n_up = det.up.get_n_elecs();
+  const std::size_t n_dn = det.dn.get_n_elecs();
 
   std::list<IntPair> pq_pairs;
 
-  for (int i = 0; i < n_up; i++) {
-    for (int j = i + 1; j < n_up; j++) {
+  for (std::size_t i = 0; i < n_up; i++) {
+    for (std::size_t j = i + 1; j < n_up; j++) {
       pq_pairs.push_back(IntPair(occ_up[i], occ_up[j]));
     }
   }
-  for (int i = 0; i < n_dn; i++) {
-    for (int j = i + 1; j < n_dn; j++) {
+  for (std::size_t i = 0; i < n_dn; i++) {
+    for (std::size_t j = i + 1; j < n_dn; j++) {
       pq_pairs.push_back(IntPair(occ_dn[i] + dn_offset, occ_dn[j] + dn_offset));
     }
   }
-  for (int i = 0; i < n_up; i++) {
-    for (int j = 0; j < n_dn; j++) {
+  for (std::size_t i = 0; i < n_up; i++) {
+    for (std::size_t j = 0; j < n_dn; j++) {
       pq_pairs.push_back(IntPair(occ_up[i], occ_dn[j] + dn_offset));
     }
   }

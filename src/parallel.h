@@ -1,12 +1,12 @@
 #ifndef HCI_PARALLEL_H_
 #define HCI_PARALLEL_H_
 
-#ifdef MPI_VERSION
+#ifndef SERIAL
 #include <boost/mpi.hpp>
 #endif
 #include "std.h"
 
-#ifdef MPI_VERSION
+#ifndef SERIAL
 class Parallel {
  private:
   int id;

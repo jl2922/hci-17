@@ -11,11 +11,13 @@
 class HEGSolver : public Solver {
  private:
   double rcut_var;
-  int n_orbs_var;
+  std::size_t n_orbs_var;
+  double rcut_pt;
+  std::size_t n_orbs_pt;
   double k_unit;
   double H_unit;
   std::vector<Int3> k_points;  // O(k_points).
-  std::unordered_map<Int3, int, boost::hash<Int3>> k_lut;  // O(k_points).
+  std::unordered_map<Int3, std::size_t, boost::hash<Int3>> k_lut;  // O(k_points).
   std::unordered_map<TinyInt3, std::vector<TinyInt3Double>, boost::hash<TinyInt3>>
       same_spin_hci_queue;  // O(k_points^2).
   std::vector<TinyInt3Double> opposite_spin_hci_queue;  // O(k_points).
@@ -26,11 +28,18 @@ class HEGSolver : public Solver {
   }
 
   void solve() override;
-  void dump_variation_result();
 
   void setup() override;
+
   void generate_k_points(const double rcut);
+
   void generate_hci_queue(const double rcut);
+
+  void save_variation_result();
+
+  bool load_variation_result();
+
+  void perturbation();
 
   double hamiltonian(const Det&, const Det&) const override;
 

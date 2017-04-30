@@ -15,7 +15,8 @@ void HEGSolver::setup() {
   generate_k_points(rcut_var);
   n_orbs_var = k_points.size();
 
-  if (Parallel::get_id == 0) printf("Number of variational spin orbitals: %d\n", n_orbs_var * 2);
+  if (Parallel::get_id == 0)
+    printf("Number of variational spin orbitals: %u\n", static_cast<unsigned int>(n_orbs_var) * 2);
 
   Time::start("Generate HCI queue.");
   generate_hci_queue(rcut_var);
@@ -45,18 +46,18 @@ void HEGSolver::generate_k_points(const double rcut) {
 
   // Generate look-up table.
   k_lut.clear();
-  for (int i = 0; i < static_cast<int>(k_points.size()); i++) k_lut[k_points[i]] = i;
+  for (std::size_t i = 0; i < k_points.size(); i++) k_lut[k_points[i]] = i;
 }
 
-std::vector<Int3> get_k_diffs(const std::vector<Int3>& k_points) {
+std::vector<TinyInt3> get_k_diffs(const std::vector<Int3>& k_points) {
   // Generate all possible differences between two different k points.
-  std::unordered_set<Int3, boost::hash<Int3>> k_diffs_set;
-  std::vector<Int3> k_diffs;
-  const int n_orbs = static_cast<int>(k_points.size());
-  for (int p = 0; p < n_orbs; p++) {
-    for (int q = 0; q < n_orbs; q++) {
+  std::unordered_set<TinyInt3, boost::hash<TinyInt3>> k_diffs_set;
+  std::vector<TinyInt3> k_diffs;
+  const std::size_t n_orbs = k_points.size();
+  for (std::size_t p = 0; p < n_orbs; p++) {
+    for (std::size_t q = 0; q < n_orbs; q++) {
       if (p == q) continue;
-      const auto& diff_pq = k_points[q] - k_points[p];
+      const auto& diff_pq = cast<TinyInt>(k_points[q] - k_points[p]);
       if (k_diffs_set.count(diff_pq) == 1) continue;
       k_diffs.push_back(diff_pq);
       k_diffs_set.insert(diff_pq);
@@ -65,9 +66,10 @@ std::vector<Int3> get_k_diffs(const std::vector<Int3>& k_points) {
   k_diffs_set.clear();
 
   // Sort k_diffs into ascending order so that later sorting hci queue will be faster.
-  std::stable_sort(k_diffs.begin(), k_diffs.end(), [](const Int3& a, const Int3& b) -> bool {
-    return norm(a) < norm(b);
-  });
+  std::stable_sort(
+      k_diffs.begin(), k_diffs.end(), [](const TinyInt3& a, const TinyInt3& b) -> bool {
+        return norm(a) < norm(b);
+      });
 
   return k_diffs;
 }

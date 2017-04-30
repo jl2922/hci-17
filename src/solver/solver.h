@@ -9,18 +9,23 @@
 
 class Solver {
  protected:
-  int n_up;
-  int n_dn;
+  std::size_t n_up;
+  std::size_t n_dn;
   double max_abs_H;
   Wavefunction wf;
   double energy_hf;
   double energy_var;
   double energy_pt;
   double eps_var;
+  double eps_pt;
 
-  virtual void solve() = 0;  // Controls the general solving procedure.
+  virtual void solve() {
+    setup();
+    variation();
+    perturbation();
+  }  // Controls the general solving procedure.
 
-  virtual void setup() = 0;  // Generate hci queues and starting wavefunction.
+  virtual void setup() {}  // Generate hci queues and starting wavefunction.
 
   virtual double hamiltonian(const Det&, const Det&) const = 0;
 
@@ -31,6 +36,8 @@ class Solver {
   void variation();
 
   double diagonalize();
+
+  virtual void perturbation() {}
 
   std::list<Det> find_next_dets();
 };

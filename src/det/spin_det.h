@@ -16,7 +16,7 @@ class SpinDet {
     return std::binary_search(elecs.begin(), elecs.end(), orb_id);
   }
 
-  int get_n_elecs() const { return elecs.size(); }
+  std::size_t get_n_elecs() const { return elecs.size(); }
 
   void from_eor(const SpinDet&, const SpinDet&);
 

@@ -28,16 +28,16 @@ double HEGSolver::hamiltonian(const Det& det_pq, const Det& det_rs) const {
     for (const int p : occ_pq_dn) H += sum(square(k_points[p] * k_unit) * 0.5);
 
     // Two electrons operator.
-    for (int i = 0; i < n_up; i++) {
+    for (std::size_t i = 0; i < n_up; i++) {
       const int p = occ_pq_up[i];
-      for (int j = i + 1; j < n_up; j++) {
+      for (std::size_t j = i + 1; j < n_up; j++) {
         const int q = occ_pq_up[j];
         H -= H_unit / sum(square(k_points[p] - k_points[q]));
       }
     }
-    for (int i = 0; i < n_dn; i++) {
+    for (std::size_t i = 0; i < n_dn; i++) {
       const int p = occ_pq_dn[i];
-      for (int j = i + 1; j < n_dn; j++) {
+      for (std::size_t j = i + 1; j < n_dn; j++) {
         const int q = occ_pq_dn[j];
         H -= H_unit / sum(square(k_points[p] - k_points[q]));
       }
@@ -46,8 +46,8 @@ double HEGSolver::hamiltonian(const Det& det_pq, const Det& det_rs) const {
     // Off-diagonal elements.
     Det det_eor;
     det_eor.from_eor(det_pq, det_rs);
-    const int n_eor_up = det_eor.up.get_n_elecs();
-    const int n_eor_dn = det_eor.dn.get_n_elecs();
+    const std::size_t n_eor_up = det_eor.up.get_n_elecs();
+    const std::size_t n_eor_dn = det_eor.dn.get_n_elecs();
     if (n_eor_up + n_eor_dn != 4) return 0.0;
     const auto& eor_up_set_bits = det_eor.up.get_elec_orbs();
     const auto& eor_dn_set_bits = det_eor.dn.get_elec_orbs();

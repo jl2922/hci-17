@@ -12,8 +12,8 @@ std::vector<double> Solver::apply_hamiltonian(
   for (std::size_t i = 0; i < n; i++) {
     if (i % Parallel::get_n() != static_cast<std::size_t>(Parallel::get_id())) continue;
     const Det& det_i = dets[i];
-    auto& connections = helper_strings.find_potential_connections(i);
-    std::sort(connections.begin(), connections.end(), [](const int a, cont int b) {
+    auto connections = helper_strings.find_potential_connections(i);
+    std::sort(connections.begin(), connections.end(), [](const int a, const int b) {
       return a > b;  // Small ones first to reduce round-off error.
     });
     for (std::size_t j : connections) {

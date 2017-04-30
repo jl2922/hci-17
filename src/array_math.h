@@ -67,16 +67,16 @@ std::array<int, N> round(const std::array<T, N> &arr) {
   return res;
 }
 
-template <class T, std::size_t N>
-bool operator==(const std::array<T, N> &lhs, const T &rhs) {
+template <class T1, class T2, std::size_t N>
+bool operator==(const std::array<T1, N> &lhs, const T2 &rhs) {
   for (std::size_t i = 0; i < N; i++) {
     if (lhs[i] != rhs) return false;
   }
   return true;
 }
 
-template <class T, std::size_t N>
-bool operator!=(const std::array<T, N> &lhs, const T &rhs) {
+template <class T1, class T2, std::size_t N>
+bool operator!=(const std::array<T1, N> &lhs, const T2 &rhs) {
   return !(lhs == rhs);
 }
 
