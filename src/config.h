@@ -3,8 +3,7 @@
 
 #include <boost/property_tree/json_parser.hpp>
 #include <boost/property_tree/ptree.hpp>
-#include <vector>
-#include <string>
+#include "std.h"
 
 class Config {
  private:
@@ -37,7 +36,7 @@ class Config {
     return Config::get_config_tree().get<T>(property, default_value);
   }
 
-  template<class T>
+  template <class T>
   static void set(const std::string& property, const T& value) {
     Config::get_config_tree().put<T>(property, value);
   }
@@ -45,7 +44,7 @@ class Config {
   template <class T>
   static std::vector<T> get_array(const std::string& property) {
     std::vector<T> res;
-    for (auto& item: Config::get_config_tree().get_child(property)) {
+    for (auto& item : Config::get_config_tree().get_child(property)) {
       res.push_back(item.second.get_value<T>());
     }
     return res;

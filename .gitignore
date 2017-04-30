@@ -2,6 +2,10 @@ hci
 .DS_Store
 *.dSYM
 .log
+*.txt
+amplxe*
+massif*
+config.json
 
 # Compiled Object files
 *.slo

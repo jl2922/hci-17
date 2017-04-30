@@ -1,6 +1,5 @@
-#include <cstdio> // printf.
-#include <stdexcept>
-#include <string>
+#include <boost/mpi.hpp>
+#include "std.h"
 
 #include "chemistry_solver/chemistry_solver.h"
 #include "config.h"
@@ -8,15 +7,13 @@
 #include "parallel.h"
 #include "time.h"
 
-int main() {
-  if (Parallel::get_id() == 0) {
-    printf("Heat-Bath Configuration Interaction Solver\n");
-  }
-
+int main(int argc, char** argv) {
+  boost::mpi::environment env(argc, argv);  // For MPI 1.1.
+  Parallel::init(env);
   Time::init();
 
+  if (Parallel::get_id() == 0) printf("Heat-Bath Configuration Interaction Solver\n");
   Config::load("config.json");
-
   Time::start("HCI");
 
   // Solve.
