@@ -1,6 +1,7 @@
 #include "heg_solver.h"
 
 #include <boost/format.hpp>
+#include "../std.h"
 
 #include "../config.h"
 #include "../parallel.h"
@@ -8,14 +9,14 @@
 
 void HEGSolver::solve() {
   printf("Proc %d running on %s\n", Parallel::get_id(), Parallel::get_host().c_str());
+  n_up = Config::get<std::size_t>("n_up");
+  n_dn = Config::get<std::size_t>("n_dn");
+  rcut_vars = Config::get_array<double>("rcut_vars");
+  eps_vars = Config::get_array<double>("eps_vars");
+  rcut_pts = Config::get_array<double>("rcut_pts");
+  eps_pts = Config::get_array<double>("eps_pts");
 
   Time::start("variation stage");
-  this->n_up = Config::get<std::size_t>("n_up");
-  this->n_dn = Config::get<std::size_t>("n_dn");
-  const auto& rcut_vars = Config::get_array<double>("rcut_vars");
-  const auto& eps_vars = Config::get_array<double>("eps_vars");
-  const auto& rcut_pts = Config::get_array<double>("rcut_pts");
-  const auto& eps_pts = Config::get_array<double>("eps_pts");
   for (const double rcut_var : rcut_vars) {
     std::string rcut_var_event = str(boost::format("var with rcut_var: %#.4g") % rcut_var);
     Time::start(rcut_var_event);

@@ -10,13 +10,17 @@
 
 class HEGSolver : public Solver {
  private:
-  double rcut_var;
-  std::size_t n_orbs_var;
-  double rcut_pt;
-  std::size_t n_orbs_pt;
-  std::vector<std::size_t> n_orbs_pts;  // Corresponding to rcut_pts.
   double k_unit;
   double H_unit;
+  double rcut_var;
+  double rcut_pt;
+  std::size_t n_orbs_var;
+  std::size_t n_orbs_pt;
+  std::vector<double> rcut_vars;
+  std::vector<double> eps_vars;
+  std::vector<double> rcut_pts;
+  std::vector<double> eps_pts;
+  std::vector<std::size_t> n_orbs_pts;  // Corresponding to rcut_pts.
   std::vector<Int3> k_points;  // O(k_points).
   std::unordered_map<Int3, std::size_t, boost::hash<Int3>> k_lut;  // O(k_points).
   std::unordered_map<TinyInt3, std::vector<TinyInt3Double>, boost::hash<TinyInt3>>
@@ -41,6 +45,10 @@ class HEGSolver : public Solver {
   bool load_variation_result();
 
   PTCategory get_category(const Det&, const double);
+
+  PTCategory get_category(const std::size_t, const double);
+
+  std::vector<PTCategory> get_related_categories(const std::size_t, const double);
 
   void perturbation();
 

@@ -1,14 +1,13 @@
 #include "heg_solver.h"
 
 #include "../big_unordered_map/big_unordered_map.h"
-#include "../config.h"
 #include "../parallel.h"
 #include "../time.h"
 
 void HEGSolver::perturbation() {
   // Perform perturbation with smallest eps and largest rcut.
-  const double rcut_pt_max = Config::get_array<double>("rcut_pts").back();
-  const double eps_pt_min = Config::get_array<double>("eps_pts").back();
+  const double rcut_pt_max = rcut_pts.back();
+  const double eps_pt_min = eps_pts.back();
   generate_k_points(rcut_pt_max);
   generate_hci_queue(rcut_pt_max);
   const std::size_t n_orbs_pt = k_points.size();
@@ -56,7 +55,7 @@ void HEGSolver::perturbation() {
       const auto& local_map = pt_sums.get_local_map();
       Time::checkpoint("search pt dets");
       printf(
-          "MASTER: Progress: %d%%. Local PT keys: %'lu, hash load: %.2f\n",
+          "MASTER progress: %d%%. Local PT keys: %'lu, hash load: %.2f\n",
           progress,
           local_map.size(),
           local_map.load_factor());
@@ -69,21 +68,87 @@ void HEGSolver::perturbation() {
   Time::end("search pt dets");
 
   Time::start("accumulate contributions");
+  const auto& local_map = pt_sums.get_local_map();
+  Det det_a;
+  for (const std::size_t n_orbs_pt : n_orbs_pts) {
+    std::string n_orbs_pt_event = "accumulate for n_orbs_pt: " + std::to_string(n_orbs_pt * 2);
+    Time::start(n_orbs_pt_event);
+    for (const double eps_pt : eps_pts) {
+      std::string eps_pt_event = str(boost::format("accumulate for eps_pt: %.4g") % eps_pt);
+      Time::start(eps_pt_event);
+      // Accumulate local map contributions.
+      const auto& related_categories = get_related_categories(n_orbs_pt, eps_pt);
+      if (Parallel::get_id() == 0)
+        printf("DEBUG: related categories: %lu\n", related_categories.size());
+      energy_pt = 0.0;
+      int cnt = 0;  // DEBUG;
+      for (const auto& kv : local_map) {
+        const auto& key = kv.first;
 
+        PTCategory category = key.second;
+        bool is_smallest = true;
+        double partial_sum = 0.0;
+        for (const auto related_category : related_categories) {
+          PTKey related_key(key.first, related_category);
+          if (local_map.count(related_key) == 1) {
+            // Only the smallest one submits the contribution.
+            if (related_category < category) {
+              is_smallest = false;
+              break;
+            }
+            partial_sum += kv.second;
+            cnt++;
+          }
+        }
+        if (is_smallest) {
+          det_a.decode(key.first);
+          const double H_aa = hamiltonian(det_a, det_a);
+          energy_pt += pow(partial_sum, 2) / (energy_var - H_aa);
+        }
+      }  // local_map loop.
+      Parallel::reduce_to_sum(cnt);  // DEBUG.
+      Parallel::reduce_to_sum(energy_pt);
+      if (Parallel::get_id() == 0) {
+        printf("DEBUG PT keys: %d\n", cnt);
+        printf("Perturbation energy: %#.15g Ha\n", energy_pt);
+        printf("Correlation Energy: %.15g Ha\n", energy_var + energy_pt - energy_hf);
+      }
+      Time::end(eps_pt_event);
+    }  // eps_pts loop.
+    Time::end(n_orbs_pt_event);
+  }  // n_orbs_pts loop.
   Time::end("accumulate contributions");
 }
 
-PTCategory HEGSolver::get_category(const Det& det, const double partial_sum) {
-  PTCategory category = 0;
-  const auto& eps_pts = Config::get_array<double>("eps_pts");
+std::vector<PTCategory> HEGSolver::get_related_categories(
+    const std::size_t n_orbs, const double eps) {
+  std::vector<PTCategory> related_categories;
   for (const double eps_pt : eps_pts) {
-    if (partial_sum >= eps_pt) category++;
+    if (eps > eps_pt) continue;
+    for (const std::size_t n_orbs_pt : n_orbs_pts) {
+      if (n_orbs < n_orbs_pt) continue;
+      related_categories.push_back(get_category(n_orbs_pt, eps_pt));
+    }
   }
-  category <<= 2;
+  return related_categories;
+}
+
+PTCategory HEGSolver::get_category(const Det& det, const double eps) {
   const std::size_t highest_orb_up = det.up.get_elec_orbs().back();
   const std::size_t highest_orb_dn = det.dn.get_elec_orbs().back();
-  for (const std::size_t n_orbs : n_orbs_pts) {
-    if (highest_orb_up <= n_orbs && highest_orb_dn <= n_orbs) category++;
+  const std::size_t highest_orb = std::max(highest_orb_up, highest_orb_dn);
+  return get_category(highest_orb + 1, eps);
+}
+
+PTCategory HEGSolver::get_category(const std::size_t n_orbs, const double eps) {
+  // The higher 4 bits represent eps_pt categories and the lower 4 bits represent n_orbs_pt.
+  PTCategory category = 0;
+  for (const double eps_pt : eps_pts) {
+    if (eps >= eps_pt) category++;
+  }
+  category <<= 4;
+  for (const std::size_t n_orbs_pt : n_orbs_pts) {
+    if (n_orbs <= n_orbs_pt) category++;
   }
   return category;
 }

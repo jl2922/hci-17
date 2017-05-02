@@ -3,10 +3,12 @@
 #include <cassert>
 #include <cfloat>
 #include <chrono>
+#include <clocale>
 #include <cmath>
 #include <cstddef>
 #include <cstdint>
 #include <cstdio>
+#include <fstream>
 #include <functional>
 #include <iostream>
 #include <list>
@@ -16,4 +18,3 @@
 #include <unordered_set>
 #include <utility>
 #include <vector>
-#include <clocale>

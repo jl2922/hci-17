@@ -16,6 +16,7 @@ class Solver {
   double energy_hf;
   double energy_var;
   double energy_pt;
+  double energy_correlation;
   double eps_var;
   double eps_pt;
   std::unordered_set<OrbitalsPair, boost::hash<OrbitalsPair>> var_dets_set;
