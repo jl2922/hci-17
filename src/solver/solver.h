@@ -18,6 +18,7 @@ class Solver {
   double energy_pt;
   double eps_var;
   double eps_pt;
+  std::unordered_set<OrbitalsPair, boost::hash<OrbitalsPair>> var_dets_set;
 
   virtual void solve() {
     setup();
@@ -38,6 +39,8 @@ class Solver {
   double diagonalize();
 
   virtual void perturbation() {}
+
+  unsigned long long estimate_n_pt_dets(const double);
 
   std::list<Det> find_next_dets();
 };

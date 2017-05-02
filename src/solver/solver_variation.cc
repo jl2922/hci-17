@@ -31,7 +31,7 @@ void Solver::variation() {
   }
 
   double energy_var_new = 0.0;  // Ensures the first iteration will run.
-  std::unordered_set<OrbitalsPair, boost::hash<OrbitalsPair>> var_dets_set;
+  var_dets_set.clear();
   for (const auto& term : wf.get_terms()) var_dets_set.insert(term.det.encode());
   int iteration = 0;
   while (fabs(energy_var - energy_var_new) > THRESHOLD) {

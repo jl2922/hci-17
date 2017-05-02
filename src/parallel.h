@@ -40,7 +40,7 @@ class Parallel {
   }
 
   template <class T>
-  static void all_reduce(T& t) {
+  static void reduce_to_sum(T& t) {
     T t_local = t;
     boost::mpi::all_reduce(Parallel::get_instance().world, t_local, t, std::plus<T>());
   }

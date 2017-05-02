@@ -14,6 +14,7 @@ class HEGSolver : public Solver {
   std::size_t n_orbs_var;
   double rcut_pt;
   std::size_t n_orbs_pt;
+  std::vector<std::size_t> n_orbs_pts;  // Corresponding to rcut_pts.
   double k_unit;
   double H_unit;
   std::vector<Int3> k_points;  // O(k_points).
@@ -38,6 +39,8 @@ class HEGSolver : public Solver {
   void save_variation_result();
 
   bool load_variation_result();
+
+  PTCategory get_category(const Det&, const double);
 
   void perturbation();
 

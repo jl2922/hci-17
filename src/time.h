@@ -75,6 +75,16 @@ class Time {
         since_start.count());
     Time::get_index().pop_back();
   }
+
+  static void checkpoint(const std::string& event) {
+    using namespace std::chrono;
+    const auto now = high_resolution_clock::now();
+    const auto start_time = Time::get_timer(event);
+    const auto init_time = Time::get_timer("init");
+    const duration<double> since_start = duration_cast<duration<double>>(now - start_time);
+    const duration<double> since_init = duration_cast<duration<double>>(now - init_time);
+    printf("CHECKPOINT %s [%.3f/%.3f] \n", event.c_str(), since_init.count(), since_start.count());
+  }
 };
 
 #endif

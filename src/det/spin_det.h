@@ -20,9 +20,13 @@ class SpinDet {
 
   void from_eor(const SpinDet&, const SpinDet&);
 
-  const Orbitals& get_elec_orbs() const { return elecs; }
+  const Orbitals get_elec_orbs() const { return elecs; }
 
-  const Orbitals& encode() const { return elecs; }
+  const Orbitals encode() const {
+    Orbitals orbitals(elecs);
+    orbitals.shrink_to_fit();
+    return orbitals;
+  }
 
   void decode(const Orbitals& elecs) { this->elecs = elecs; }
 

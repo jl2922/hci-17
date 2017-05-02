@@ -12,16 +12,16 @@ void HEGSolver::solve() {
   Time::start("variation stage");
   this->n_up = Config::get<std::size_t>("n_up");
   this->n_dn = Config::get<std::size_t>("n_dn");
-  const auto& rcuts_var = Config::get_array<double>("rcuts_var");
-  const auto& epss_var = Config::get_array<double>("epss_var");
-  const auto& rcuts_pt = Config::get_array<double>("rcuts_pt");
-  const auto& epss_pt = Config::get_array<double>("epss_pt");
-  for (const double rcut_var : rcuts_var) {
+  const auto& rcut_vars = Config::get_array<double>("rcut_vars");
+  const auto& eps_vars = Config::get_array<double>("eps_vars");
+  const auto& rcut_pts = Config::get_array<double>("rcut_pts");
+  const auto& eps_pts = Config::get_array<double>("eps_pts");
+  for (const double rcut_var : rcut_vars) {
     std::string rcut_var_event = str(boost::format("var with rcut_var: %#.4g") % rcut_var);
     Time::start(rcut_var_event);
     this->rcut_var = rcut_var;
     setup();
-    for (const double eps_var : epss_var) {
+    for (const double eps_var : eps_vars) {
       std::string eps_var_event = str(boost::format("var with eps_var: %#.4g") % eps_var);
       Time::start(eps_var_event);
       this->eps_var = eps_var;
@@ -36,18 +36,19 @@ void HEGSolver::solve() {
   Time::end("variation stage");
 
   Time::start("perturbation stage");
-  for (const double rcut_var : rcuts_var) {
+  for (const double rcut_pt : rcut_pts) {
+    generate_k_points(rcut_pt);
+    n_orbs_pts.push_back(k_points.size());
+  }
+  for (const double rcut_var : rcut_vars) {
     std::string rcut_var_event = str(boost::format("pt with rcut_var: %#.4g") % rcut_var);
     Time::start(rcut_var_event);
     this->rcut_var = rcut_var;
-    for (const double eps_var : epss_var) {
+    for (const double eps_var : eps_vars) {
       std::string eps_var_event = str(boost::format("pt with eps_var: %#.4g") % eps_var);
       Time::start(eps_var_event);
       this->eps_var = eps_var;
       assert(load_variation_result());
-      rcut_pt = *std::max_element(rcuts_pt.begin(), rcuts_pt.end());
-      eps_pt = *std::min_element(epss_pt.begin(), epss_pt.end());
-      if (Parallel::get_id() == 0) printf("PT with rcut_pt %#.4g, eps_pt %#.4g\n", rcut_pt, eps_pt);
       perturbation();
       Time::end(eps_var_event);
     }
@@ -96,6 +97,6 @@ bool HEGSolver::load_variation_result() {
     wf.append_term(det, coef);
   }
   var_file.close();
-  printf("Variation result loaded from: %s\n", filename.c_str());
+  if (Parallel::get_id() == 0) printf("Variation result loaded from: %s\n", filename.c_str());
   return true;
 }
