@@ -67,6 +67,10 @@ void HEGSolver::perturbation() {
   unsigned long long n_pt_keys = pt_sums.size();
   if (Parallel::get_id() == 0) printf("Total PT keys: %'llu\n", n_pt_keys);
   Time::end("search pt dets");
+
+  Time::start("accumulate contributions");
+
+  Time::end("accumulate contributions");
 }
 
 PTCategory HEGSolver::get_category(const Det& det, const double partial_sum) {
