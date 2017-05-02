@@ -50,6 +50,8 @@ class HEGSolver : public Solver {
 
   std::vector<PTCategory> get_related_categories(const std::size_t, const double);
 
+  int get_n_orbs(const double);
+
   void perturbation();
 
   double hamiltonian(const Det&, const Det&) const override;

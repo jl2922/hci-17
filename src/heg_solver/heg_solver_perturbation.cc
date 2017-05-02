@@ -10,10 +10,9 @@ void HEGSolver::perturbation() {
   const double eps_pt_min = eps_pts.back();
   generate_k_points(rcut_pt_max);
   generate_hci_queue(rcut_pt_max);
-  const std::size_t n_orbs_pt = k_points.size();
   if (Parallel::get_id() == 0) {
     printf("PT with rcut_pt_max %#.4g, eps_pt_min %#.4g\n", rcut_pt_max, eps_pt_min);
-    printf("Number of max perturbation orbitals: %d\n", static_cast<int>(n_orbs_pt * 2));
+    printf("Number of max perturbation orbitals: %d\n", static_cast<int>(k_points.size() * 2));
   }
 
   // Cache variation determinants.
@@ -81,15 +80,17 @@ void HEGSolver::perturbation() {
       if (Parallel::get_id() == 0)
         printf("DEBUG: related categories: %lu\n", related_categories.size());
       energy_pt = 0.0;
-      int cnt = 0;  // DEBUG;
+      BigUnsignedInt n_pt_dets = 0;
       for (const auto& kv : local_map) {
         const auto& key = kv.first;
-
-        PTCategory category = key.second;
+        const PTCategory category = key.second;
+        if (!std::binary_search(related_categories.begin(), related_categories.end(), category)) {
+          continue;
+        }
         bool is_smallest = true;
         double partial_sum = 0.0;
         for (const auto related_category : related_categories) {
-          PTKey related_key(key.first, related_category);
+          const PTKey related_key(key.first, related_category);
           if (local_map.count(related_key) == 1) {
             // Only the smallest one submits the contribution.
             if (related_category < category) {
@@ -97,21 +98,25 @@ void HEGSolver::perturbation() {
               break;
             }
             partial_sum += kv.second;
-            cnt++;
           }
         }
         if (is_smallest) {
           det_a.decode(key.first);
           const double H_aa = hamiltonian(det_a, det_a);
           energy_pt += pow(partial_sum, 2) / (energy_var - H_aa);
+          n_pt_dets++;
         }
       }  // local_map loop.
-      Parallel::reduce_to_sum(cnt);  // DEBUG.
+      Parallel::reduce_to_sum(n_pt_dets);  // DEBUG.
       Parallel::reduce_to_sum(energy_pt);
       if (Parallel::get_id() == 0) {
-        printf("DEBUG PT keys: %d\n", cnt);
-        printf("Perturbation energy: %#.15g Ha\n", energy_pt);
-        printf("Correlation Energy: %.15g Ha\n", energy_var + energy_pt - energy_hf);
+        printf("Number of related PT dets: %'llu\n", n_pt_dets);
+        printf("n_orbs_var: %d\n", get_n_orbs(rcut_var) * 2);
+        printf("eps_var: %#.4g\n", eps_var);
+        printf("n_orbs_pt: %d\n", static_cast<int>(n_orbs_pt * 2));
+        printf("eps_pt: %#.4g\n", eps_pt);
+        printf("Perturbation energy: %#.12g Ha\n", energy_pt);
+        printf("Correlation Energy: %.12g Ha\n", energy_var + energy_pt - energy_hf);
       }
       Time::end(eps_pt_event);
     }  // eps_pts loop.
@@ -127,9 +132,16 @@ std::vector<PTCategory> HEGSolver::get_related_categories(
     if (eps > eps_pt) continue;
     for (const std::size_t n_orbs_pt : n_orbs_pts) {
       if (n_orbs < n_orbs_pt) continue;
+      if (Parallel::get_id() == 0)
+        printf(
+            "Related category: %d (%lu, %#.4g)\n",
+            get_category(n_orbs_pt, eps_pt),
+            n_orbs_pt,
+            eps_pt);
       related_categories.push_back(get_category(n_orbs_pt, eps_pt));
     }
   }
+  std::sort(related_categories.begin(), related_categories.end());
   return related_categories;
 }
 
@@ -151,4 +163,18 @@ PTCategory HEGSolver::get_category(const std::size_t n_orbs, const double eps) {
     if (n_orbs <= n_orbs_pt) category++;
   }
   return category;
+}
+
+int HEGSolver::get_n_orbs(const double rcut) {
+  int n_orbs = 0;
+  const int n_max = floor(rcut);
+  for (int i = -n_max; i <= n_max; i++) {
+    for (int j = -n_max; j <= n_max; j++) {
+      for (int k = -n_max; k <= n_max; k++) {
+        if (i * i + j * j + k * k > pow(rcut, 2)) continue;
+        n_orbs++;
+      }
+    }
+  }
+  return n_orbs;
 }

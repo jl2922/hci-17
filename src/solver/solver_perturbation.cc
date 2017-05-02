@@ -3,7 +3,7 @@
 #include "../parallel.h"
 
 unsigned long long Solver::estimate_n_pt_dets(const double eps_pt) {
-  const std::size_t SAMPLE_INTERVAL_MIN = 100;
+  const std::size_t SAMPLE_INTERVAL_MIN = 10;
   const std::size_t n = wf.size();
   unsigned long long estimation = 0;
   auto it = wf.get_terms().begin();
