@@ -5,6 +5,7 @@
 
 #include "../config.h"
 #include "../parallel.h"
+#include "../regression/linear_regression.h"
 #include "../time.h"
 
 void HEGSolver::solve() {
@@ -56,6 +57,35 @@ void HEGSolver::solve() {
     Time::end(rcut_var_event);
   }
   Time::end("perturbation stage");
+
+  Time::start("extrapolation");
+  if (Parallel::get_id() == 0) return;
+  // Second order surface fit.
+  std::vector<std::string> basic_quantities({"1/n_orbs_var", "eps_var", "1/n_orbs_pt", "eps_pt"});
+  for (int i = 0; i < 4; i++) parameter_names.push_back(basic_quantities[i]);
+  for (int i = 0; i < 4; i++) {
+    for (int j = 0; j < 4; j++) {
+      for (auto& parameter_set : parameter_sets) {
+        parameter_set.push_back(parameter_set[i] * parameter_set[j]);
+      }
+      parameter_names.push_back(parameter_names[i] + " * " + parameter_names[j]);
+    }
+  }
+  parameter_names.push_back("Intercept");
+  LinearRegression lr(parameter_sets, results);
+  // const auto& estimate = lr.get_estimate();
+  // const auto& stdev = lr.get_stdev();
+  // const auto& prob_t = lr.get_prob_t();
+  // printf("%30s %20s %15s %15s\n", "parameter", "estimate", "stdev", "P>|t|");
+  // for (int i = 0; i < 17; i++) {
+  //   printf(
+  //       "%30s %#20.10g %#15.5g %#15.5g\n",
+  //       parameter_names[i].c_str(),
+  //       estimate[i],
+  //       stdev[i],
+  //       prob_t[i]);
+  // }
+  Time::end("extrapolation");
 }
 
 void HEGSolver::save_variation_result() {

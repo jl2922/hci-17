@@ -26,11 +26,13 @@ class BigUnorderedMap {
 
   void async_inc(const K&, const V&);
 
+  std::size_t get_target(const K&);
+
   void complete_async_incs();
 
   long long unsigned int size() const;
 
- private:
+ protected:
   // Basic MPI info.
   std::size_t proc_id;
   std::size_t n_procs;
@@ -181,8 +183,13 @@ void BigUnorderedMap<K, V, H>::reserve(const unsigned long long n_buckets) {
 }
 
 template <class K, class V, class H>
+std::size_t BigUnorderedMap<K, V, H>::get_target(const K& key) {
+  return proc_map[hasher(key) % total_proc_buckets];
+}
+
+template <class K, class V, class H>
 void BigUnorderedMap<K, V, H>::async_inc(const K& key, const V& value) {
-  const std::size_t target = proc_map[hasher(key) % total_proc_buckets];
+  const std::size_t target = get_target(key);
 
   // Process locally.
   if (target == proc_id) {

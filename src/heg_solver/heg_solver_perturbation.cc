@@ -4,6 +4,13 @@
 #include "../parallel.h"
 #include "../time.h"
 
+// Put keys with the same det onto the same process.
+template <>
+std::size_t BigUnorderedMap<PTKey, double, boost::hash<PTKey>>::get_target(const PTKey& key) {
+  boost::hash<OrbitalsPair> det_code_hasher;
+  return proc_map[det_code_hasher(key.first) % total_proc_buckets];
+}
+
 void HEGSolver::perturbation() {
   // Perform perturbation with smallest eps and largest rcut.
   const double rcut_pt_max = rcut_pts.back();
@@ -27,7 +34,7 @@ void HEGSolver::perturbation() {
   unsigned long long n_pt_dets_estimate = estimate_n_pt_dets(eps_pt_min);
   if (Parallel::get_id() == 0) printf("Estimated PT dets: %'llu\n", n_pt_dets_estimate);
   std::pair<PTKey, double> skeleton;  // For reducing the amount of MPI data transfer.
-  std::get<0>(skeleton.first) = wf.get_terms().front().det.encode();
+  skeleton.first.first = wf.get_terms().front().det.encode();
   BigUnorderedMap<PTKey, double, boost::hash<PTKey>> pt_sums(skeleton);
   pt_sums.reserve(n_pt_dets_estimate * 2);
   unsigned long long hash_buckets = pt_sums.bucket_count();
@@ -38,9 +45,11 @@ void HEGSolver::perturbation() {
   Time::start("search pt dets");
   int progress = 1;  // For print.
   std::size_t i = 0;
+  int n_conn = 0;
   for (const auto& term : wf.get_terms()) {
     if ((i++) % Parallel::get_n() != static_cast<std::size_t>(Parallel::get_id())) continue;
     const auto& connected_dets = find_connected_dets(term.det, eps_pt_min / fabs(term.coef));
+    n_conn += connected_dets.size();
     for (const auto& det_a : connected_dets) {
       if (var_dets_set.count(det_a.encode()) == 1) continue;
       const double H_ai = hamiltonian(term.det, det_a);
@@ -61,6 +70,7 @@ void HEGSolver::perturbation() {
       progress *= 2;
     }
   }
+  printf("%d: n_conn: %d\n", Parallel::get_id(), n_conn);
   pt_sums.complete_async_incs();
   unsigned long long n_pt_keys = pt_sums.size();
   if (Parallel::get_id() == 0) printf("Total PT keys: %'llu\n", n_pt_keys);
@@ -68,6 +78,15 @@ void HEGSolver::perturbation() {
 
   Time::start("accumulate contributions");
   const auto& local_map = pt_sums.get_local_map();
+  BigUnsignedInt n_pt_dets;
+  std::unordered_set<OrbitalsPair, boost::hash<OrbitalsPair>> pt_dets;
+  for (const auto& kv : local_map) {
+    const PTKey& key = kv.first;
+    pt_dets.insert(key.first);
+  }
+  n_pt_dets = pt_dets.size();
+  Parallel::reduce_to_sum(n_pt_dets);
+  if (Parallel::get_id() == 0) printf("Number of PT dets: %'llu\n", n_pt_dets);
   Det det_a;
   for (const std::size_t n_orbs_pt : n_orbs_pts) {
     std::string n_orbs_pt_event = "accumulate for n_orbs_pt: " + std::to_string(n_orbs_pt * 2);
@@ -81,10 +100,14 @@ void HEGSolver::perturbation() {
         printf("DEBUG: related categories: %lu\n", related_categories.size());
       energy_pt = 0.0;
       BigUnsignedInt n_pt_dets = 0;
+      // std::unordered_set<OrbitalsPair, boost::hash<OrbitalsPair>> pt_dets;
+      pt_dets.clear();
       for (const auto& kv : local_map) {
         const auto& key = kv.first;
+        pt_dets.insert(key.first);
         const PTCategory category = key.second;
-        if (!std::binary_search(related_categories.begin(), related_categories.end(), category)) {
+        if (std::find(related_categories.begin(), related_categories.end(), category) ==
+            related_categories.end()) {
           continue;
         }
         bool is_smallest = true;
@@ -97,7 +120,7 @@ void HEGSolver::perturbation() {
               is_smallest = false;
               break;
             }
-            partial_sum += kv.second;
+            partial_sum += local_map.at(related_key);
           }
         }
         if (is_smallest) {
@@ -117,6 +140,10 @@ void HEGSolver::perturbation() {
         printf("eps_pt: %#.4g\n", eps_pt);
         printf("Perturbation energy: %#.12g Ha\n", energy_pt);
         printf("Correlation Energy: %.12g Ha\n", energy_var + energy_pt - energy_hf);
+        std::vector<double> parameter_set(
+            {1.0 / (get_n_orbs(rcut_var) * 2), eps_var, 1.0 / (n_orbs_pt * 2), eps_pt});
+        parameter_sets.push_back(parameter_set);
+        results.push_back(energy_var + energy_pt - energy_hf);
       }
       Time::end(eps_pt_event);
     }  // eps_pts loop.

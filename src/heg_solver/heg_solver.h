@@ -26,6 +26,9 @@ class HEGSolver : public Solver {
   std::unordered_map<TinyInt3, std::vector<TinyInt3Double>, boost::hash<TinyInt3>>
       same_spin_hci_queue;  // O(k_points^2).
   std::vector<TinyInt3Double> opposite_spin_hci_queue;  // O(k_points).
+  std::vector<std::vector<double>> parameter_sets;
+  std::vector<std::string> parameter_names;
+  std::vector<double> results;
 
   static HEGSolver get_instance() {
     static HEGSolver heg_solver;
