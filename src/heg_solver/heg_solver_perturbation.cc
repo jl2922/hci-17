@@ -1,15 +1,23 @@
 #include "heg_solver.h"
 
+#include <boost/format.hpp>
+
+#ifdef SERIAL
+#include "../big_unordered_map/big_unordered_map_serial.h"
+#else
 #include "../big_unordered_map/big_unordered_map.h"
+#endif
 #include "../parallel.h"
 #include "../time.h"
 
 // Put keys with the same det onto the same process.
+#ifndef SERIAL
 template <>
 std::size_t BigUnorderedMap<PTKey, double, boost::hash<PTKey>>::get_target(const PTKey& key) {
   boost::hash<OrbitalsPair> det_code_hasher;
   return proc_map[det_code_hasher(key.first) % total_proc_buckets];
 }
+#endif
 
 void HEGSolver::perturbation() {
   // Perform perturbation with smallest eps and largest rcut.

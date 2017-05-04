@@ -67,9 +67,7 @@ class Parallel {
   static void barrier() { return; }
 
   template <class T>
-  static void all_reduce(T& t) {
-    return;
-  }
+  static void reduce_to_sum(T& t) {}
 };
 #endif
 
