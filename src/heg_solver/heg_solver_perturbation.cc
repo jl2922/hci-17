@@ -151,6 +151,7 @@ void HEGSolver::perturbation() {
         std::vector<double> parameter_set(
             {1.0 / (get_n_orbs(rcut_var) * 2), eps_var, 1.0 / (n_orbs_pt * 2), eps_pt});
         parameter_sets.push_back(parameter_set);
+        printf("Number of parameter sets: %d\n", static_cast<int>(parameter_sets.size()));
         results.push_back(energy_var + energy_pt - energy_hf);
       }
       Time::end(eps_pt_event);

@@ -64,7 +64,7 @@ void HEGSolver::solve() {
     std::vector<std::string> basic_quantities({"1/n_orbs_var", "eps_var", "1/n_orbs_pt", "eps_pt"});
     for (int i = 0; i < 4; i++) parameter_names.push_back(basic_quantities[i]);
     for (int i = 0; i < 4; i++) {
-      for (int j = 0; j < 4; j++) {
+      for (int j = i; j < 4; j++) {
         for (auto& parameter_set : parameter_sets) {
           parameter_set.push_back(parameter_set[i] * parameter_set[j]);
         }
