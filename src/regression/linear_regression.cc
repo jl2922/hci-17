@@ -17,6 +17,7 @@ void LinearRegression::solve(
     for (std::size_t j = 0; j < p; j++) X(i, j) = X_in[i][j];
     X(i, p) = 1.0;
   }
+  std::cout << X << std::endl << y << std::endl;
   const Eigen::MatrixXd XT = X.transpose();
   const Eigen::MatrixXd XTXInv = (XT * X).inverse();
   const Eigen::VectorXd beta = XTXInv * XT * y;
