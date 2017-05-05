@@ -2,11 +2,7 @@
 
 #include <boost/format.hpp>
 
-#ifdef SERIAL
-#include "../big_unordered_map/big_unordered_map_serial.h"
-#else
-#include "../big_unordered_map/big_unordered_map.h"
-#endif
+#include "../big_unordered_map.h"
 #include "../parallel.h"
 #include "../time.h"
 

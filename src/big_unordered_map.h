@@ -1,18 +1,45 @@
 #ifndef BIG_UNORDERED_MAP_H_
 #define BIG_UNORDERED_MAP_H_
 
+#ifndef SERIAL
 #include <boost/mpi.hpp>
 #include <boost/mpi/communicator.hpp>
 #include <boost/property_tree/json_parser.hpp>
 #include <boost/property_tree/ptree.hpp>
 #include <boost/serialization/utility.hpp>
 #include <cstddef>
-#include <functional>
-#include <iostream>
 #include <limits>
-#include <unordered_map>
 #include <vector>
+#endif
+#include <unordered_map>
+#include <utility>
 
+#ifdef SERIAL
+// Wrap normal hash map into the BigUnorderedMap interface.
+template <class K, class V, class H>
+class BigUnorderedMap {
+ public:
+  BigUnorderedMap(const std::pair<K, V>& skeleton) {}
+
+  void reserve(unsigned long long n_buckets) { local_map.reserve(n_buckets); }
+
+  unsigned long long bucket_count() const { return local_map.bucket_count(); }
+
+  const std::unordered_map<K, V, H>& get_local_map() { return local_map; }
+
+  void async_inc(const K& k, const V& v) { local_map[k] += v; }
+
+  std::size_t get_target(const K&) { return 0; }
+
+  void complete_async_incs(){};
+
+  long long unsigned int size() const { return local_map.size(); }
+
+ protected:
+  std::unordered_map<K, V, H> local_map;
+};
+#else
+// Distributed version for production run.
 template <class K, class V, class H>
 class BigUnorderedMap {
  public:
@@ -45,7 +72,7 @@ class BigUnorderedMap {
   std::unordered_map<K, V, H> local_map;
 
   // Buffers.
-  std::vector<std::pair<K, V>> buf_send;
+  std::vector<std::pair<K, V> > buf_send;
   std::vector<boost::mpi::content> buf_send_content;
   std::pair<K, V> buf_recv;
   boost::mpi::content buf_recv_content;
@@ -121,12 +148,14 @@ void BigUnorderedMap<K, V, H>::reset_cnts() {
 
 template <class K, class V, class H>
 void BigUnorderedMap<K, V, H>::set_proc_buckets() {
+  // Setup proc buckets according the memory size stored in nodes.json.
+  // Proc buckets controls the storage load balance.
   const std::size_t NODE_SIZE_DEFAULT = 8;
   const std::size_t TOTAL_INTERNAL_UNITS = 10000;
   boost::property_tree::ptree nodes;
   boost::property_tree::read_json("nodes.json", nodes);
   std::vector<std::size_t> node_sizes(n_procs, 0);  // Memory size per node.
-  std::vector<std::size_t> proc_sizes(n_procs, 0);  // Memory size (in internal unit) per process.
+  std::vector<std::size_t> proc_sizes(n_procs, 0);  // Memory size (in internal units) per process.
   std::vector<std::string> node_names(n_procs);
   std::unordered_map<std::string, std::size_t> node_procs;
 
@@ -177,7 +206,7 @@ void BigUnorderedMap<K, V, H>::set_proc_buckets() {
 template <class K, class V, class H>
 void BigUnorderedMap<K, V, H>::reserve(const unsigned long long n_buckets) {
   std::size_t local_buckets =
-      static_cast<std::size_t>(n_buckets * 1.0 * local_proc_buckets / total_proc_buckets + 1);
+      static_cast<std::size_t>(n_buckets * local_proc_buckets / total_proc_buckets + 1);
   local_map.reserve(local_buckets);
   world.barrier();
 }
@@ -271,11 +300,11 @@ void BigUnorderedMap<K, V, H>::complete_async_incs() {
     reqs.push_front(world.isend(i, TAG_FINISH, send_cnts[i]));
     if (recv_cnts[i] < recv_totals[i]) n_active_procs++;
   }
+
   while (n_active_procs > 0) {
     const auto& status = world.probe();
     const int source = status.source();
     const int tag = status.tag();
-
     switch (tag) {
       case TAG_KV: {
         world.recv(source, tag, buf_recv_content);
@@ -310,5 +339,6 @@ unsigned long long BigUnorderedMap<K, V, H>::size() const {
   boost::mpi::all_reduce(world, local_size, total_size, std::plus<unsigned long long>());
   return total_size;
 }
+#endif
 
 #endif
