@@ -190,15 +190,17 @@ PTCategory HEGSolver::get_category(const Det& det, const double eps) {
 
 PTCategory HEGSolver::get_category(const std::size_t n_orbs, const double eps) {
   // The higher 4 bits represent eps_pt categories and the lower 4 bits represent n_orbs_pt.
-  PTCategory category = 0;
+  PTCategory category1 = 0;
+  PTCategory category2 = 0;
   for (const double eps_pt : eps_pts) {
-    if (eps >= eps_pt) category++;
+    if (eps >= eps_pt) category1++;
   }
-  category <<= 4;
+  category1--;
   for (const std::size_t n_orbs_pt : n_orbs_pts) {
-    if (n_orbs <= n_orbs_pt) category++;
+    if (n_orbs <= n_orbs_pt) category2++;
   }
-  return category;
+  category2--;
+  return (category1 << 4) + category2;
 }
 
 int HEGSolver::get_n_orbs(const double rcut) {
