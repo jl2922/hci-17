@@ -7,7 +7,7 @@
 #include "config.h"
 #include "heg_solver/heg_solver.h"
 #include "parallel.h"
-#include "time.h"
+#include "time/time.h"
 
 int main(int argc, char** argv) {
 #ifndef SERIAL

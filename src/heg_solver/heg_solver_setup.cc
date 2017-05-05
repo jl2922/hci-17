@@ -3,7 +3,7 @@
 #include "../array_math.h"
 #include "../config.h"
 #include "../parallel.h"
-#include "../time.h"
+#include "../time/time.h"
 
 void HEGSolver::setup() {
   const double r_s = Config::get<double>("r_s");

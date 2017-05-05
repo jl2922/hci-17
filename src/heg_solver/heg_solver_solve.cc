@@ -6,7 +6,7 @@
 #include "../config.h"
 #include "../parallel.h"
 #include "../regression/linear_regression.h"
-#include "../time.h"
+#include "../time/time.h"
 
 void HEGSolver::solve() {
   printf("Proc %d running on %s\n", Parallel::get_id(), Parallel::get_host().c_str());

@@ -7,10 +7,10 @@
 #include <boost/property_tree/json_parser.hpp>
 #include <boost/property_tree/ptree.hpp>
 #include <boost/serialization/utility.hpp>
-#include <cstddef>
 #include <limits>
 #include <vector>
 #endif
+#include <cstddef>
 #include <unordered_map>
 #include <utility>
 

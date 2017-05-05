@@ -4,7 +4,7 @@
 
 #include "../det/det.h"
 #include "../parallel.h"
-#include "../time.h"
+#include "../time/time.h"
 #include "diagonalization/davidson.h"
 
 Det generate_hf_det(const std::size_t n_up, const std::size_t n_dn) {
