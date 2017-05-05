@@ -8,11 +8,13 @@
 
 class Time {
  public:
+  // To be called at the beginning of the program.
   static void init() {
     if (Parallel::get_id() != 0) return;
     Time::get_timer("INIT") = std::chrono::high_resolution_clock::now();
   }
 
+  // To be called at the start of an event.
   static void start(const std::string& event) {
     Parallel::barrier();
     if (Parallel::get_id() != 0) return;
@@ -26,6 +28,7 @@ class Time {
         get_duration("INIT"));
   };
 
+  // To be called at the end of an event.
   static void end(const std::string& event) {
     Parallel::barrier();
     if (Parallel::get_id() != 0) return;
@@ -39,6 +42,7 @@ class Time {
     index.end();
   }
 
+  // To be called during an event after an important step.
   static void checkpoint(const std::string& event) {
     printf(
         "CHECKPOINT %s [%.3f/%.3f] \n", event.c_str(), get_duration("INIT"), get_duration(event));
