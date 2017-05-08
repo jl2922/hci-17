@@ -553,18 +553,24 @@ void HEGSolver::extrapolate() {
       }
     }
     parameter_names.push_back("Intercept");
-    LinearRegression lr(parameter_sets, results);
-    const auto& estimate = lr.get_estimate();
-    const auto& stdev = lr.get_stdev();
-    const auto& prob_t = lr.get_prob_t();
-    printf("%30s %20s %15s %15s\n", "parameter", "estimate", "stdev", "P>|t|");
-    for (int i = 0; i < 15; i++) {
-      printf(
-          "%30s %#20.10g %#15.5g %#15.5g\n",
-          parameter_names[i].c_str(),
-          estimate[i],
-          stdev[i],
-          prob_t[i]);
+
+    try {
+      LinearRegression lr(parameter_sets, results);
+      const auto& estimate = lr.get_estimate();
+      const auto& stdev = lr.get_stdev();
+      const auto& prob_t = lr.get_prob_t();
+      printf("%30s %20s %15s %15s\n", "parameter", "estimate", "stdev", "P>|t|");
+      for (int i = 0; i < 15; i++) {
+        printf(
+            "%30s %#20.10g %#15.5g %#15.5g\n",
+            parameter_names[i].c_str(),
+            estimate[i],
+            stdev[i],
+            prob_t[i]);
+      }
+    } catch (std::exception& e) {
+      std::cout << e.what() << std::endl;
+      return;
     }
   }
 }
