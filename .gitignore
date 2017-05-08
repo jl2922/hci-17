@@ -9,6 +9,7 @@ amplxe*
 massif*
 config.json
 Makefile.config
+*.out.*
 
 # Compiled Object files
 *.slo

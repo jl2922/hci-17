@@ -400,8 +400,11 @@ void HEGSolver::perturbation() {
 
   // Cache variation determinants.
   var_dets_set.clear();
-  for (const auto& det : wf.get_dets()) var_dets_set.insert(det.encode());
-  var_dets_set.rehash(var_dets_set.size() * 2);  // <20% conflict rate with 50% hash load.
+  const auto& terms = wf.get_terms();
+  var_dets_set.rehash(terms.size() * 2);  // <20% conflict rate with 50% hash load.
+  for (const auto& term : terms) {
+    var_dets_set.insert(term.det.encode());
+  }
 
   Time::start("setup hash table");
   unsigned long long n_pt_dets_estimate = estimate_n_pt_dets(eps_pt_min);
