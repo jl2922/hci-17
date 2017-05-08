@@ -9,6 +9,16 @@
 #include "../types.h"
 
 class HelperStrings {
+ public:
+  HelperStrings(const std::vector<Det>& dets) : dets(dets) {
+    setup_ab();
+    setup_ab_m1();
+    connected.assign(dets.size(), false);
+    one_up.assign(dets.size(), false);
+  }
+
+  UnsignedInts find_potential_connections(const std::size_t i);
+
  private:
   // alpha and beta strings, O(n_dets).
   std::unordered_map<Orbitals, std::pair<UnsignedInts, UnsignedInts>, boost::hash<Orbitals>> ab;
@@ -34,16 +44,6 @@ class HelperStrings {
   // Remove helper strings that only has one index.
   void shrink(
       std::unordered_map<Orbitals, std::pair<UnsignedInts, UnsignedInts>, boost::hash<Orbitals>>&);
-
- public:
-  HelperStrings(const std::vector<Det>& dets) : dets(dets) {
-    setup_ab();
-    setup_ab_m1();
-    connected.assign(dets.size(), false);
-    one_up.assign(dets.size(), false);
-  }
-
-  UnsignedInts find_potential_connections(const std::size_t i);
 };
 
 #endif

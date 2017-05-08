@@ -11,6 +11,7 @@
 #include <vector>
 #endif
 #include <cstddef>
+#include <list>
 #include <unordered_map>
 #include <utility>
 

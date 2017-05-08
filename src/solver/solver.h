@@ -35,6 +35,8 @@ class Solver {
 
   std::vector<double> apply_hamiltonian(const std::vector<double>&, HelperStrings&);
 
+  Det generate_hf_det();
+
   void variation();
 
   double diagonalize();

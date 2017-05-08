@@ -16,6 +16,8 @@ class Det {
     return dn.get_orb(orb_id - dn_offset);
   }
 
+  Orbital get_highest_orb() const { return std::max(up.get_highest_orb(), dn.get_highest_orb()); }
+
   void set_orb(const int orb_id, const int dn_offset, const bool occ) {
     if (orb_id < dn_offset) {
       up.set_orb(orb_id, occ);

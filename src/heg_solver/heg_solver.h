@@ -39,23 +39,19 @@ class HEGSolver : public Solver {
 
   void setup() override;
 
-  void generate_k_points(const double rcut);
-
   void generate_hci_queue(const double rcut);
 
   void save_variation_result();
 
   bool load_variation_result();
 
-  PTCategory get_category(const Det&, const double);
+  PTCategory get_pt_category(const std::size_t, const double);
 
-  PTCategory get_category(const std::size_t, const double);
-
-  std::vector<PTCategory> get_related_categories(const std::size_t, const double);
-
-  int get_n_orbs(const double);
+  std::vector<PTCategory> get_related_pt_categories(const std::size_t, const double);
 
   void perturbation();
+
+  void extrapolate();
 
   double hamiltonian(const Det&, const Det&) const override;
 

@@ -1,23 +1,15 @@
 #include "davidson.h"
-
-#include <cassert>
-#include <cstddef>
-#include <cstdio>
-#include <functional>
-#include <list>
-#include <vector>
+#include "gtest/gtest.h"
 
 // Test with a Hilbert matrix.
-class TestHamiltonian {
+class HilbertSystem {
  public:
-  TestHamiltonian(int n, int gamma) {
-    this->n = n;
-    this->gamma = gamma;
-  }
+  HilbertSystem(int n) { this->n = n; }
 
   double get_hamiltonian(int i, int j) {
+    const double GAMMA = 10.0;
     if (i == j) return -1.0 / (2 * i + 1);
-    return -1.0 / gamma / (i + j + 1);
+    return -1.0 / GAMMA / (i + j + 1);
   }
 
   std::vector<double> apply_hamiltonian(const std::vector<double>& v) {
@@ -35,20 +27,16 @@ class TestHamiltonian {
 
  private:
   int n;
-  int gamma;
 };
 
-int main(int argc, char** argv) {
-  int N = 1000;
-  const double GAMMA = 10.0;
-  TestHamiltonian hamiltonian(N, GAMMA);
-  printf("Hilbert Matrix (Gamma = %.2f, N = %d)\n", GAMMA, N);
-
+TEST(DavidsonTest, HilbertSystem) {
+  const int N = 1000;
+  HilbertSystem hamiltonian(N);
   std::vector<double> diagonal(N);
   for (std::size_t i = 0; i < N; i++) diagonal[i] = hamiltonian.get_hamiltonian(i, i);
 
   std::function<std::vector<double>(std::vector<double>)> apply_hamiltonian =
-      std::bind(&TestHamiltonian::apply_hamiltonian, &hamiltonian, std::placeholders::_1);
+      std::bind(&HilbertSystem::apply_hamiltonian, &hamiltonian, std::placeholders::_1);
 
   Davidson davidson(diagonal, apply_hamiltonian, N);
 
@@ -57,9 +45,16 @@ int main(int argc, char** argv) {
 
   davidson.diagonalize(initial_vector);
 
+  // Check eigenvalue and eigenvector with reference values from exact diagonalization.
   const double lowest_eigenvalue = davidson.get_lowest_eigenvalue();
-  assert(fabs(lowest_eigenvalue - (-1.00956710)) < 1.0e-6);
-  printf("Lowest Eigenvalue: %.10f\n", davidson.get_lowest_eigenvalue());
-
-  return 0;
+  EXPECT_NEAR(lowest_eigenvalue, -1.00956719, 1.0e-6);
+  const std::vector<double> lowest_eigenvector = davidson.get_lowest_eigenvector();
+  const std::vector<double> expected_eigenvector_head(
+      {9.92925358e-01, 8.02670792e-02, 4.72067559e-02});
+  for (int i = 0; i < 3; i++) {
+    EXPECT_NEAR(
+        lowest_eigenvector[i],
+        expected_eigenvector_head[i],
+        fabs(expected_eigenvector_head[i] * 0.01));
+  }
 }

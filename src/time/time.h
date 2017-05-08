@@ -11,15 +11,15 @@ class Time {
   // To be called at the beginning of the program.
   static void init() {
     if (Parallel::get_id() != 0) return;
-    Time::get_timer("INIT") = std::chrono::high_resolution_clock::now();
+    Time::get_instance().timers["INIT"] = std::chrono::high_resolution_clock::now();
   }
 
   // To be called at the start of an event.
   static void start(const std::string& event) {
     Parallel::barrier();
     if (Parallel::get_id() != 0) return;
-    Time::get_timer(event) = std::chrono::high_resolution_clock::now();
-    auto& index = Time::get_index();
+    Time::get_instance().timers[event] = std::chrono::high_resolution_clock::now();
+    auto& index = Time::get_instance().index;
     index.start();
     printf(
         "\n%sBEGIN %s [%.3f/0.000]\n",
@@ -32,7 +32,7 @@ class Time {
   static void end(const std::string& event) {
     Parallel::barrier();
     if (Parallel::get_id() != 0) return;
-    auto& index = Time::get_index();
+    auto& index = Time::get_instance().index;
     printf(
         "%sEND %s [%.3f/%.3f] \n",
         index.to_string().c_str(),
@@ -49,20 +49,21 @@ class Time {
   }
 
  private:
-  static Index& get_index() {
-    static Index index;
-    return index;
-  };
+  Index index;
+  std::unordered_map<std::string, std::chrono::high_resolution_clock::time_point> timers;
 
-  static std::chrono::high_resolution_clock::time_point& get_timer(const std::string& event) {
-    static std::unordered_map<std::string, std::chrono::high_resolution_clock::time_point> times;
-    return times[event];
+  Time() {}
+
+  // Singleton pattern.
+  static Time& get_instance() {
+    static Time instance;
+    return instance;
   }
 
   static double get_duration(const std::string& event) {
     using namespace std::chrono;
     const auto now = high_resolution_clock::now();
-    const auto start_time = Time::get_timer(event);
+    const auto start_time = Time::get_instance().timers[event];
     return (duration_cast<duration<double>>(now - start_time)).count();
   }
 };

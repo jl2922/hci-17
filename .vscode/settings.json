@@ -51,6 +51,8 @@
     "unordered_set": "cpp",
     "vector": "cpp",
     "core": "cpp",
-    "list": "cpp"
+    "list": "cpp",
+    "hash_map": "cpp",
+    "hash_set": "cpp"
   }
 }

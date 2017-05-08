@@ -2,8 +2,10 @@
 
 #include <Eigen/Dense>
 #include <boost/math/special_functions/beta.hpp>
+#include <stdexcept>
 
 double get_prob_gt_t(const double t, const int df) {
+  if (df <= 0) throw std::invalid_argument("non-positive degrees of freedom");
   const double x = df / (df + t * t);
   return boost::math::ibeta(0.5 * df, 0.5, x);
 }
@@ -17,7 +19,6 @@ void LinearRegression::solve(
     for (std::size_t j = 0; j < p; j++) X(i, j) = X_in[i][j];
     X(i, p) = 1.0;
   }
-  std::cout << X << std::endl << y << std::endl;
   const Eigen::MatrixXd XT = X.transpose();
   const Eigen::MatrixXd XTXInv = (XT * X).inverse();
   const Eigen::VectorXd beta = XTXInv * XT * y;
