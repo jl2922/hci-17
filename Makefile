@@ -7,6 +7,12 @@ OBJ_DIR := build
 EXE := hci
 TEST_EXE := hci_test
 
+# Host specific configurations.
+HOSTNAME := $(shell hostname)
+ifneq ($(findstring bridges, $(HOSTNAME)),)
+include Makefile.config.bridges
+endif
+
 # Load Makefile.config if exists.
 CONFIG_FILE := Makefile.config
 ifneq ($(wildcard $(CONFIG_FILE)),)

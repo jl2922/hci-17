@@ -1,2 +1,2 @@
 CXX := g++
-CXXFLAGS := -std=c++11 -g -Wall -Wextra -O3 -DSERIAL
+CXXFLAGS := $(CXXFLAGS) -g -DSERIAL
