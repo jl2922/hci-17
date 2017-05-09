@@ -420,6 +420,7 @@ void HEGSolver::perturbation() {
   Time::start("search for perturbation dets");
   int progress = 1;  // For print.
   std::size_t i = 0;
+  const std::size_t n = wf.size();
   for (const auto& term : wf.get_terms()) {
     if ((i++) % Parallel::get_n() != static_cast<std::size_t>(Parallel::get_id())) continue;
     const auto& connected_dets = find_connected_dets(term.det, eps_pt_min / fabs(term.coef));
@@ -432,7 +433,7 @@ void HEGSolver::perturbation() {
       PTKey ptKey(det_a.encode(), category);
       pt_sums.async_inc(ptKey, partial_sum);
     }
-    if ((i + 1) * 100 >= wf.size() * progress && Parallel::get_id() == 0) {
+    if (Parallel::get_id() == 0 && i >= n / 100 * progress) {
       const auto& local_map = pt_sums.get_local_map();
       Time::checkpoint("search for perturbation dets");
       printf(
