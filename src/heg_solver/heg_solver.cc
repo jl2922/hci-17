@@ -200,22 +200,22 @@ double HEGSolver::hamiltonian(const Det& det_pq, const Det& det_rs) const {
     const auto& occ_pq_dn = det_pq.dn.get_elec_orbs();
 
     // One electron operator.
-    for (const int p : occ_pq_up) H += sum(square(k_points[p] * k_unit) * 0.5);
-    for (const int p : occ_pq_dn) H += sum(square(k_points[p] * k_unit) * 0.5);
+    for (const int p : occ_pq_up) H += squared_norm(k_points[p] * k_unit) * 0.5;
+    for (const int p : occ_pq_dn) H += squared_norm(k_points[p] * k_unit) * 0.5;
 
     // Two electrons operator.
     for (std::size_t i = 0; i < n_up; i++) {
       const int p = occ_pq_up[i];
       for (std::size_t j = i + 1; j < n_up; j++) {
         const int q = occ_pq_up[j];
-        H -= H_unit / sum(square(k_points[p] - k_points[q]));
+        H -= H_unit / squared_norm(k_points[p] - k_points[q]);
       }
     }
     for (std::size_t i = 0; i < n_dn; i++) {
       const int p = occ_pq_dn[i];
       for (std::size_t j = i + 1; j < n_dn; j++) {
         const int q = occ_pq_dn[j];
-        H -= H_unit / sum(square(k_points[p] - k_points[q]));
+        H -= H_unit / squared_norm(k_points[p] - k_points[q]);
       }
     }
   } else {
@@ -271,8 +271,8 @@ double HEGSolver::hamiltonian(const Det& det_pq, const Det& det_rs) const {
     // Check for momentum conservation.
     if (k_change != 0) return 0.0;
 
-    H = H_unit / sum(square(k_points[orb_p] - k_points[orb_r]));
-    if (n_eor_up != 2) H -= H_unit / sum(square(k_points[orb_p] - k_points[orb_s]));
+    H = H_unit / squared_norm(k_points[orb_p] - k_points[orb_r]);
+    if (n_eor_up != 2) H -= H_unit / squared_norm(k_points[orb_p] - k_points[orb_s]);
 
     const int gamma_exp =
         get_gamma_exp(det_pq.up, eor_up_set_bits) + get_gamma_exp(det_pq.dn, eor_dn_set_bits) +
@@ -516,14 +516,13 @@ void HEGSolver::perturbation() {
 std::vector<PTCategory> HEGSolver::get_related_pt_categories(
     const std::size_t n_orbs, const double eps) {
   std::vector<PTCategory> related_categories;
-  for (const double eps_pt : eps_pts) {
-    if (eps > eps_pt) continue;
-    for (const std::size_t n_orbs_pt : n_orbs_pts) {
-      if (n_orbs < n_orbs_pt) continue;
+  for (const std::size_t n_orbs_pt : n_orbs_pts) {
+    if (n_orbs < n_orbs_pt) continue;
+    for (const double eps_pt : eps_pts) {
+      if (eps > eps_pt) continue;
       related_categories.push_back(get_pt_category(n_orbs_pt, eps_pt));
     }
   }
-  std::sort(related_categories.begin(), related_categories.end());
   return related_categories;
 }
 
@@ -539,7 +538,7 @@ PTCategory HEGSolver::get_pt_category(const std::size_t n_orbs, const double eps
     if (n_orbs <= n_orbs_pt) category_n_orbs++;
   }
   category_n_orbs--;
-  return (category_eps << 4) + category_n_orbs;
+  return category_eps + (category_n_orbs << 4);
 }
 
 void HEGSolver::extrapolate() {

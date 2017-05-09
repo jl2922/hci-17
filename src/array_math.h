@@ -51,10 +51,15 @@ T sum(const std::array<T, N> &arr) {
 }
 
 template <class T, std::size_t N>
-double norm(const std::array<T, N> &arr) {
-  double res = arr[0] * arr[0];
+T squared_norm(const std::array<T, N> &arr) {
+  T res = arr[0] * arr[0];
   for (std::size_t i = 1; i < N; i++) res += arr[i] * arr[i];
-  return sqrt(res);
+  return res;
+}
+
+template <class T, std::size_t N>
+double norm(const std::array<T, N> &arr) {
+  return sqrt(squared_norm(arr));
 }
 
 template <class T, std::size_t N>
