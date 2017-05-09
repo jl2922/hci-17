@@ -9,6 +9,7 @@ amplxe*
 massif*
 config.json
 Makefile.config
+bridges.sh
 
 # Compiled Object files
 *.slo
