@@ -10,6 +10,9 @@ massif*
 config.json
 Makefile.config
 bridges.sh
+*.out.*
+.nfs*
+dft.sh
 
 # Compiled Object files
 *.slo

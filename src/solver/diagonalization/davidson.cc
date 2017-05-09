@@ -1,7 +1,7 @@
 #include "davidson.h"
 
 void Davidson::diagonalize(const std::vector<double>& initial_vector) {
-  const double TOLERANCE = 5.0e-7;
+  const double TOLERANCE = 2.0e-7;
   const std::size_t MAX_ITERATIONS = 5;  // Good choice for direct evaluation of the hamiltonian.
 
   if (n == 1) {

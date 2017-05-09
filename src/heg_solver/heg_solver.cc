@@ -47,9 +47,9 @@ void HEGSolver::solve() {
   Time::end("variation stage");
 
   Time::start("perturbation stage");
+  n_orbs_pts.clear();
   for (const double rcut_pt : rcut_pts) {
-    n_orbs_pts.clear();
-    n_orbs_pts.push_back(KPointsUtil::get_n_k_points(rcut_pt));
+    n_orbs_pts.push_back(KPointsUtil::get_n_k_points(rcut_pt) * 2);
   }
   // Start from the largest PT so that it fails earlier upon insufficient memory.
   for (const double rcut_var : rcut_vars | boost::adaptors::reversed) {
@@ -176,7 +176,7 @@ bool HEGSolver::load_variation_result() {
   }
   var_file.close();
   if (Parallel::get_id() == 0)
-    printf("Loaded %d dets from: %s\n", static_cast<int>(wf_size), filename.c_str());
+    printf("Loaded %'d dets from: %s\n", static_cast<int>(wf_size), filename.c_str());
   return true;
 }
 
@@ -400,8 +400,11 @@ void HEGSolver::perturbation() {
 
   // Cache variation determinants.
   var_dets_set.clear();
-  for (const auto& det : wf.get_dets()) var_dets_set.insert(det.encode());
-  var_dets_set.rehash(var_dets_set.size() * 2);  // <20% conflict rate with 50% hash load.
+  const auto& terms = wf.get_terms();
+  var_dets_set.rehash(terms.size() * 2);  // <20% conflict rate with 50% hash load.
+  for (const auto& term : terms) {
+    var_dets_set.insert(term.det.encode());
+  }
 
   Time::start("setup hash table");
   unsigned long long n_pt_dets_estimate = estimate_n_pt_dets(eps_pt_min);
@@ -417,6 +420,7 @@ void HEGSolver::perturbation() {
   Time::start("search for perturbation dets");
   int progress = 1;  // For print.
   std::size_t i = 0;
+  const std::size_t n = wf.size();
   for (const auto& term : wf.get_terms()) {
     if ((i++) % Parallel::get_n() != static_cast<std::size_t>(Parallel::get_id())) continue;
     const auto& connected_dets = find_connected_dets(term.det, eps_pt_min / fabs(term.coef));
@@ -425,11 +429,11 @@ void HEGSolver::perturbation() {
       const double H_ai = hamiltonian(term.det, det_a);
       if (fabs(H_ai) < DBL_EPSILON) continue;
       const double partial_sum = H_ai * term.coef;
-      PTCategory category = get_pt_category(det_a.get_highest_orb(), fabs(partial_sum));
+      PTCategory category = get_pt_category((det_a.get_highest_orb() + 1) * 2, fabs(partial_sum));
       PTKey ptKey(det_a.encode(), category);
       pt_sums.async_inc(ptKey, partial_sum);
     }
-    if ((i + 1) * 100 >= wf.size() * progress && Parallel::get_id() == 0) {
+    if (Parallel::get_id() == 0 && i >= n / 100 * progress) {
       const auto& local_map = pt_sums.get_local_map();
       Time::checkpoint("search for perturbation dets");
       printf(
@@ -448,8 +452,8 @@ void HEGSolver::perturbation() {
   Time::start("accumulate contributions");
   const auto& local_map = pt_sums.get_local_map();
   for (const double rcut_pt : rcut_pts) {
-    std::size_t n_orbs_pt = KPointsUtil::get_n_k_points(rcut_pt);
-    std::string n_orbs_pt_event = "accumulate for n_orbs_pt: " + std::to_string(n_orbs_pt * 2);
+    std::size_t n_orbs_pt = KPointsUtil::get_n_k_points(rcut_pt) * 2;
+    std::string n_orbs_pt_event = "accumulate for n_orbs_pt: " + std::to_string(n_orbs_pt);
     Time::start(n_orbs_pt_event);
     for (const double eps_pt : eps_pts) {
       std::string eps_pt_event = str(boost::format("accumulate for eps_pt: %.4g") % eps_pt);
@@ -488,17 +492,16 @@ void HEGSolver::perturbation() {
       Parallel::reduce_to_sum(n_pt_dets);  // DEBUG.
       Parallel::reduce_to_sum(energy_pt);
       const double correlation_energy = energy_var + energy_pt - energy_hf;
-      std::size_t n_orbs_var = KPointsUtil::get_n_k_points(rcut_var);
+      std::size_t n_orbs_var = KPointsUtil::get_n_k_points(rcut_var) * 2;
       if (Parallel::get_id() == 0) {
         printf("Number of related PT dets: %'llu\n", n_pt_dets);
-        printf("n_orbs_var: %d\n", static_cast<int>(n_orbs_var * 2));
+        printf("n_orbs_var: %d\n", static_cast<int>(n_orbs_var));
         printf("eps_var: %#.4g\n", eps_var);
-        printf("n_orbs_pt: %d\n", static_cast<int>(n_orbs_pt * 2));
+        printf("n_orbs_pt: %d\n", static_cast<int>(n_orbs_pt));
         printf("eps_pt: %#.4g\n", eps_pt);
         printf("Perturbation energy: %#.12g Ha\n", energy_pt);
         printf("Correlation Energy: %.12g Ha\n", correlation_energy);
-        std::vector<double> parameter_set(
-            {1.0 / (n_orbs_var * 2), eps_var, 1.0 / (n_orbs_pt * 2), eps_pt});
+        std::vector<double> parameter_set({1.0 / n_orbs_var, eps_var, 1.0 / n_orbs_pt, eps_pt});
         parameter_sets.push_back(parameter_set);
         printf("Number of parameter sets: %d\n", static_cast<int>(parameter_sets.size()));
         results.push_back(correlation_energy);
