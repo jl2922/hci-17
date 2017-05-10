@@ -528,16 +528,14 @@ std::vector<PTCategory> HEGSolver::get_related_pt_categories(
 
 PTCategory HEGSolver::get_pt_category(const std::size_t n_orbs, const double eps) {
   // The higher 4 bits represent eps_pt categories and the lower 4 bits represent n_orbs_pt.
-  PTCategory category_eps = 0;
-  PTCategory category_n_orbs = 0;
+  PTCategory category_eps = eps_pts.size();
+  PTCategory category_n_orbs = n_orbs_pts.size();
   for (const double eps_pt : eps_pts) {
-    if (eps >= eps_pt) category_eps++;
+    if (eps >= eps_pt) category_eps--;
   }
-  category_eps--;
   for (const std::size_t n_orbs_pt : n_orbs_pts) {
-    if (n_orbs <= n_orbs_pt) category_n_orbs++;
+    if (n_orbs <= n_orbs_pt) category_n_orbs--;
   }
-  category_n_orbs--;
   return category_eps + (category_n_orbs << 4);
 }
 
