@@ -45,9 +45,9 @@ class HEGSolver : public Solver {
 
   bool load_variation_result();
 
-  PTCategory get_pt_category(const std::size_t, const double);
+  PTCategory get_pt_category(const double);
 
-  std::vector<PTCategory> get_related_pt_categories(const std::size_t, const double);
+  std::vector<PTCategory> get_related_pt_categories(const double);
 
   void perturbation();
 
