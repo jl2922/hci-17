@@ -5,12 +5,12 @@ hci_test
 *.dSYM
 *.log
 *.txt
+out*
 amplxe*
 massif*
 config.json
 Makefile.config
 bridges.sh
-*.out.*
 .nfs*
 dft.sh
 
