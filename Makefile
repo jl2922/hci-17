@@ -59,7 +59,8 @@ $(OBJS): $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cc $(HEADERS)
 	mkdir -p $(@D) && $(CXX) $(CXXFLAGS) -c $< -o $@
 	
 $(TEST_EXE): $(TEST_OBJS) $(OBJS) $(GTEST_MAIN) $(HEADERS)
-	$(CXX) $(CXXFLAGS) $^ -o $(TEST_EXE) $(LDLIBS) -lpthread
+	$(CXX) $(CXXFLAGS) $(TEST_OBJS) $(OBJS) $(GTEST_MAIN) \
+			-o $(TEST_EXE) $(LDLIBS) -lpthread
 
 $(TEST_OBJS): $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cc $(HEADERS)
 	mkdir -p $(@D) && $(CXX) $(GTEST_CXXFLAGS) -c $< -o $@
