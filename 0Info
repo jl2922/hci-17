@@ -1,0 +1,15 @@
+This program depends on boost, eigen, and gcc STL.
+
+In order to compile the program, the boost library must be compiled with the same compiler you use to compile your program.
+In addition, you need to either:
+1. specify the path to boost and eigen header files and library files via -I and -L compiler options, or
+2. install the header files and library files of boost and eigen to the default system directories.
+On dft, I have compiled boost with gcc and mpi from Matt's directory, and have configured Makefile to link to them automatically.
+On bridges, I have compiled boost with intel compiler and mpi, and have also configured Makefile to link to them automatically, but you will have to load the intel mpi module before compiling the program.
+
+In order to run the program, the path to boost and gcc STL libraries must be included into the search paths of shared libraries.
+For example, on dft you can put the following line into ~/.bashrc:
+export LD_LIBRARY_PATH=/home/junhao/boost-1.63.0/lib:/home/mjo98/soft/gcc/lib64:$LD_LIBRARY_PATH
+And on bridges you can put the following two lines:
+source /opt/intel/compilers_and_libraries_2016.3.210/linux/bin/iccvars.sh intel64
+export LD_LIBRARY_PATH=/home/junhao/boost-1.63.0/lib:$LD_LIBRARY_PATH
