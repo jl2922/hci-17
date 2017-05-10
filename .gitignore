@@ -6,6 +6,7 @@ hci_test
 *.log
 *.txt
 out*
+*.out.*
 amplxe*
 massif*
 config.json
