@@ -26,7 +26,7 @@ class BigUnorderedMap {
 
   unsigned long long bucket_count() const { return local_map.bucket_count(); }
 
-  const std::unordered_map<K, V, H>& get_local_map() { return local_map; }
+  std::unordered_map<K, V, H>& get_local_map() { return local_map; }
 
   void async_inc(const K& k, const V& v) { local_map[k] += v; }
 
