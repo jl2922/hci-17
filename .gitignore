@@ -5,6 +5,7 @@ hci_test
 *.dSYM
 *.log
 *.txt
+*.eps
 out*
 amplxe*
 massif*
