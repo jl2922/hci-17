@@ -8,6 +8,8 @@ hci_test
 *.eps
 out*
 *.out.*
+.RData
+.Rhistory
 amplxe*
 massif*
 config.json
