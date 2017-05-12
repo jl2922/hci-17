@@ -20,8 +20,9 @@ TEST(LinearRegressionTest, TwoIndependentVariable) {
   EXPECT_EQ(stdev.size(), 3);
   EXPECT_EQ(prob_t.size(), 3);
 
-  std::vector<double> expected_estimate({-26.8764, -0.000590375, -0.592765});
-  std::vector<double> expected_stdev({2.10596, 3.9716e-5, 1.4868e-6});
+  std::vector<double> expected_estimate(
+      {-2.68764200535e+01, -5.90375272820e-04, -5.92796478799e-01});
+  std::vector<double> expected_stdev({2.10596119117e+00, 3.97159995702e-05, 1.48683754360e-06});
   std::vector<double> expected_prob_t({0.00103798, 0.00066062, 3.4797e-17});
   for (int i = 0; i < 3; i++) {
     EXPECT_NEAR(estimate[i], expected_estimate[i], fabs(expected_estimate[i] * 0.0001));
