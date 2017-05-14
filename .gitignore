@@ -6,6 +6,7 @@ hci_test
 *.log
 *.txt
 *.eps
+*.pyc
 out*
 *.out.*
 .RData
