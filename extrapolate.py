@@ -10,6 +10,8 @@ from scipy import special
 
 import regression
 
+np.set_printoptions(precision=12)
+
 POLYNOMIAL_ORDER = 2
 
 def main():
