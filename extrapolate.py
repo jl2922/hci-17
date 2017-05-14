@@ -33,7 +33,7 @@ def main():
             data[parameters].values, data['energy_corr'].values
         )
     initial_intercept = initial_model['intercept']
-    print 'Intercept estimation: ' + str(initial_intercept)
+    print('Intercept estimation: ' + str(initial_intercept))
 
     # Obtain weight.
     data['uncert'] = 0
@@ -61,13 +61,13 @@ def main():
     final_intercept = final_model['intercept']
     final_stdev = final_model['stdev']
 
-    print 'Intercept: ' + str(final_intercept) + ' +- ' + str(final_stdev[-1])
-    print 'coef, stdev, prob_t'
-    print np.hstack((
+    print('Intercept: ' + str(final_intercept) + ' +- ' + str(final_stdev[-1]))
+    print('coef, stdev, prob_t')
+    print(np.hstack((
         np.append(final_model['coef'], final_intercept).reshape(-1, 1),
         final_model['stdev'].reshape(-1, 1),
         final_model['prob_t'].reshape(-1, 1)
-    ))
+    )))
 
 
 if __name__ == '__main__':
