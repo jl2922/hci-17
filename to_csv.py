@@ -13,8 +13,8 @@ def main():
     with open(sys.argv[1], 'r') as res_file:
         res = res_file.read()
 
-    print ','.join([
-        'n_orbs_var', 'eps_var', 'n_orbs_pt', 'eps_pt', 'energy_pt', 'energy_corr'])
+    print(','.join([
+        'n_orbs_var', 'eps_var', 'n_orbs_pt', 'eps_pt', 'energy_pt', 'energy_corr']))
     pattern = '\n'.join([
         'BEGIN accumulate for eps_pt:.*',
         '.*',
@@ -26,7 +26,7 @@ def main():
         'Correlation Energy: (.*) Ha'
     ])
     for match in re.finditer(re.compile(pattern), res):
-        print ','.join(match.groups())
+        print(','.join(match.groups()))
 
 
 if __name__ == '__main__':
