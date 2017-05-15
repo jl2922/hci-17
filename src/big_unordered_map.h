@@ -11,6 +11,7 @@
 #include <vector>
 #endif
 #include <cstddef>
+#include <exception>
 #include <list>
 #include <unordered_map>
 #include <utility>
@@ -154,7 +155,11 @@ void BigUnorderedMap<K, V, H>::set_proc_buckets() {
   const std::size_t NODE_SIZE_DEFAULT = 8;
   const std::size_t TOTAL_INTERNAL_UNITS = 10000;
   boost::property_tree::ptree nodes;
-  boost::property_tree::read_json("nodes.json", nodes);
+  try {
+    boost::property_tree::read_json("nodes.json", nodes);
+  } catch (std::exception& e) {
+    printf("Unable to read nodes info. Treat all nodes equally.\n");
+  }
   std::vector<std::size_t> node_sizes(n_procs, 0);  // Memory size per node.
   std::vector<std::size_t> proc_sizes(n_procs, 0);  // Memory size (in internal units) per process.
   std::vector<std::string> node_names(n_procs);
