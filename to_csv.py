@@ -14,10 +14,10 @@ def main():
         res = res_file.read()
 
     print(','.join([
-        'n_orbs_var', 'eps_var', 'n_orbs_pt', 'eps_pt', 'energy_pt', 'energy_corr']))
+        'n_orbs_var', 'eps_var', 'n_orbs_pt', 'eps_pt', 'energy_pt', 'energy_corr', 'n_dets']))
     pattern = '\n'.join([
         'BEGIN accumulate for eps_pt:.*',
-        '.*',
+        'Number of related PT dets: (.*)',
         'n_orbs_var: (.*)',
         'eps_var: (.*)',
         'n_orbs_pt: (.*)',
@@ -26,7 +26,9 @@ def main():
         'Correlation Energy: (.*) Ha'
     ])
     for match in re.finditer(re.compile(pattern), res):
-        print(','.join(match.groups()))
+        row = [item.replace(',', '') for item in match.groups()]
+        row = row[1:] + row[:1] # Put n_dets to the end.
+        print(','.join(row))
 
 
 if __name__ == '__main__':

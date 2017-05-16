@@ -1,12 +1,9 @@
 
 """ Obtain hci results from output and save as csv."""
-import csv
-import re
 import sys
 
 import numpy as np
 import pandas as pd
-from scipy import special
 
 import regression
 
@@ -40,8 +37,8 @@ def main():
     # Obtain weight.
     data['uncert'] = 0
     initial_coef = initial_model['coef']
-    for i in range(4):
-        contribution = data[parameters[i]] * initial_coef[i]
+    for i, parameter in enumerate(parameters):
+        contribution = data[parameter] * initial_coef[i]
         data['uncert'] = data['uncert'] + contribution**2
     data['weight'] = 1.0 / data['uncert']
     data['weight'] = data['weight'] / np.linalg.norm(data['weight'].values)
