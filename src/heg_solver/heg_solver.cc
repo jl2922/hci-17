@@ -451,51 +451,90 @@ void HEGSolver::perturbation() {
 
   Time::start("accumulate contributions");
   const auto& local_map = pt_sums.get_local_map();
-  for (const double rcut_pt : rcut_pts) {
+  std::vector<std::vector<double>> energy_pts;
+  energy_pts.resize(rcut_pts.size());
+  for (auto& vec : energy_pts) vec.resize(eps_pts.size(), 0.0);
+  for (const auto& kv : local_map) {
+    const auto& key = kv.first;
+    const PTCategory category = key.second;
+    std::vector<double> partial_sums(eps_pts.size(), 0.0);
+    bool is_smallest = true;
+    for (PTCategory related_category = 0; related_category < eps_pts.size(); related_category++) {
+      const PTKey related_key(key.first, related_category);
+      if (local_map.count(related_key) == 1) {
+        // Only the smallest one submits the contribution.
+        if (related_category < category) {
+          is_smallest = false;
+          break;
+        }
+        partial_sums[related_category] = local_map.at(related_key);
+      }
+    }
+    if (is_smallest) {
+      for (PTCategory i = 1; i < eps_pts.size(); i++) partial_sums[i] += partial_sums[i - 1];
+      for (PTCategory i = 0; i < eps_pts.size(); i++) partial_sums[i] *= partial_sums[i];
+      Det det_a;
+      det_a.decode(key.first);
+      const double H_aa = hamiltonian(det_a, det_a);
+      const double factor = 1.0 / (energy_var - H_aa);
+      std::size_t n_orbs_used = Det::get_n_orbs_used(key.first);
+      for (std::size_t i = 0; i < n_orbs_pts.size(); i++) {
+        if (n_orbs_used > n_orbs_pts[i]) continue;
+        for (std::size_t j = 0; j < eps_pts.size(); j++) {
+          if (partial_sums[j] == 0.0) continue;
+          energy_pts[i][j] += partial_sums[j] * factor;
+        }
+      }
+    }
+  }
+  for (std::size_t i = 0; i < rcut_pts.size(); i++) {
+    const double rcut_pt = rcut_pts[i];
     std::size_t n_orbs_pt = KPointsUtil::get_n_k_points(rcut_pt) * 2;
     std::string n_orbs_pt_event = "accumulate for n_orbs_pt: " + std::to_string(n_orbs_pt);
     Time::start(n_orbs_pt_event);
-    for (const double eps_pt : eps_pts) {
+    for (std::size_t j = 0; j < eps_pts.size(); j++) {
+      const double eps_pt = eps_pts[j];
       std::string eps_pt_event = str(boost::format("accumulate for eps_pt: %.4g") % eps_pt);
       Time::start(eps_pt_event);
-      const auto& related_categories = get_related_pt_categories(eps_pt);
-      energy_pt = 0.0;
-      BigUnsignedInt n_pt_dets = 0;
-      for (const auto& kv : local_map) {
-        const auto& key = kv.first;
-        const PTCategory category = key.second;
-        if (std::find(related_categories.begin(), related_categories.end(), category) ==
-            related_categories.end()) {
-          continue;
-        }
-        if (Det::get_n_orbs_used(key.first) > n_orbs_pt) continue;
-        bool is_smallest = true;
-        double partial_sum = 0.0;
-        for (const auto related_category : related_categories) {
-          const PTKey related_key(key.first, related_category);
-          if (local_map.count(related_key) == 1) {
-            // Only the smallest one submits the contribution.
-            if (related_category < category) {
-              is_smallest = false;
-              break;
-            }
-            partial_sum += local_map.at(related_key);
-          }
-        }
-        if (is_smallest) {
-          Det det_a;
-          det_a.decode(key.first);
-          const double H_aa = hamiltonian(det_a, det_a);
-          energy_pt += pow(partial_sum, 2) / (energy_var - H_aa);
-          n_pt_dets++;
-        }
-      }  // local_map loop.
-      Parallel::reduce_to_sum(n_pt_dets);  // DEBUG.
+      // const auto& related_categories = get_related_pt_categories(eps_pt);
+      // energy_pt = 0.0;
+      // BigUnsignedInt n_pt_dets = 0;
+      // for (const auto& kv : local_map) {
+      //   const auto& key = kv.first;
+      //   const PTCategory category = key.second;
+      //   if (std::find(related_categories.begin(), related_categories.end(), category) ==
+      //       related_categories.end()) {
+      //     continue;
+      //   }
+      //   if (Det::get_n_orbs_used(key.first) > n_orbs_pt) continue;
+      //   bool is_smallest = true;
+      //   double partial_sum = 0.0;
+      //   for (const auto related_category : related_categories) {
+      //     const PTKey related_key(key.first, related_category);
+      //     if (local_map.count(related_key) == 1) {
+      //       // Only the smallest one submits the contribution.
+      //       if (related_category < category) {
+      //         is_smallest = false;
+      //         break;
+      //       }
+      //       partial_sum += local_map.at(related_key);
+      //     }
+      //   }
+      //   if (is_smallest) {
+      //     Det det_a;
+      //     det_a.decode(key.first);
+      //     const double H_aa = hamiltonian(det_a, det_a);
+      //     energy_pt += pow(partial_sum, 2) / (energy_var - H_aa);
+      //     n_pt_dets++;
+      //   }
+      // }  // local_map loop.
+      // Parallel::reduce_to_sum(n_pt_dets);  // DEBUG.
+      energy_pt = energy_pts[i][j];
       Parallel::reduce_to_sum(energy_pt);
       const double correlation_energy = energy_var + energy_pt - energy_hf;
       std::size_t n_orbs_var = KPointsUtil::get_n_k_points(rcut_var) * 2;
       if (Parallel::get_id() == 0) {
-        printf("Number of related PT dets: %'llu\n", n_pt_dets);
+        // printf("Number of related PT dets: %'llu\n", n_pt_dets);
         printf("n_orbs_var: %d\n", static_cast<int>(n_orbs_var));
         printf("eps_var: %#.4g\n", eps_var);
         printf("n_orbs_pt: %d\n", static_cast<int>(n_orbs_pt));
