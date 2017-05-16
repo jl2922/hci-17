@@ -16,11 +16,6 @@ class Det {
     return dn.get_orb(orb_id - dn_offset);
   }
 
-  Orbital get_n_orbs_used() const {
-    Orbital highest_orb = std::max(up.get_highest_orb(), dn.get_highest_orb());
-    return (highest_orb + 1) * 2;
-  }
-
   static Orbital get_n_orbs_used(const OrbitalsPair& pair) {
     Orbital highest_orb = std::max(pair.first.back(), pair.second.back());
     return (highest_orb + 1) * 2;

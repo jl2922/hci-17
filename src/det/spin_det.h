@@ -22,8 +22,6 @@ class SpinDet {
 
   const Orbitals get_elec_orbs() const { return elecs; }
 
-  Orbital get_highest_orb() const { return elecs.back(); }
-
   const Orbitals encode() const { return elecs; }
 
   void decode(const Orbitals& elecs) { this->elecs = elecs; }
