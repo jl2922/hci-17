@@ -107,7 +107,7 @@ class BigUnorderedMap {
 
 template <class K, class V, class H>
 BigUnorderedMap<K, V, H>::BigUnorderedMap(const std::pair<K, V>& skeleton) {
-  const std::size_t TOTAL_BUF_SIZE = 2000;
+  const std::size_t TOTAL_BUF_SIZE = 10000;
   const std::size_t MIN_BUF_SIZE = 100;
   proc_id = world.rank();
   n_procs = world.size();
@@ -158,7 +158,7 @@ void BigUnorderedMap<K, V, H>::set_proc_buckets() {
   try {
     boost::property_tree::read_json("nodes.json", nodes);
   } catch (std::exception& e) {
-    printf("Unable to read nodes info. Treat all nodes equally.\n");
+    if (proc_id == 0) printf("Unable to read nodes info. Treat all nodes equally.\n");
   }
   std::vector<std::size_t> node_sizes(n_procs, 0);  // Memory size per node.
   std::vector<std::size_t> proc_sizes(n_procs, 0);  // Memory size (in internal units) per process.
