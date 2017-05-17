@@ -29,7 +29,7 @@ class BigUnorderedMap {
 
   std::unordered_map<K, V, H>& get_local_map() { return local_map; }
 
-  void async_inc(const K& k, const V& v) { local_map[k] += v; }
+  void async_inc(const K& k, const V v) { local_map[k] += v; }
 
   std::size_t get_target(const K&) { return 0; }
 
@@ -53,7 +53,7 @@ class BigUnorderedMap {
 
   const std::unordered_map<K, V, H>& get_local_map() { return local_map; }
 
-  void async_inc(const K&, const V&);
+  void async_inc(const K&, const V);
 
   std::size_t get_target(const K&);
 
@@ -223,7 +223,7 @@ std::size_t BigUnorderedMap<K, V, H>::get_target(const K& key) {
 }
 
 template <class K, class V, class H>
-void BigUnorderedMap<K, V, H>::async_inc(const K& key, const V& value) {
+void BigUnorderedMap<K, V, H>::async_inc(const K& key, const V value) {
   const std::size_t target = get_target(key);
 
   // Process locally.

@@ -454,10 +454,11 @@ void HEGSolver::perturbation() {
   std::vector<std::vector<double>> energy_pts;
   energy_pts.resize(rcut_pts.size());
   for (auto& vec : energy_pts) vec.resize(eps_pts.size(), 0.0);
+  std::vector<double> partial_sums(eps_pts.size(), 0.0);
   for (const auto& kv : local_map) {
     const auto& key = kv.first;
     const PTCategory category = key.second;
-    std::vector<double> partial_sums(eps_pts.size(), 0.0);
+    partial_sums.assign(eps_pts.size(), 0.0);
     bool is_smallest = true;
     for (PTCategory related_category = 0; related_category < eps_pts.size(); related_category++) {
       const PTKey related_key(key.first, related_category);
