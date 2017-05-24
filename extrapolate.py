@@ -1,15 +1,49 @@
-
 """ Obtain hci results from output and save as csv."""
 import sys
 
 import numpy as np
 import pandas as pd
-
-import regression
+import statsmodels.api as sm
 
 np.set_printoptions(precision=12)
 
-POLYNOMIAL_ORDER = 2
+
+def printCorrelationEnergy(statsResult):
+    coefs = statsResult.params.values
+    stdevs = statsResult.bse
+    print('Correlation Energy: ' + str(coefs[0]) + ' +- ' + str(stdevs[0]))
+
+
+def BEWRegression(X, y):
+    augX = sm.add_constant(X)
+
+    # Backward elimination.
+    print()
+    print('*' * 80)
+    print('Backward elimination:')
+    while True:
+        results = sm.OLS(y, augX).fit()
+        print()
+        # print(results.summary())
+        printCorrelationEnergy(results)
+        intercept = results.params.values[0]
+        maxPIndex = np.argmax(results.pvalues)
+        maxP = results.pvalues[maxPIndex]
+
+        if maxP < 0.01:
+            break
+        print('Eliminate: ' + maxPIndex)
+        print('P > |t|: ' + str(maxP))
+        augX.drop(maxPIndex, axis=1, inplace=True)
+
+    # Weighted OLS
+    print('\n[FINAL Weighted OLS]')
+    variance = np.square(
+        np.dot(augX, np.abs(results.params.values)) + intercept)
+    results = sm.WLS(y, augX, weights=1.0 / variance).fit()
+    print(results.summary())
+    printCorrelationEnergy(results)
+
 
 def main():
     """main function"""
@@ -18,55 +52,41 @@ def main():
         raise SyntaxError("Usage: extrapolate.py [res_file]")
 
     parameters = ['n_orbs_var_inv', 'eps_var', 'n_orbs_pt_inv', 'eps_pt']
+    selectedParameters = parameters[:]
 
-    # Estimate intercept.
+    # Read raw data.
     data = pd.read_csv(sys.argv[1])
+
+    # Add inverse terms.
     for parameter in ['n_orbs_var', 'n_orbs_pt']:
         data[parameter + '_inv'] = 1.0 / data[parameter]
-    if POLYNOMIAL_ORDER == 1:
-        initial_model = regression.linear_regression(
-            data[parameters].values, data['energy_corr'].values
-        )
-    else:
-        initial_model = regression.quadratic_regression(
-            data[parameters].values, data['energy_corr'].values
-        )
-    initial_intercept = initial_model['intercept']
-    print('Intercept estimation: ' + str(initial_intercept))
 
-    # Obtain weight.
-    data['uncert'] = 0
-    initial_coef = initial_model['coef']
+    # Add cross terms.
+    for i in range(len(parameters)):
+        for j in range(i, len(parameters)):
+            column = parameters[i] + ' * ' + parameters[j]
+            selectedParameters.append(column)
+            data[column] = data[parameters[i]] * data[parameters[j]]
+
+    # Estimate intercept.
+    X = data[selectedParameters]
+    y = data['energy_corr']
+
+    BEWRegression(X, y)
+
     for i, parameter in enumerate(parameters):
-        contribution = data[parameter] * initial_coef[i]
-        data['uncert'] = data['uncert'] + contribution**2
-    data['weight'] = 1.0 / data['uncert']
-    data['weight'] = data['weight'] / np.linalg.norm(data['weight'].values)
+        minValue = X.min()[i]
+        keep = X[parameter] != minValue
+        X = X[keep]
+        y = y[keep]
+    BEWRegression(X, y)
 
-    # Weighted regression.
-    if POLYNOMIAL_ORDER == 1:
-        final_model = regression.linear_regression(
-            data[parameters].values,
-            data['energy_corr'].values,
-            data['weight'].values
-        )
-    else:
-        final_model = regression.quadratic_regression(
-            data[parameters].values,
-            data['energy_corr'].values,
-            data['weight'].values
-        )
-
-    final_intercept = final_model['intercept']
-    final_stdev = final_model['stdev']
-
-    print('Intercept: ' + str(final_intercept) + ' +- ' + str(final_stdev[-1]))
-    print('coef, stdev, prob_t')
-    print(np.hstack((
-        np.append(final_model['coef'], final_intercept).reshape(-1, 1),
-        final_model['stdev'].reshape(-1, 1),
-        final_model['prob_t'].reshape(-1, 1)
-    )))
+    for i, parameter in enumerate(parameters):
+        minValue = X.min()[i]
+        keep = X[parameter] != minValue
+        X = X[keep]
+        y = y[keep]
+    BEWRegression(X, y)
 
 
 if __name__ == '__main__':
