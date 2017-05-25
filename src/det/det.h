@@ -16,9 +16,15 @@ class Det {
     return dn.get_orb(orb_id - dn_offset);
   }
 
-  static Orbital get_n_orbs_used(const OrbitalsPair& pair) {
-    Orbital highest_orb = std::max(pair.first.back(), pair.second.back());
-    return (highest_orb + 1) * 2;
+  static Orbital get_n_orbs_used(
+      const OrbitalsPair& pair,
+      const SpinDet::EncodeScheme scheme = SpinDet::EncodeScheme::VARIABLE) {
+    if (scheme != SpinDet::EncodeScheme::VARIABLE) {
+      throw std::invalid_argument("Only VARIABLE encode scheme implemented.");
+    }
+    Orbital n_orbs_used_up = pair.first.size() == 1 ? pair.first.size() : pair.first.back() + 1;
+    Orbital n_orbs_used_dn = pair.second.size() == 1 ? pair.second.size() : pair.second.back() + 1;
+    return std::max(n_orbs_used_up, n_orbs_used_dn) * 2;
   }
 
   void set_orb(const int orb_id, const int dn_offset, const bool occ) {
@@ -34,13 +40,16 @@ class Det {
     dn.from_eor(lhs.dn, rhs.dn);
   }
 
-  std::pair<Orbitals, Orbitals> encode() const {
-    return std::pair<Orbitals, Orbitals>(up.encode(), dn.encode());
+  std::pair<Orbitals, Orbitals> encode(
+      const SpinDet::EncodeScheme scheme = SpinDet::EncodeScheme::VARIABLE) const {
+    return std::pair<Orbitals, Orbitals>(up.encode(scheme), dn.encode(scheme));
   }
 
-  void decode(const std::pair<Orbitals, Orbitals>& pair) {
-    up.decode(pair.first);
-    dn.decode(pair.second);
+  void decode(
+      const std::pair<Orbitals, Orbitals>& code,
+      const SpinDet::EncodeScheme scheme = SpinDet::EncodeScheme::VARIABLE) {
+    up.decode(code.first, scheme);
+    dn.decode(code.second, scheme);
   }
 };
 

@@ -57,6 +57,8 @@ class BigUnorderedMap {
 
   std::size_t get_target(const K&);
 
+  const K get_storage_key(const K& key);
+
   void complete_async_incs();
 
   long long unsigned int size() const;
@@ -223,12 +225,17 @@ std::size_t BigUnorderedMap<K, V, H>::get_target(const K& key) {
 }
 
 template <class K, class V, class H>
+const K BigUnorderedMap<K, V, H>::get_storage_key(const K& key) {
+  return key;
+}
+
+template <class K, class V, class H>
 void BigUnorderedMap<K, V, H>::async_inc(const K& key, const V value) {
   const std::size_t target = get_target(key);
 
   // Process locally.
   if (target == proc_id) {
-    local_map[key] += value;
+    local_map[get_storage_key(key)] += value;
     send_cnts[proc_id]++;
     return;
   }
@@ -271,7 +278,7 @@ void BigUnorderedMap<K, V, H>::complete_async_inc_trunk() {
         world.recv(source, tag, buf_recv_content);
         const K& key = buf_recv.first;
         const V& value = buf_recv.second;
-        local_map[key] += value;
+        local_map[get_storage_key(key)] += value;
         recv_cnts[source]++;
         if (recv_cnts[source] == recv_trunk_totals[source]) {
           trunk_finish_cnt++;
@@ -316,7 +323,7 @@ void BigUnorderedMap<K, V, H>::complete_async_incs() {
         world.recv(source, tag, buf_recv_content);
         const K& key = buf_recv.first;
         const V& value = buf_recv.second;
-        local_map[key] += value;
+        local_map[get_storage_key(key)] += value;
         recv_cnts[source]++;
         if (recv_cnts[source] == recv_totals[source]) n_active_procs--;
         break;

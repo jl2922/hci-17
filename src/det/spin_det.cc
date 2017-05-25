@@ -53,6 +53,42 @@ void SpinDet::from_eor(const SpinDet& lhs, const SpinDet& rhs) {
   }
 }
 
+const Orbitals SpinDet::encodeVariable() const {
+  Orbitals code;
+  const std::size_t n = get_n_elecs();
+  code.push_back(n);
+  Orbital level = 0;
+  for (const Orbital orb : elecs) {
+    while (level < n && level < orb) {
+      code.push_back(level);
+      level++;
+    }
+    if (orb >= n) code.push_back(orb);
+    level = orb + 1;
+  }
+  return code;
+}
+
+void SpinDet::decodeVariable(const Orbitals& code) {
+  const std::size_t n = code[0];
+  elecs.clear();
+  elecs.reserve(n);
+  Orbital level = 0;
+  for (std::size_t i = 1; i < code.size(); i++) {
+    Orbital orb = code[i];
+    while (level < n && level < orb) {
+      elecs.push_back(level);
+      level++;
+    }
+    if (orb >= n) elecs.push_back(orb);
+    level = orb + 1;
+  }
+  while (level < n) {
+    elecs.push_back(level);
+    level++;
+  }
+}
+
 bool operator==(const SpinDet& lhs, const SpinDet& rhs) { return lhs.elecs == rhs.elecs; }
 
 std::ostream& operator<<(std::ostream& os, const SpinDet& spin_det) {

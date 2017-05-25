@@ -11,12 +11,44 @@ TEST(SpinDetTest, SetAndGetOrbitals) {
   EXPECT_EQ(spin_det.get_elec_orbs()[0], 5);
 }
 
-TEST(SpinDetTest, EncodeAndDecode) {
+TEST(SpinDetTest, EncodeAndDecodeFixed) {
   SpinDet spin_det1;
   spin_det1.set_orb(2, true);
   spin_det1.set_orb(3, true);
   SpinDet spin_det2;
-  spin_det2.decode(spin_det1.encode());
+  spin_det2.decode(spin_det1.encode(SpinDet::EncodeScheme::FIXED), SpinDet::EncodeScheme::FIXED);
+  EXPECT_TRUE(spin_det1 == spin_det2);
+}
+
+TEST(SpinDetTest, EncodeAndDecodeVariable) {
+  SpinDet spin_det1;
+  spin_det1.set_orb(2, true);
+  spin_det1.set_orb(3, true);
+  SpinDet spin_det2;
+  Orbitals code = spin_det1.encode(SpinDet::EncodeScheme::VARIABLE);
+  spin_det2.decode(code, SpinDet::EncodeScheme::VARIABLE);
+  Orbitals expected_code({2, 0, 1, 2, 3});
+  for (std::size_t i = 0; i < expected_code.size(); i++) {
+    EXPECT_EQ(code[i], expected_code[i]);
+  }
+  EXPECT_TRUE(spin_det1 == spin_det2);
+
+  spin_det1.set_orb(1, true);
+  code = spin_det1.encode(SpinDet::EncodeScheme::VARIABLE);
+  spin_det2.decode(code, SpinDet::EncodeScheme::VARIABLE);
+  expected_code = Orbitals({3, 0, 3});
+  for (std::size_t i = 0; i < expected_code.size(); i++) {
+    EXPECT_EQ(code[i], expected_code[i]);
+  }
+  EXPECT_TRUE(spin_det1 == spin_det2);
+
+  spin_det1.set_orb(0, true);
+  code = spin_det1.encode(SpinDet::EncodeScheme::VARIABLE);
+  spin_det2.decode(code, SpinDet::EncodeScheme::VARIABLE);
+  expected_code = Orbitals({4});
+  for (std::size_t i = 0; i < expected_code.size(); i++) {
+    EXPECT_EQ(code[i], expected_code[i]);
+  }
   EXPECT_TRUE(spin_det1 == spin_det2);
 }
 

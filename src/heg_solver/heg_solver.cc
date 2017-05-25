@@ -384,6 +384,16 @@ std::size_t BigUnorderedMap<PTKey, double, boost::hash<PTKey>>::get_target(const
   boost::hash<OrbitalsPair> det_code_hasher;
   return proc_map[det_code_hasher(key.first) % total_proc_buckets];
 }
+
+template <>
+const PTKey BigUnorderedMap<PTKey, double, boost::hash<PTKey>>::get_storage_key(const PTKey& key) {
+  Det det_a;
+  PTKey new_key;
+  det_a.decode(key.first, SpinDet::EncodeScheme::FIXED);
+  new_key.first = det_a.encode();  // Use the compact variable length encoding.
+  new_key.second = key.second;
+  return new_key;
+}
 #endif
 
 void HEGSolver::perturbation() {
@@ -410,7 +420,7 @@ void HEGSolver::perturbation() {
   unsigned long long n_pt_dets_estimate = estimate_n_pt_dets(eps_pt_min);
   if (Parallel::get_id() == 0) printf("Estimated PT terms: %'llu\n", n_pt_dets_estimate);
   std::pair<PTKey, double> skeleton;  // For reducing the amount of MPI data transfer.
-  skeleton.first.first = wf.get_terms().front().det.encode();
+  skeleton.first.first = wf.get_terms().front().det.encode(SpinDet::EncodeScheme::FIXED);
   BigUnorderedMap<PTKey, double, boost::hash<PTKey>> pt_sums(skeleton);
   pt_sums.reserve(n_pt_dets_estimate * 2);
   unsigned long long hash_buckets = pt_sums.bucket_count();
@@ -430,7 +440,7 @@ void HEGSolver::perturbation() {
       if (fabs(H_ai) < DBL_EPSILON) continue;
       const double partial_sum = H_ai * term.coef;
       PTCategory category = get_pt_category(fabs(partial_sum));
-      PTKey ptKey(det_a.encode(), category);
+      PTKey ptKey(det_a.encode(SpinDet::EncodeScheme::FIXED), category);
       pt_sums.async_inc(ptKey, partial_sum);
     }
     if (Parallel::get_id() == 0 && i >= n / 100 * progress) {
@@ -452,8 +462,11 @@ void HEGSolver::perturbation() {
   Time::start("accumulate contributions");
   const auto& local_map = pt_sums.get_local_map();
   std::vector<std::vector<double>> energy_pts;
+  std::vector<std::vector<unsigned long long>> n_pt_dets;
   energy_pts.resize(rcut_pts.size());
+  n_pt_dets.resize(rcut_pts.size());
   for (auto& vec : energy_pts) vec.resize(eps_pts.size(), 0.0);
+  for (auto& vec : n_pt_dets) vec.resize(eps_pts.size(), 0);
   std::vector<double> partial_sums(eps_pts.size(), 0.0);
   for (const auto& kv : local_map) {
     const auto& key = kv.first;
@@ -473,21 +486,24 @@ void HEGSolver::perturbation() {
     }
     if (is_smallest) {
       for (PTCategory i = 1; i < eps_pts.size(); i++) partial_sums[i] += partial_sums[i - 1];
-      for (PTCategory i = 0; i < eps_pts.size(); i++) partial_sums[i] *= partial_sums[i];
+      for (PTCategory i = category; i < eps_pts.size(); i++) partial_sums[i] *= partial_sums[i];
       Det det_a;
       det_a.decode(key.first);
+      // det_a.decode(key.first, SpinDet::EncodeScheme::FIXED);
       const double H_aa = hamiltonian(det_a, det_a);
       const double factor = 1.0 / (energy_var - H_aa);
       std::size_t n_orbs_used = Det::get_n_orbs_used(key.first);
       for (std::size_t i = 0; i < n_orbs_pts.size(); i++) {
         if (n_orbs_used > n_orbs_pts[i]) continue;
-        for (std::size_t j = 0; j < eps_pts.size(); j++) {
-          if (partial_sums[j] == 0.0) continue;
+        for (std::size_t j = category; j < eps_pts.size(); j++) {
+          n_pt_dets[i][j]++;
           energy_pts[i][j] += partial_sums[j] * factor;
         }
       }
     }
   }
+
+  // Output and save results.
   for (std::size_t i = 0; i < rcut_pts.size(); i++) {
     const double rcut_pt = rcut_pts[i];
     std::size_t n_orbs_pt = KPointsUtil::get_n_k_points(rcut_pt) * 2;
@@ -497,45 +513,14 @@ void HEGSolver::perturbation() {
       const double eps_pt = eps_pts[j];
       std::string eps_pt_event = str(boost::format("accumulate for eps_pt: %.4g") % eps_pt);
       Time::start(eps_pt_event);
-      // const auto& related_categories = get_related_pt_categories(eps_pt);
-      // energy_pt = 0.0;
-      // BigUnsignedInt n_pt_dets = 0;
-      // for (const auto& kv : local_map) {
-      //   const auto& key = kv.first;
-      //   const PTCategory category = key.second;
-      //   if (std::find(related_categories.begin(), related_categories.end(), category) ==
-      //       related_categories.end()) {
-      //     continue;
-      //   }
-      //   if (Det::get_n_orbs_used(key.first) > n_orbs_pt) continue;
-      //   bool is_smallest = true;
-      //   double partial_sum = 0.0;
-      //   for (const auto related_category : related_categories) {
-      //     const PTKey related_key(key.first, related_category);
-      //     if (local_map.count(related_key) == 1) {
-      //       // Only the smallest one submits the contribution.
-      //       if (related_category < category) {
-      //         is_smallest = false;
-      //         break;
-      //       }
-      //       partial_sum += local_map.at(related_key);
-      //     }
-      //   }
-      //   if (is_smallest) {
-      //     Det det_a;
-      //     det_a.decode(key.first);
-      //     const double H_aa = hamiltonian(det_a, det_a);
-      //     energy_pt += pow(partial_sum, 2) / (energy_var - H_aa);
-      //     n_pt_dets++;
-      //   }
-      // }  // local_map loop.
-      // Parallel::reduce_to_sum(n_pt_dets);  // DEBUG.
       energy_pt = energy_pts[i][j];
+      unsigned long long n_pt_dets_cur = n_pt_dets[i][j];
       Parallel::reduce_to_sum(energy_pt);
+      Parallel::reduce_to_sum(n_pt_dets_cur);
       const double correlation_energy = energy_var + energy_pt - energy_hf;
       std::size_t n_orbs_var = KPointsUtil::get_n_k_points(rcut_var) * 2;
       if (Parallel::get_id() == 0) {
-        // printf("Number of related PT dets: %'llu\n", n_pt_dets);
+        printf("Number of related PT dets: %'llu\n", n_pt_dets_cur);
         printf("n_orbs_var: %d\n", static_cast<int>(n_orbs_var));
         printf("eps_var: %#.4g\n", eps_var);
         printf("n_orbs_pt: %d\n", static_cast<int>(n_orbs_pt));
