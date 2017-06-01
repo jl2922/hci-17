@@ -40,9 +40,9 @@ TEST(DavidsonTest, HilbertSystem) {
 
   Davidson davidson(diagonal, apply_hamiltonian, N);
 
-  const std::vector<double> expectedEigenvalues(
+  const std::vector<double> expected_eigenvalues(
       {-1.00956719, -0.3518051, -0.23097854, -0.17336724, -0.13218651});
-  const std::vector<std::vector<double>> expectedEigenvectors(
+  const std::vector<std::vector<double>> expected_eigenvectors(
       {{0.99292536, 0.08026708, 0.04720676, 0.03412438, 0.02694173},
        {0.10953429, -0.90014126, -0.22310872, -0.14701356, -0.11467862},
        {0.04208261, 0.42251014, -0.54880665, -0.25894711, -0.19182954},
@@ -54,10 +54,10 @@ TEST(DavidsonTest, HilbertSystem) {
   initial_vector[0] = 1.0;
   davidson.diagonalize(initial_vector);
   const double lowest_eigenvalue = davidson.get_lowest_eigenvalue();
-  EXPECT_NEAR(lowest_eigenvalue, expectedEigenvalues[0], 1.0e-6);
+  EXPECT_NEAR(lowest_eigenvalue, expected_eigenvalues[0], 1.0e-6);
   const std::vector<double> lowest_eigenvector = davidson.get_lowest_eigenvector();
-  for (int i = 0; i < 3; i++) {
-    EXPECT_NEAR(lowest_eigenvector[i], expectedEigenvectors[0][i], 1.0e-4);
+  for (int i = 0; i < 5; i++) {
+    EXPECT_NEAR(lowest_eigenvector[i], expected_eigenvectors[0][i], 1.0e-4);
   }
 
   // Check
@@ -67,4 +67,9 @@ TEST(DavidsonTest, HilbertSystem) {
     initial_vectors[i][i] = 1.0;
   }
   davidson.diagonalize(initial_vectors, 5);
+  davidson.set_verbose(true);
+  const std::vector<double> lowest_eigenvalues = davidson.get_lowest_eigenvalues();
+  for (int i = 0; i < 5; i++) {
+    EXPECT_NEAR(lowest_eigenvalues[i], expected_eigenvalues[i], 1.0e-6);
+  }
 }

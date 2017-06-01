@@ -23,14 +23,14 @@ class SpinDet {
 
   const Orbitals encode(const EncodeScheme scheme = VARIABLE) const {
     if (scheme == FIXED) return elecs;
-    return encodeVariable();
+    return encode_variable();
   }
 
   void decode(const Orbitals& code, const EncodeScheme scheme = VARIABLE) {
     if (scheme == FIXED)
       elecs = code;
     else
-      decodeVariable(code);
+      decode_variable(code);
   }
 
   friend bool operator==(const SpinDet&, const SpinDet&);
@@ -39,9 +39,9 @@ class SpinDet {
  private:
   Orbitals elecs;
 
-  const Orbitals encodeVariable() const;
+  const Orbitals encode_variable() const;
 
-  void decodeVariable(const Orbitals& code);
+  void decode_variable(const Orbitals& code);
 };
 
 bool operator==(const SpinDet&, const SpinDet&);

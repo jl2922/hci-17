@@ -21,7 +21,8 @@ class Davidson {
 
   void diagonalize(const std::vector<double>& initial_vector);
 
-  void diagonalize(const std::vector<std::vector<double>>& initial_vector, const int n_states);
+  void diagonalize(
+      const std::vector<std::vector<double>>& initial_vector, const std::size_t n_states);
 
   double get_lowest_eigenvalue() {
     if (!diagonalized) throw std::runtime_error("Accessing eigenvalue before diagonalization.");

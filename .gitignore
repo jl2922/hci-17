@@ -18,6 +18,7 @@ Makefile.config
 bridges.sh
 .nfs*
 dft.sh
+.fuse_*
 
 # Compiled Object files
 *.slo

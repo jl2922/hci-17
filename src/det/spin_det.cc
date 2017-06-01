@@ -53,8 +53,9 @@ void SpinDet::from_eor(const SpinDet& lhs, const SpinDet& rhs) {
   }
 }
 
-const Orbitals SpinDet::encodeVariable() const {
+const Orbitals SpinDet::encode_variable() const {
   Orbitals code;
+  code.reserve(7);
   const std::size_t n = get_n_elecs();
   code.push_back(n);
   Orbital level = 0;
@@ -69,7 +70,7 @@ const Orbitals SpinDet::encodeVariable() const {
   return code;
 }
 
-void SpinDet::decodeVariable(const Orbitals& code) {
+void SpinDet::decode_variable(const Orbitals& code) {
   const std::size_t n = code[0];
   elecs.clear();
   elecs.reserve(n);
