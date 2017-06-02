@@ -1,8 +1,9 @@
-#ifndef HCI_ARRAY_MATH_H_
-#define HCI_ARRAY_MATH_H_
+#ifndef ARRAY_MATH_H_
+#define ARRAY_MATH_H_
 
 #include "std.h"
 
+// Overloads for array.
 template <class T, std::size_t N>
 std::array<T, N> operator+(const std::array<T, N> &lhs, const std::array<T, N> &rhs) {
   std::array<T, N> res;

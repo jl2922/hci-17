@@ -1,3 +1,0 @@
-CXX := mpiicpc
-CXXFLAGS := -std=c++11 -g -Wall -Wextra -O3 -I /home/junhao/eigen-3.3.3 -I /home/junhao/boost-1.63.0/include
-LDLIBS := -L /home/junhao/boost-1.63.0/lib $(LDLIBS)
