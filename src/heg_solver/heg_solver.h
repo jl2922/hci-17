@@ -9,7 +9,10 @@ typedef std::pair<KPoint, double> KPointDouble;
 
 class HEGSolver : public Solver {
  public:
-  static void run() { HEGSolver::get_instance().solve(); }
+  static void run() {
+    HEGSolver heg_solver;
+    heg_solver.solve();
+  }
 
  private:
   double k_unit;
@@ -25,16 +28,17 @@ class HEGSolver : public Solver {
       same_spin_hci_queue;  // O(k_points^2).
   std::vector<KPointDouble> opposite_spin_hci_queue;  // O(k_points).
 
+  // Controls the overall solving procedure.
   void solve() override;
 
+  // Setup basic quantities, k points, and hci queue.
   void setup(const double rcut);
 
   void generate_hci_queue(const double rcut);
 
-  static HEGSolver get_instance() {
-    static HEGSolver heg_solver;
-    return heg_solver;
-  }
+  double hamiltonian(const Det& det_pq, const Det& det_rs) const override;
+
+  std::list<Det> find_connected_dets(const Det& det, const double eps) const override;
 };
 
 #endif

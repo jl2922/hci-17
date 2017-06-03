@@ -21,10 +21,10 @@ std::vector<KPoint> KPointsUtil::generate_k_points(const double rcut) {
 
 std::size_t KPointsUtil::get_n_k_points(const double rcut) {
   std::size_t n_k_points = 0;
-  const int n_max = floor(rcut);
-  for (int i = -n_max; i <= n_max; i++) {
-    for (int j = -n_max; j <= n_max; j++) {
-      for (int k = -n_max; k <= n_max; k++) {
+  const KPointComponent n_max = floor(rcut);
+  for (KPointComponent i = -n_max; i <= n_max; i++) {
+    for (KPointComponent j = -n_max; j <= n_max; j++) {
+      for (KPointComponent k = -n_max; k <= n_max; k++) {
         if (i * i + j * j + k * k > pow(rcut, 2)) continue;
         n_k_points++;
       }

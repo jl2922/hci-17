@@ -11,6 +11,7 @@
 #include <cstddef>
 #include <cstdint>
 #include <cstdio>
+#include <forward_list>
 #include <fstream>
 #include <functional>
 #include <iostream>
