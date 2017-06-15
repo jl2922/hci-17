@@ -44,6 +44,13 @@ class Parallel {
     T t_local = t;
     boost::mpi::all_reduce(Parallel::get_instance().world, t_local, t, std::plus<T>());
   }
+
+  template <class T>
+  static void reduce_to_sum(std::vector<T>& t) {
+    std::vector<T> t_local = t;
+    boost::mpi::reduce(Parallel::get_instance().world, t_local, t, std::plus<T>(), 0);
+    boost::mpi::broadcast(Parallel::get_instance().world, t, 0);
+  }
 };
 #else
 // Non-MPI stub for debugging and memory profiling.
