@@ -52,7 +52,6 @@ def main():
         raise SyntaxError("Usage: extrapolate.py [res_file]")
 
     parameters = ['n_orbs_var_inv', 'eps_var', 'n_orbs_pt_inv', 'eps_pt']
-    selectedParameters = parameters[:]
 
     # Read raw data.
     data = pd.read_csv(sys.argv[1])
@@ -61,7 +60,13 @@ def main():
     for parameter in ['n_orbs_var', 'n_orbs_pt']:
         data[parameter + '_inv'] = 1.0 / data[parameter]
 
+    # Remove parameters not enough for extrapolation.
+    for parameter in parameters:
+        if data[parameter].value_counts().size < 3:
+            parameters.remove(parameter)
+
     # Add cross terms.
+    selectedParameters = parameters[:]
     for i in range(len(parameters)):
         for j in range(i, len(parameters)):
             column = parameters[i] + ' * ' + parameters[j]
