@@ -1,6 +1,8 @@
 #include "helper_strings.h"
 #include "gtest/gtest.h"
 
+#include "../parallel.h"
+
 TEST(HelperStringsTest, SetupAndFindConnections) {
   std::vector<Det> dets;
   Det det1, det2, det3;
@@ -19,6 +21,9 @@ TEST(HelperStringsTest, SetupAndFindConnections) {
   dets.push_back(det1);
   dets.push_back(det2);
   dets.push_back(det3);
+
+  boost::mpi::environment env;
+  Parallel::init(env);
   HelperStrings hs(dets);
   const auto& connections = hs.find_potential_connections(0);
   EXPECT_EQ(connections.size(), 2);
