@@ -81,6 +81,9 @@ void HEGSolver::setup() {
   H_unit = 1.0 / (M_PI * cell_length);
 
   k_points = KPointsUtil::generate_k_points(rcut_var);
+  if (Parallel::get_id() == 0) {
+    printf("Number of orbitals: %d\n", static_cast<int>(k_points.size() * 2));
+  }
   k_lut = KPointsUtil::generate_k_lut(k_points);
 
   Time::start("Generate HCI queue.");
