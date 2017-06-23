@@ -2,11 +2,8 @@
 
 void HelperStrings::setup_ab() {
   for (std::size_t i = 0; i < dets.size(); i++) {
-    const auto& up_elecs = dets[i].up.get_elec_orbs();
-    ab[up_elecs].first.push_back(i);
-
-    const auto& dn_elecs = dets[i].dn.get_elec_orbs();
-    ab[dn_elecs].second.push_back(i);
+    ab[dets[i].up.encode()].first.push_back(i);
+    ab[dets[i].dn.encode()].second.push_back(i);
   }
   shrink(ab);
 }
@@ -17,7 +14,7 @@ void HelperStrings::setup_ab_m1() {
     SpinDet det_up(dets[i].up);
     for (std::size_t j = 0; j < up_elecs.size(); j++) {
       det_up.set_orb(up_elecs[j], false);
-      ab_m1[det_up.get_elec_orbs()].first.push_back(i);
+      ab_m1[det_up.encode()].first.push_back(i);
       det_up.set_orb(up_elecs[j], true);
     }
 
@@ -25,7 +22,7 @@ void HelperStrings::setup_ab_m1() {
     SpinDet det_dn(dets[i].dn);
     for (std::size_t j = 0; j < dn_elecs.size(); j++) {
       det_dn.set_orb(dn_elecs[j], false);
-      ab_m1[det_dn.get_elec_orbs()].second.push_back(i);
+      ab_m1[det_dn.encode()].second.push_back(i);
       det_dn.set_orb(dn_elecs[j], true);
     }
   }
@@ -54,16 +51,16 @@ UnsignedInts HelperStrings::find_potential_connections(const std::size_t i) {
   connected[i] = true;
 
   // Two up/dn excitations.
-  if (ab.find(dn_elecs) != ab.end()) {
-    for (const std::size_t det_id : ab.find(dn_elecs)->second.second) {
+  if (ab.find(det.dn.encode()) != ab.end()) {
+    for (const std::size_t det_id : ab.find(det.dn.encode())->second.second) {
       if (!connected[det_id]) {
         connected[det_id] = true;
         connections.push_back(det_id);
       }
     }
   }
-  if (ab.find(up_elecs) != ab.end()) {
-    for (const std::size_t det_id : ab.find(up_elecs)->second.first) {
+  if (ab.find(det.up.encode()) != ab.end()) {
+    for (const std::size_t det_id : ab.find(det.up.encode())->second.first) {
       if (!connected[det_id]) {
         connected[det_id] = true;
         connections.push_back(det_id);
@@ -77,13 +74,13 @@ UnsignedInts HelperStrings::find_potential_connections(const std::size_t i) {
 
   for (std::size_t i = 0; i < up_elecs.size(); i++) {
     det_up.set_orb(up_elecs[i], false);
-    const auto& key_up = det_up.get_elec_orbs();
+    const auto& key_up = det_up.encode();
     const auto& kv_up = ab_m1.find(key_up);
     if (kv_up != ab_m1.end()) {
       for (const std::size_t det_id : kv_up->second.first) one_up[det_id] = true;
       for (std::size_t j = 0; j < dn_elecs.size(); j++) {
         det_dn.set_orb(dn_elecs[j], false);
-        const auto& key_dn = det_dn.get_elec_orbs();
+        const auto& key_dn = det_dn.encode();
         if (ab_m1.find(key_dn) != ab_m1.end()) {
           for (const std::size_t det_id : ab_m1.find(key_dn)->second.second) {
             if (one_up[det_id] && !connected[det_id]) {
