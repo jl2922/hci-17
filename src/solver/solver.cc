@@ -36,8 +36,11 @@ std::vector<double> Solver::apply_hamiltonian(
       if (i != j) res[j] += H_ij * vec[i];
     }
   }
-  // for (std::size_t i = 0; i < n; i++) Parallel::reduce_to_sum(res[i]);
+#ifdef __INTEL_COMPILER
+  for (std::size_t i = 0; i < n; i++) Parallel::reduce_to_sum(res[i]);
+#else
   Parallel::reduce_to_sum(res);
+#endif
   return res;
 }
 
