@@ -21,12 +21,19 @@ def BEWRegression(X, y):
     print()
     print('*' * 80)
     print('Backward elimination:')
+    results = sm.OLS(y, augX).fit()
+    intercept = results.params.values[0]
+    variance = np.square(
+        np.dot(augX, np.abs(results.params.values)) + intercept)
     while True:
-        results = sm.OLS(y, augX).fit()
+        # results = sm.OLS(y, augX).fit()
+        results = sm.WLS(y, augX, weights=1.0 / variance).fit()
         print()
         # print(results.summary())
         printCorrelationEnergy(results)
         intercept = results.params.values[0]
+        variance = np.square(
+            np.dot(augX, np.abs(results.params.values)) + intercept)
         maxPIndex = np.argmax(results.pvalues)
         maxP = results.pvalues[maxPIndex]
 
@@ -80,18 +87,27 @@ def main():
     BEWRegression(X, y)
 
     for i, parameter in enumerate(parameters):
-        minValue = X.min()[i]
-        keep = X[parameter] != minValue
-        X = X[keep]
-        y = y[keep]
-    BEWRegression(X, y)
+        maxValue = X.max()[i]
+        keep = X[parameter] != maxValue
+        X_rmax = X[keep]
+        y_rmax = y[keep]
+    BEWRegression(X_rmax, y_rmax)
+
+    print('=' * 80)
 
     for i, parameter in enumerate(parameters):
         minValue = X.min()[i]
         keep = X[parameter] != minValue
-        X = X[keep]
-        y = y[keep]
-    BEWRegression(X, y)
+        X_rmin = X[keep]
+        y_rmin = y[keep]
+    BEWRegression(X_rmin, y_rmin)
+
+    for i, parameter in enumerate(parameters):
+        maxValue = X_rmin.max()[i]
+        keep = X_rmin[parameter] != maxValue
+        X_rminmax = X_rmin[keep]
+        y_rminmax = y_rmin[keep]
+    BEWRegression(X_rminmax, y_rminmax)
 
 
 if __name__ == '__main__':
