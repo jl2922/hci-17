@@ -40,10 +40,6 @@ class HelperStrings {
 
   // Setup alpha-m1 and beta-m1.
   void setup_ab_m1();
-
-  // Remove helper strings that only has one index.
-  void shrink(
-      std::unordered_map<Orbitals, std::pair<UnsignedInts, UnsignedInts>, boost::hash<Orbitals>>&);
 };
 
 #endif

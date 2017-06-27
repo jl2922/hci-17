@@ -20,27 +20,26 @@ std::vector<double> Solver::apply_hamiltonian(
   std::size_t n = vec.size();
   assert(n == wf.size());
   std::vector<double> res(n, 0.0);
+  std::vector<long double> res_precise(n, 0.0);
   const auto& dets = wf.get_dets();
   for (std::size_t i = 0; i < n; i++) {
-    if (i % Parallel::get_n() != static_cast<std::size_t>(Parallel::get_id())) continue;
+    // if (i % Parallel::get_n() != static_cast<std::size_t>(Parallel::get_id())) continue;
     const Det& det_i = dets[i];
     auto connections = helper_strings.find_potential_connections(i);
-    std::sort(connections.begin(), connections.end(), [](const int a, const int b) {
-      return a > b;  // Small ones first to reduce round-off error.
-    });
     for (std::size_t j : connections) {
       if (j < i) continue;
       const Det& det_j = dets[j];
       const double H_ij = hamiltonian(det_i, det_j);
-      res[i] += H_ij * vec[j];
-      if (i != j) res[j] += H_ij * vec[i];
+      res_precise[i] += H_ij * vec[j];
+      if (i != j) res_precise[j] += H_ij * vec[i];
     }
   }
 #ifdef __INTEL_COMPILER
-  for (std::size_t i = 0; i < n; i++) Parallel::reduce_to_sum(res[i]);
+  for (std::size_t i = 0; i < n; i++) Parallel::reduce_to_sum(res_precise[i]);
 #else
-  Parallel::reduce_to_sum(res);
+  Parallel::reduce_to_sum(res_precise);
 #endif
+  for (std::size_t i = 0; i < n; i++) res[i] = static_cast<double>(res_precise[i]);
   return res;
 }
 

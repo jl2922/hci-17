@@ -1,15 +1,16 @@
 #include "helper_strings.h"
 
+#include "../parallel.h"
+
 void HelperStrings::setup_ab() {
-  for (std::size_t i = 0; i < dets.size(); i++) {
+  for (std::size_t i = Parallel::get_id(); i < dets.size(); i += Parallel::get_n()) {
     ab[dets[i].up.encode()].first.push_back(i);
     ab[dets[i].dn.encode()].second.push_back(i);
   }
-  shrink(ab);
 }
 
 void HelperStrings::setup_ab_m1() {
-  for (std::size_t i = 0; i < dets.size(); i++) {
+  for (std::size_t i = Parallel::get_id(); i < dets.size(); i += Parallel::get_n()) {
     const auto& up_elecs = dets[i].up.get_elec_orbs();
     SpinDet det_up(dets[i].up);
     for (std::size_t j = 0; j < up_elecs.size(); j++) {
@@ -26,18 +27,6 @@ void HelperStrings::setup_ab_m1() {
       det_dn.set_orb(dn_elecs[j], true);
     }
   }
-  shrink(ab_m1);
-}
-
-void HelperStrings::shrink(
-    std::unordered_map<Orbitals, std::pair<UnsignedInts, UnsignedInts>, boost::hash<Orbitals>>&
-        helper_strings) {
-  std::list<Orbitals> remove_list;
-  for (auto& kv : helper_strings) {
-    auto& value = kv.second;
-    if (value.first.size() <= 1 && value.second.size() <= 1) remove_list.push_back(kv.first);
-  }
-  for (const auto& det : remove_list) helper_strings.erase(det);
 }
 
 UnsignedInts HelperStrings::find_potential_connections(const std::size_t i) {
@@ -45,10 +34,6 @@ UnsignedInts HelperStrings::find_potential_connections(const std::size_t i) {
   const Det& det = dets[i];
   const auto& up_elecs = det.up.get_elec_orbs();
   const auto& dn_elecs = det.dn.get_elec_orbs();
-
-  // Add self.
-  connections.push_back(i);
-  connected[i] = true;
 
   // Two up/dn excitations.
   if (ab.find(det.dn.encode()) != ab.end()) {
