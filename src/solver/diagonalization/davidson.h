@@ -19,10 +19,9 @@ class Davidson {
 
   void set_verbose(const bool verbose) { this->verbose = verbose; }
 
-  void diagonalize(const std::vector<double>& initial_vector);
+  void diagonalize(const std::vector<double>& initial_vector, std::size_t max_iterations = 5);
 
-  void diagonalize(
-      const std::vector<std::vector<double>>& initial_vector, const std::size_t n_states);
+  void diagonalize(const std::vector<std::vector<double>>& initial_vector);
 
   double get_lowest_eigenvalue() {
     if (!diagonalized) throw std::runtime_error("Accessing eigenvalue before diagonalization.");

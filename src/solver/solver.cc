@@ -74,13 +74,11 @@ void Solver::variation() {
       }
     }
     for (const auto& det : new_dets) wf.append_term(det, 0.0);
-    new_dets.clear();
     if (Parallel::get_id() == 0) {
       printf("Number of dets: %'llu\n", static_cast<BigUnsignedInt>(var_dets_set.size()));
     }
-    energy_var_new = diagonalize();
+    energy_var_new = diagonalize(new_dets.size() > 0 ? 5 : 10);
     if (Parallel::get_id() == 0) printf("Variation energy: %#.15g Ha\n", energy_var_new);
-
     Time::end("Variation Iteration: " + std::to_string(iteration));
     iteration++;
   }
@@ -89,7 +87,7 @@ void Solver::variation() {
   if (Parallel::get_id() == 0) printf("Final variation energy: %#.15g Ha\n", energy_var);
 }
 
-double Solver::diagonalize() {
+double Solver::diagonalize(std::size_t max_iterations) {
   std::vector<double> diagonal;
   std::vector<double> initial_vector;
   diagonal.reserve(wf.size());
@@ -105,7 +103,7 @@ double Solver::diagonalize() {
 
   Davidson davidson(diagonal, apply_hamiltonian_func, wf.size());
   if (Parallel::get_id() == 0) davidson.set_verbose(true);
-  davidson.diagonalize(initial_vector);
+  davidson.diagonalize(initial_vector, max_iterations);
 
   double energy_var = davidson.get_lowest_eigenvalue();
   const auto& coefs_new = davidson.get_lowest_eigenvector();

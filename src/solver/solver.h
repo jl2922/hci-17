@@ -39,7 +39,7 @@ class Solver {
 
   void variation();
 
-  double diagonalize();
+  double diagonalize(std::size_t);
 
   virtual void perturbation() {}
 

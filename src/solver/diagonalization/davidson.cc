@@ -1,8 +1,7 @@
 #include "davidson.h"
 
-void Davidson::diagonalize(const std::vector<double>& initial_vector) {
+void Davidson::diagonalize(const std::vector<double>& initial_vector, std::size_t max_iterations) {
   const double TOLERANCE = 2.0e-7;
-  const std::size_t MAX_ITERATIONS = 5;  // Good choice for direct evaluation of the hamiltonian.
 
   if (n == 1) {
     lowest_eigenvalue = diagonal[0];
@@ -11,7 +10,7 @@ void Davidson::diagonalize(const std::vector<double>& initial_vector) {
     return;
   }
 
-  const std::size_t iterations = std::min(n, MAX_ITERATIONS);
+  const std::size_t iterations = std::min(n, max_iterations);
   double lowest_eigenvalue = 0.0;
   double lowest_eigenvalue_prev = 0.0;
   double residual_norm = 0.0;
@@ -119,8 +118,8 @@ void Davidson::diagonalize(const std::vector<double>& initial_vector) {
   diagonalized = true;
 }
 
-void Davidson::diagonalize(
-    const std::vector<std::vector<double>>& initial_vectors, const std::size_t n_states) {
+void Davidson::diagonalize(const std::vector<std::vector<double>>& initial_vectors) {
+  const std::size_t n_states = initial_vectors.size();
   const double TOLERANCE = 2.0e-7;
   const std::size_t MAX_ITERATIONS = 5;  // Good choice for direct evaluation of the hamiltonian.
 
