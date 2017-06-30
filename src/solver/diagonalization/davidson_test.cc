@@ -66,7 +66,7 @@ TEST(DavidsonTest, HilbertSystem) {
     initial_vectors[i].assign(N, 0.0);
     initial_vectors[i][i] = 1.0;
   }
-  davidson.diagonalize(initial_vectors, 5);
+  davidson.diagonalize(initial_vectors);
   davidson.set_verbose(true);
   const std::vector<double> lowest_eigenvalues = davidson.get_lowest_eigenvalues();
   for (int i = 0; i < 5; i++) {

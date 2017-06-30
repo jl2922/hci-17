@@ -1,0 +1,976 @@
+Thu Jun 29 11:33:39 EDT 2017
+node2003.physics.cornell.edu
+{
+  "type": "heg",
+  "n_up": 7,
+  "n_dn": 7,
+  "r_s": 0.5,
+  "rcut_vars": [2.5, 3.0, 3.5, 4.0, 4.5],
+  "eps_vars": [0.002, 0.001, 0.0005, 0.0002, 0.0001],
+  "rcut_pts": [4.5, 5.0, 5.5, 6.0, 6.5],
+  "eps_pts": [0.00002, 0.00001, 0.000005, 0.000002, 0.000001]
+}
+Heat-Bath Configuration Interaction Solver
+Proc 60 running on node2008.physics.cornell.edu
+Proc 12 running on node2004.physics.cornell.edu
+Proc 61 running on node2008.physics.cornell.edu
+Proc 13 running on node2004.physics.cornell.edu
+Proc 68 running on node2008.physics.cornell.edu
+Proc 17 running on node2004.physics.cornell.edu
+Proc 69 running on node2008.physics.cornell.edu
+Proc 21 running on node2004.physics.cornell.edu
+Proc 62 running on node2008.physics.cornell.edu
+Proc 22 running on node2004.physics.cornell.edu
+Proc 63 running on node2008.physics.cornell.edu
+Proc 14 running on node2004.physics.cornell.edu
+
+BEGIN HCI [0.015/0.000]
+Proc 64 running on node2008.physics.cornell.edu
+Proc 15 running on node2004.physics.cornell.edu
+Proc 73 running on node2009.physics.cornell.edu
+Proc 65 running on node2008.physics.cornell.edu
+Proc 16 running on node2004.physics.cornell.edu
+Proc 75 running on node2009.physics.cornell.edu
+Proc 66 running on node2008.physics.cornell.edu
+Proc 24 running on node2005.physics.cornell.edu
+Proc 18 running on node2004.physics.cornell.edu
+Proc 2 running on node2003.physics.cornell.edu
+Proc 48 running on node2007.physics.cornell.edu
+Proc 78 running on node2009.physics.cornell.edu
+Proc 67 running on node2008.physics.cornell.edu
+Proc 25 running on node2005.physics.cornell.edu
+Proc 19 running on node2004.physics.cornell.edu
+Proc 8 running on node2003.physics.cornell.edu
+Proc 51 running on node2007.physics.cornell.edu
+Proc 36 running on node2006.physics.cornell.edu
+Proc 79 running on node2009.physics.cornell.edu
+Proc 70 running on node2008.physics.cornell.edu
+Proc 26 running on node2005.physics.cornell.edu
+Proc 20 running on node2004.physics.cornell.edu
+Proc 9 running on node2003.physics.cornell.edu
+Proc 53 running on node2007.physics.cornell.edu
+Proc 37 running on node2006.physics.cornell.edu
+Proc 72 running on node2009.physics.cornell.edu
+Proc 84 running on node2010.physics.cornell.edu
+Proc 71 running on node2008.physics.cornell.edu
+Proc 27 running on node2005.physics.cornell.edu
+Proc 23 running on node2004.physics.cornell.edu
+Proc 10 running on node2003.physics.cornell.edu
+Proc 54 running on node2007.physics.cornell.edu
+Proc 44 running on node2006.physics.cornell.edu
+Proc 76 running on node2009.physics.cornell.edu
+Proc 85 running on node2010.physics.cornell.edu
+Proc 28 running on node2005.physics.cornell.edu
+Proc 11 running on node2003.physics.cornell.edu
+Proc 55 running on node2007.physics.cornell.edu
+Proc 38 running on node2006.physics.cornell.edu
+Proc 77 running on node2009.physics.cornell.edu
+Proc 86 running on node2010.physics.cornell.edu
+Proc 29 running on node2005.physics.cornell.edu
+Proc 0 running on node2003.physics.cornell.edu
+Proc 56 running on node2007.physics.cornell.edu
+Proc 39 running on node2006.physics.cornell.edu
+Proc 80 running on node2009.physics.cornell.edu
+Proc 87 running on node2010.physics.cornell.edu
+Proc 30 running on node2005.physics.cornell.edu
+Proc 1 running on node2003.physics.cornell.edu
+Proc 49 running on node2007.physics.cornell.edu
+Proc 40 running on node2006.physics.cornell.edu
+Proc 81 running on node2009.physics.cornell.edu
+Proc 88 running on node2010.physics.cornell.edu
+Proc 31 running on node2005.physics.cornell.edu
+Proc 3 running on node2003.physics.cornell.edu
+Proc 50 running on node2007.physics.cornell.edu
+Proc 41 running on node2006.physics.cornell.edu
+Proc 82 running on node2009.physics.cornell.edu
+Proc 89 running on node2010.physics.cornell.edu
+Proc 32 running on node2005.physics.cornell.edu
+Proc 5 running on node2003.physics.cornell.edu
+Proc 52 running on node2007.physics.cornell.edu
+Proc 42 running on node2006.physics.cornell.edu
+Proc 83 running on node2009.physics.cornell.edu
+Proc 90 running on node2010.physics.cornell.edu
+Proc 33 running on node2005.physics.cornell.edu
+Proc 4 running on node2003.physics.cornell.edu
+Proc 57 running on node2007.physics.cornell.edu
+Proc 43 running on node2006.physics.cornell.edu
+Proc 74 running on node2009.physics.cornell.edu
+Proc 91 running on node2010.physics.cornell.edu
+Proc 34 running on node2005.physics.cornell.edu
+Proc 6 running on node2003.physics.cornell.edu
+Proc 58 running on node2007.physics.cornell.edu
+Proc 45 running on node2006.physics.cornell.edu
+Proc 92 running on node2010.physics.cornell.edu
+Proc 35 running on node2005.physics.cornell.edu
+Proc 7 running on node2003.physics.cornell.edu
+Proc 59 running on node2007.physics.cornell.edu
+Proc 46 running on node2006.physics.cornell.edu
+Proc 93 running on node2010.physics.cornell.edu
+Proc 47 running on node2006.physics.cornell.edu
+Proc 94 running on node2010.physics.cornell.edu
+Proc 95 running on node2010.physics.cornell.edu
+
+BEGIN variation stage [0.016/0.000]
+
+1. BEGIN variation with rcut_var: 2.500 [0.016/0.000]
+Number of orbitals: 162
+
+1.1. BEGIN Generate HCI queue. [0.016/0.000]
+1.1. END Generate HCI queue. [0.029/0.012] 
+
+1.2. BEGIN variation with eps_var: 0.002000 [0.029/0.000]
+HF energy: 58.5926749682501 Ha
+
+1.2.1. BEGIN Variation Iteration: 0 [0.038/0.000]
+Number of dets: 3,045
+Davidson Iteration #1. Eigenvalue: 58.5926749682501
+Davidson Iteration #2. Eigenvalue: 58.0611767781173
+Davidson Iteration #3. Eigenvalue: 58.0599085913586
+Davidson Iteration #4. Eigenvalue: 58.0582638699927
+Variation energy: 58.0582638609285 Ha
+1.2.1. END Variation Iteration: 0 [0.346/0.308] 
+
+1.2.2. BEGIN Variation Iteration: 1 [0.347/0.000]
+Number of dets: 10,257
+Davidson Iteration #1. Eigenvalue: 58.0582638708375
+Davidson Iteration #2. Eigenvalue: 58.0530768024032
+Davidson Iteration #3. Eigenvalue: 58.0530285710178
+Davidson Iteration #4. Eigenvalue: 58.0529739518982
+Davidson Iteration #5. Eigenvalue: 58.0529732689916
+Variation energy: 58.0529732689916 Ha
+1.2.2. END Variation Iteration: 1 [1.452/1.105] 
+
+1.2.3. BEGIN Variation Iteration: 2 [1.453/0.000]
+Number of dets: 11,481
+Davidson Iteration #1. Eigenvalue: 58.0529739990098
+Davidson Iteration #2. Eigenvalue: 58.0524068690833
+Davidson Iteration #3. Eigenvalue: 58.0524063710242
+Davidson Iteration #4. Eigenvalue: 58.0524031468453
+Variation energy: 58.0524031291372 Ha
+1.2.3. END Variation Iteration: 2 [2.700/1.247] 
+
+1.2.4. BEGIN Variation Iteration: 3 [2.701/0.000]
+Number of dets: 11,481
+Davidson Iteration #1. Eigenvalue: 58.0524031473409
+Davidson Iteration #2. Eigenvalue: 58.0524031037186
+Variation energy: 58.0524031035518 Ha
+1.2.4. END Variation Iteration: 3 [3.464/0.763] 
+Final variation energy: 58.0524031035518 Ha
+Variation result saved to: var_0.00200_2.500.txt
+1.2. END variation with eps_var: 0.002000 [3.559/3.530] 
+
+1.3. BEGIN variation with eps_var: 0.001000 [3.559/0.000]
+
+1.3.1. BEGIN Variation Iteration: 0 [3.577/0.000]
+Number of dets: 57,315
+Davidson Iteration #1. Eigenvalue: 58.0524031037215
+Davidson Iteration #2. Eigenvalue: 58.0458374176400
+Davidson Iteration #3. Eigenvalue: 58.0457607921234
+Davidson Iteration #4. Eigenvalue: 58.0456831081524
+Davidson Iteration #5. Eigenvalue: 58.0456827276856
+Variation energy: 58.0456827276856 Ha
+1.3.1. END Variation Iteration: 0 [10.520/6.943] 
+
+1.3.2. BEGIN Variation Iteration: 1 [10.528/0.000]
+Number of dets: 57,315
+Davidson Iteration #1. Eigenvalue: 58.0456831164520
+Davidson Iteration #2. Eigenvalue: 58.0456821324102
+Variation energy: 58.0456821177156 Ha
+1.3.2. END Variation Iteration: 1 [14.926/4.398] 
+Final variation energy: 58.0456821177156 Ha
+Variation result saved to: var_0.00100_2.500.txt
+1.3. END variation with eps_var: 0.001000 [15.403/11.844] 
+
+1.4. BEGIN variation with eps_var: 0.0005000 [15.405/0.000]
+
+1.4.1. BEGIN Variation Iteration: 0 [15.479/0.000]
+Number of dets: 183,294
+Davidson Iteration #1. Eigenvalue: 58.0456821324424
+Davidson Iteration #2. Eigenvalue: 58.0424993786125
+Davidson Iteration #3. Eigenvalue: 58.0424826175816
+Davidson Iteration #4. Eigenvalue: 58.0424677869971
+Davidson Iteration #5. Eigenvalue: 58.0424672374139
+Variation energy: 58.0424672374139 Ha
+1.4.1. END Variation Iteration: 0 [39.570/24.091] 
+
+1.4.2. BEGIN Variation Iteration: 1 [39.605/0.000]
+Number of dets: 183,294
+Davidson Iteration #1. Eigenvalue: 58.0424678193204
+Davidson Iteration #2. Eigenvalue: 58.0424670576105
+Variation energy: 58.0424670389389 Ha
+1.4.2. END Variation Iteration: 1 [55.084/15.478] 
+Final variation energy: 58.0424670389389 Ha
+Variation result saved to: var_0.00050_2.500.txt
+1.4. END variation with eps_var: 0.0005000 [56.610/41.206] 
+
+1.5. BEGIN variation with eps_var: 0.0002000 [56.615/0.000]
+
+1.5.1. BEGIN Variation Iteration: 0 [56.910/0.000]
+Number of dets: 627,876
+Davidson Iteration #1. Eigenvalue: 58.0424670577248
+Davidson Iteration #2. Eigenvalue: 58.0404486747526
+Davidson Iteration #3. Eigenvalue: 58.0404421972499
+Davidson Iteration #4. Eigenvalue: 58.0404355966511
+Variation energy: 58.0404353988728 Ha
+1.5.1. END Variation Iteration: 0 [149.392/92.482] 
+
+1.5.2. BEGIN Variation Iteration: 1 [149.569/0.000]
+Number of dets: 627,876
+Davidson Iteration #1. Eigenvalue: 58.0404356018957
+Davidson Iteration #2. Eigenvalue: 58.0404352700511
+Variation energy: 58.0404352619937 Ha
+1.5.2. END Variation Iteration: 1 [209.965/60.396] 
+Final variation energy: 58.0404352619937 Ha
+Variation result saved to: var_0.00020_2.500.txt
+1.5. END variation with eps_var: 0.0002000 [215.146/158.531] 
+
+1.6. BEGIN variation with eps_var: 0.0001000 [215.152/0.000]
+
+1.6.1. BEGIN Variation Iteration: 0 [216.080/0.000]
+Number of dets: 1,080,426
+Davidson Iteration #1. Eigenvalue: 58.0404352700777
+Davidson Iteration #2. Eigenvalue: 58.0400530992445
+Variation energy: 58.0400529257343 Ha
+1.6.1. END Variation Iteration: 0 [324.773/108.694] 
+
+1.6.2. BEGIN Variation Iteration: 1 [324.923/0.000]
+Number of dets: 1,080,426
+Davidson Iteration #1. Eigenvalue: 58.0400530996800
+Davidson Iteration #2. Eigenvalue: 58.0400523392751
+Variation energy: 58.0400522627827 Ha
+1.6.2. END Variation Iteration: 1 [438.030/113.106] 
+Final variation energy: 58.0400522627827 Ha
+Variation result saved to: var_0.00010_2.500.txt
+1.6. END variation with eps_var: 0.0001000 [447.040/231.889] 
+1. END variation with rcut_var: 2.500 [447.040/447.024] 
+
+2. BEGIN variation with rcut_var: 3.000 [447.056/0.000]
+Number of orbitals: 246
+
+2.1. BEGIN Generate HCI queue. [447.190/0.000]
+2.1. END Generate HCI queue. [447.247/0.057] 
+
+2.2. BEGIN variation with eps_var: 0.002000 [447.603/0.000]
+HF energy: 58.5926749682501 Ha
+
+2.2.1. BEGIN Variation Iteration: 0 [448.085/0.000]
+Number of dets: 5,229
+Davidson Iteration #1. Eigenvalue: 58.5926749682501
+Davidson Iteration #2. Eigenvalue: 58.0469335266019
+Davidson Iteration #3. Eigenvalue: 58.0456090103347
+Davidson Iteration #4. Eigenvalue: 58.0440158143170
+Variation energy: 58.0440158129605 Ha
+2.2.1. END Variation Iteration: 0 [449.783/1.697] 
+
+2.2.2. BEGIN Variation Iteration: 1 [449.785/0.000]
+Number of dets: 12,441
+Davidson Iteration #1. Eigenvalue: 58.0440158144556
+Davidson Iteration #2. Eigenvalue: 58.0388639234408
+Davidson Iteration #3. Eigenvalue: 58.0388176864442
+Davidson Iteration #4. Eigenvalue: 58.0387618985732
+Davidson Iteration #5. Eigenvalue: 58.0387612146026
+Variation energy: 58.0387612146026 Ha
+2.2.2. END Variation Iteration: 1 [451.124/1.339] 
+
+2.2.3. BEGIN Variation Iteration: 2 [451.127/0.000]
+Number of dets: 13,665
+Davidson Iteration #1. Eigenvalue: 58.0387619515063
+Davidson Iteration #2. Eigenvalue: 58.0381975715458
+Davidson Iteration #3. Eigenvalue: 58.0381971132215
+Davidson Iteration #4. Eigenvalue: 58.0381938860929
+Variation energy: 58.0381938685317 Ha
+2.2.3. END Variation Iteration: 2 [452.637/1.511] 
+
+2.2.4. BEGIN Variation Iteration: 3 [452.638/0.000]
+Number of dets: 13,665
+Davidson Iteration #1. Eigenvalue: 58.0381938866166
+Davidson Iteration #2. Eigenvalue: 58.0381938430174
+Variation energy: 58.0381938428862 Ha
+2.2.4. END Variation Iteration: 3 [453.578/0.940] 
+Final variation energy: 58.0381938428862 Ha
+Variation result saved to: var_0.00200_3.000.txt
+2.2. END variation with eps_var: 0.002000 [453.690/6.086] 
+
+2.3. BEGIN variation with eps_var: 0.001000 [453.690/0.000]
+
+2.3.1. BEGIN Variation Iteration: 0 [453.742/0.000]
+Number of dets: 60,435
+Davidson Iteration #1. Eigenvalue: 58.0381938430186
+Davidson Iteration #2. Eigenvalue: 58.0316263012633
+Davidson Iteration #3. Eigenvalue: 58.0315517548425
+Davidson Iteration #4. Eigenvalue: 58.0314717653128
+Davidson Iteration #5. Eigenvalue: 58.0314713748744
+Variation energy: 58.0314713748744 Ha
+2.3.1. END Variation Iteration: 0 [461.060/7.318] 
+
+2.3.2. BEGIN Variation Iteration: 1 [461.071/0.000]
+Number of dets: 60,435
+Davidson Iteration #1. Eigenvalue: 58.0314717748837
+Davidson Iteration #2. Eigenvalue: 58.0314707879839
+Variation energy: 58.0314707709914 Ha
+2.3.2. END Variation Iteration: 1 [465.695/4.624] 
+Final variation energy: 58.0314707709914 Ha
+Variation result saved to: var_0.00100_3.000.txt
+2.3. END variation with eps_var: 0.001000 [466.192/12.502] 
+
+2.4. BEGIN variation with eps_var: 0.0005000 [466.195/0.000]
+
+2.4.1. BEGIN Variation Iteration: 0 [466.285/0.000]
+Number of dets: 195,498
+Davidson Iteration #1. Eigenvalue: 58.0314707880087
+Davidson Iteration #2. Eigenvalue: 58.0282119177600
+Davidson Iteration #3. Eigenvalue: 58.0281948926307
+Davidson Iteration #4. Eigenvalue: 58.0281797144683
+Davidson Iteration #5. Eigenvalue: 58.0281791237127
+Variation energy: 58.0281791237127 Ha
+2.4.1. END Variation Iteration: 0 [492.094/25.810] 
+
+2.4.2. BEGIN Variation Iteration: 1 [492.127/0.000]
+Number of dets: 197,994
+Davidson Iteration #1. Eigenvalue: 58.0281797519619
+Davidson Iteration #2. Eigenvalue: 58.0281371310782
+Variation energy: 58.0281370788867 Ha
+2.4.2. END Variation Iteration: 1 [509.076/16.948] 
+
+2.4.3. BEGIN Variation Iteration: 2 [509.081/0.000]
+Number of dets: 197,994
+Davidson Iteration #1. Eigenvalue: 58.0281371311426
+Davidson Iteration #2. Eigenvalue: 58.0281370057648
+Variation energy: 58.0281369946967 Ha
+2.4.3. END Variation Iteration: 2 [526.113/17.032] 
+Final variation energy: 58.0281369946967 Ha
+Variation result saved to: var_0.00050_3.000.txt
+2.4. END variation with eps_var: 0.0005000 [527.761/61.566] 
+
+2.5. BEGIN variation with eps_var: 0.0002000 [527.767/0.000]
+
+2.5.1. BEGIN Variation Iteration: 0 [528.034/0.000]
+Number of dets: 860,424
+Davidson Iteration #1. Eigenvalue: 58.0281370062709
+Davidson Iteration #2. Eigenvalue: 58.0257405760458
+Davidson Iteration #3. Eigenvalue: 58.0257304665325
+Davidson Iteration #4. Eigenvalue: 58.0257242999741
+Davidson Iteration #5. Eigenvalue: 58.0257239513811
+Variation energy: 58.0257239513811 Ha
+2.5.1. END Variation Iteration: 0 [660.220/132.185] 
+
+2.5.2. BEGIN Variation Iteration: 1 [660.495/0.000]
+Number of dets: 860,424
+Davidson Iteration #1. Eigenvalue: 58.0257243163535
+Davidson Iteration #2. Eigenvalue: 58.0257238409572
+Variation energy: 58.0257238280913 Ha
+2.5.2. END Variation Iteration: 1 [745.880/85.385] 
+Final variation energy: 58.0257238280913 Ha
+Variation result saved to: var_0.00020_3.000.txt
+2.5. END variation with eps_var: 0.0002000 [753.295/225.528] 
+
+2.6. BEGIN variation with eps_var: 0.0001000 [753.300/0.000]
+
+2.6.1. BEGIN Variation Iteration: 0 [754.347/0.000]
+Number of dets: 1,643,514
+Davidson Iteration #1. Eigenvalue: 58.0257238410720
+Davidson Iteration #2. Eigenvalue: 58.0252157007025
+Davidson Iteration #3. Eigenvalue: 58.0252153943069
+Davidson Iteration #4. Eigenvalue: 58.0252145594501
+Variation energy: 58.0252145547093 Ha
+2.6.1. END Variation Iteration: 0 [1037.536/283.190] 
+
+2.6.2. BEGIN Variation Iteration: 1 [1037.772/0.000]
+Number of dets: 1,643,514
+Davidson Iteration #1. Eigenvalue: 58.0252145595608
+Davidson Iteration #2. Eigenvalue: 58.0252145445997
+Variation energy: 58.0252145443161 Ha
+2.6.2. END Variation Iteration: 1 [1222.819/185.046] 
+Final variation energy: 58.0252145443161 Ha
+Variation result saved to: var_0.00010_3.000.txt
+2.6. END variation with eps_var: 0.0001000 [1236.549/483.250] 
+2. END variation with rcut_var: 3.000 [1236.550/789.494] 
+
+3. BEGIN variation with rcut_var: 3.500 [1236.556/0.000]
+Number of orbitals: 358
+
+3.1. BEGIN Generate HCI queue. [1236.717/0.000]
+3.1. END Generate HCI queue. [1236.875/0.157] 
+
+3.2. BEGIN variation with eps_var: 0.002000 [1237.302/0.000]
+HF energy: 58.5926749682501 Ha
+
+3.2.1. BEGIN Variation Iteration: 0 [1237.857/0.000]
+Number of dets: 8,189
+Davidson Iteration #1. Eigenvalue: 58.5926749682501
+Davidson Iteration #2. Eigenvalue: 58.0357112854978
+Davidson Iteration #3. Eigenvalue: 58.0343780197093
+Davidson Iteration #4. Eigenvalue: 58.0328070319791
+Variation energy: 58.0328070255829 Ha
+3.2.1. END Variation Iteration: 0 [1240.418/2.561] 
+
+3.2.2. BEGIN Variation Iteration: 1 [1240.424/0.000]
+Number of dets: 15,401
+Davidson Iteration #1. Eigenvalue: 58.0328070326907
+Davidson Iteration #2. Eigenvalue: 58.0276831194536
+Davidson Iteration #3. Eigenvalue: 58.0276383897546
+Davidson Iteration #4. Eigenvalue: 58.0275817678265
+Davidson Iteration #5. Eigenvalue: 58.0275810873444
+Variation energy: 58.0275810873444 Ha
+3.2.2. END Variation Iteration: 1 [1242.134/1.709] 
+
+3.2.3. BEGIN Variation Iteration: 2 [1242.139/0.000]
+Number of dets: 16,625
+Davidson Iteration #1. Eigenvalue: 58.0275818236217
+Davidson Iteration #2. Eigenvalue: 58.0270192735961
+Davidson Iteration #3. Eigenvalue: 58.0270188409363
+Davidson Iteration #4. Eigenvalue: 58.0270156114984
+Variation energy: 58.0270155940435 Ha
+3.2.3. END Variation Iteration: 2 [1244.049/1.910] 
+
+3.2.4. BEGIN Variation Iteration: 3 [1244.050/0.000]
+Number of dets: 16,625
+Davidson Iteration #1. Eigenvalue: 58.0270156120346
+Davidson Iteration #2. Eigenvalue: 58.0270155684538
+Variation energy: 58.0270155683414 Ha
+3.2.4. END Variation Iteration: 3 [1245.252/1.202] 
+Final variation energy: 58.0270155683414 Ha
+Variation result saved to: var_0.00200_3.500.txt
+3.2. END variation with eps_var: 0.002000 [1245.390/8.088] 
+
+3.3. BEGIN variation with eps_var: 0.001000 [1245.393/0.000]
+
+3.3.1. BEGIN Variation Iteration: 0 [1245.436/0.000]
+Number of dets: 63,539
+Davidson Iteration #1. Eigenvalue: 58.0270155684571
+Davidson Iteration #2. Eigenvalue: 58.0204757740034
+Davidson Iteration #3. Eigenvalue: 58.0204035277723
+Davidson Iteration #4. Eigenvalue: 58.0203220111191
+Davidson Iteration #5. Eigenvalue: 58.0203216160055
+Variation energy: 58.0203216160055 Ha
+3.3.1. END Variation Iteration: 0 [1253.230/7.794] 
+
+3.3.2. BEGIN Variation Iteration: 1 [1253.247/0.000]
+Number of dets: 63,539
+Davidson Iteration #1. Eigenvalue: 58.0203220221803
+Davidson Iteration #2. Eigenvalue: 58.0203210355803
+Variation energy: 58.0203210161560 Ha
+3.3.2. END Variation Iteration: 1 [1258.238/4.991] 
+Final variation energy: 58.0203210161560 Ha
+Variation result saved to: var_0.00100_3.500.txt
+3.3. END variation with eps_var: 0.001000 [1258.762/13.369] 
+
+3.4. BEGIN variation with eps_var: 0.0005000 [1258.765/0.000]
+
+3.4.1. BEGIN Variation Iteration: 0 [1258.869/0.000]
+Number of dets: 201,290
+Davidson Iteration #1. Eigenvalue: 58.0203210355999
+Davidson Iteration #2. Eigenvalue: 58.0170585566805
+Davidson Iteration #3. Eigenvalue: 58.0170419334225
+Davidson Iteration #4. Eigenvalue: 58.0170264084319
+Davidson Iteration #5. Eigenvalue: 58.0170258156457
+Variation energy: 58.0170258156457 Ha
+3.4.1. END Variation Iteration: 0 [1285.635/26.766] 
+
+3.4.2. BEGIN Variation Iteration: 1 [1285.668/0.000]
+Number of dets: 203,594
+Davidson Iteration #1. Eigenvalue: 58.0170264451991
+Davidson Iteration #2. Eigenvalue: 58.0169895061388
+Variation energy: 58.0169894576361 Ha
+3.4.2. END Variation Iteration: 1 [1303.197/17.528] 
+
+3.4.3. BEGIN Variation Iteration: 2 [1303.231/0.000]
+Number of dets: 203,594
+Davidson Iteration #1. Eigenvalue: 58.0169895062122
+Davidson Iteration #2. Eigenvalue: 58.0169893871032
+Variation energy: 58.0169893766555 Ha
+3.4.3. END Variation Iteration: 2 [1320.652/17.421] 
+Final variation energy: 58.0169893766555 Ha
+Variation result saved to: var_0.00050_3.500.txt
+3.4. END variation with eps_var: 0.0005000 [1322.348/63.583] 
+
+3.5. BEGIN variation with eps_var: 0.0002000 [1322.394/0.000]
+
+3.5.1. BEGIN Variation Iteration: 0 [1322.679/0.000]
+Number of dets: 1,096,592
+Davidson Iteration #1. Eigenvalue: 58.0169893874925
+Davidson Iteration #2. Eigenvalue: 58.0142749314038
+Davidson Iteration #3. Eigenvalue: 58.0142622594712
+Davidson Iteration #4. Eigenvalue: 58.0142563290854
+Davidson Iteration #5. Eigenvalue: 58.0142558828000
+Variation energy: 58.0142558828000 Ha
+3.5.1. END Variation Iteration: 0 [1499.006/176.326] 
+
+3.5.2. BEGIN Variation Iteration: 1 [1499.311/0.000]
+Number of dets: 1,096,592
+Davidson Iteration #1. Eigenvalue: 58.0142563551723
+Davidson Iteration #2. Eigenvalue: 58.0142557899054
+Variation energy: 58.0142557734511 Ha
+3.5.2. END Variation Iteration: 1 [1611.156/111.844] 
+Final variation energy: 58.0142557734511 Ha
+Variation result saved to: var_0.00020_3.500.txt
+3.5. END variation with eps_var: 0.0002000 [1620.560/298.166] 
+
+3.6. BEGIN variation with eps_var: 0.0001000 [1620.566/0.000]
+
+3.6.1. BEGIN Variation Iteration: 0 [1622.389/0.000]
+Number of dets: 2,280,818
+Davidson Iteration #1. Eigenvalue: 58.0142557900590
+Davidson Iteration #2. Eigenvalue: 58.0136357875956
+Davidson Iteration #3. Eigenvalue: 58.0136353286919
+Davidson Iteration #4. Eigenvalue: 58.0136343935748
+Variation energy: 58.0136343836341 Ha
+3.6.1. END Variation Iteration: 0 [2054.418/432.028] 
+
+3.6.2. BEGIN Variation Iteration: 1 [2054.874/0.000]
+Number of dets: 2,281,202
+Davidson Iteration #1. Eigenvalue: 58.0136343938902
+Davidson Iteration #2. Eigenvalue: 58.0136342203861
+Variation energy: 58.0136342197520 Ha
+3.6.2. END Variation Iteration: 1 [2339.131/284.256] 
+Final variation energy: 58.0136342197520 Ha
+Variation result saved to: var_0.00010_3.500.txt
+3.6. END variation with eps_var: 0.0001000 [2358.088/737.522] 
+3. END variation with rcut_var: 3.500 [2358.088/1121.532] 
+
+4. BEGIN variation with rcut_var: 4.000 [2358.096/0.000]
+Number of orbitals: 514
+
+4.1. BEGIN Generate HCI queue. [2358.348/0.000]
+4.1. END Generate HCI queue. [2358.732/0.384] 
+
+4.2. BEGIN variation with eps_var: 0.002000 [2359.342/0.000]
+HF energy: 58.5926749682501 Ha
+
+4.2.1. BEGIN Variation Iteration: 0 [2360.239/0.000]
+Number of dets: 12,749
+Davidson Iteration #1. Eigenvalue: 58.5926749682501
+Davidson Iteration #2. Eigenvalue: 58.0303990664385
+Davidson Iteration #3. Eigenvalue: 58.0291005814334
+Davidson Iteration #4. Eigenvalue: 58.0275367731928
+Variation energy: 58.0275367549824 Ha
+4.2.1. END Variation Iteration: 0 [2364.149/3.910] 
+
+4.2.2. BEGIN Variation Iteration: 1 [2364.155/0.000]
+Number of dets: 19,961
+Davidson Iteration #1. Eigenvalue: 58.0275367754536
+Davidson Iteration #2. Eigenvalue: 58.0224250981190
+Davidson Iteration #3. Eigenvalue: 58.0223810015474
+Davidson Iteration #4. Eigenvalue: 58.0223240156348
+Davidson Iteration #5. Eigenvalue: 58.0223233375055
+Variation energy: 58.0223233375055 Ha
+4.2.2. END Variation Iteration: 1 [2366.474/2.318] 
+
+4.2.3. BEGIN Variation Iteration: 2 [2366.477/0.000]
+Number of dets: 21,185
+Davidson Iteration #1. Eigenvalue: 58.0223240709890
+Davidson Iteration #2. Eigenvalue: 58.0217625859671
+Davidson Iteration #3. Eigenvalue: 58.0217621624465
+Davidson Iteration #4. Eigenvalue: 58.0217589326088
+Variation energy: 58.0217589151997 Ha
+4.2.3. END Variation Iteration: 2 [2369.040/2.562] 
+
+4.2.4. BEGIN Variation Iteration: 3 [2369.041/0.000]
+Number of dets: 21,185
+Davidson Iteration #1. Eigenvalue: 58.0217589331412
+Davidson Iteration #2. Eigenvalue: 58.0217588895396
+Variation energy: 58.0217588894289 Ha
+4.2.4. END Variation Iteration: 3 [2370.694/1.654] 
+Final variation energy: 58.0217588894289 Ha
+Variation result saved to: var_0.00200_4.000.txt
+4.2. END variation with eps_var: 0.002000 [2370.872/11.530] 
+
+4.3. BEGIN variation with eps_var: 0.001000 [2370.874/0.000]
+
+4.3.1. BEGIN Variation Iteration: 0 [2370.928/0.000]
+Number of dets: 68,099
+Davidson Iteration #1. Eigenvalue: 58.0217588895394
+Davidson Iteration #2. Eigenvalue: 58.0152322765626
+Davidson Iteration #3. Eigenvalue: 58.0151610533066
+Davidson Iteration #4. Eigenvalue: 58.0150788725310
+Davidson Iteration #5. Eigenvalue: 58.0150784760928
+Variation energy: 58.0150784760928 Ha
+4.3.1. END Variation Iteration: 0 [2379.433/8.505] 
+
+4.3.2. BEGIN Variation Iteration: 1 [2379.448/0.000]
+Number of dets: 68,099
+Davidson Iteration #1. Eigenvalue: 58.0150788848599
+Davidson Iteration #2. Eigenvalue: 58.0150778984322
+Variation energy: 58.0150778771499 Ha
+4.3.2. END Variation Iteration: 1 [2385.279/5.831] 
+Final variation energy: 58.0150778771499 Ha
+Variation result saved to: var_0.00100_4.000.txt
+4.3. END variation with eps_var: 0.001000 [2385.845/14.971] 
+
+4.4. BEGIN variation with eps_var: 0.0005000 [2385.847/0.000]
+
+4.4.1. BEGIN Variation Iteration: 0 [2385.960/0.000]
+Number of dets: 205,946
+Davidson Iteration #1. Eigenvalue: 58.0150778984454
+Davidson Iteration #2. Eigenvalue: 58.0118244528351
+Davidson Iteration #3. Eigenvalue: 58.0118081492804
+Davidson Iteration #4. Eigenvalue: 58.0117924587216
+Davidson Iteration #5. Eigenvalue: 58.0117918688797
+Variation energy: 58.0117918688797 Ha
+4.4.1. END Variation Iteration: 0 [2413.891/27.931] 
+
+4.4.2. BEGIN Variation Iteration: 1 [2413.922/0.000]
+Number of dets: 206,330
+Davidson Iteration #1. Eigenvalue: 58.0117924940927
+Davidson Iteration #2. Eigenvalue: 58.0117899193934
+Variation energy: 58.0117898925980 Ha
+4.4.2. END Variation Iteration: 1 [2432.904/18.981] 
+
+4.4.3. BEGIN Variation Iteration: 2 [2432.908/0.000]
+Number of dets: 208,250
+Davidson Iteration #1. Eigenvalue: 58.0117899199270
+Davidson Iteration #2. Eigenvalue: 58.0117555809769
+Variation energy: 58.0117555595716 Ha
+4.4.3. END Variation Iteration: 2 [2452.030/19.122] 
+
+4.4.4. BEGIN Variation Iteration: 3 [2452.035/0.000]
+Number of dets: 208,250
+Davidson Iteration #1. Eigenvalue: 58.0117555812169
+Davidson Iteration #2. Eigenvalue: 58.0117555066247
+Variation energy: 58.0117554990240 Ha
+4.4.4. END Variation Iteration: 3 [2471.126/19.091] 
+Final variation energy: 58.0117554990240 Ha
+Variation result saved to: var_0.00050_4.000.txt
+4.4. END variation with eps_var: 0.0005000 [2472.875/87.027] 
+
+4.5. BEGIN variation with eps_var: 0.0002000 [2472.879/0.000]
+
+4.5.1. BEGIN Variation Iteration: 0 [2473.135/0.000]
+Number of dets: 1,232,192
+Davidson Iteration #1. Eigenvalue: 58.0117555069077
+Davidson Iteration #2. Eigenvalue: 58.0089574672761
+Davidson Iteration #3. Eigenvalue: 58.0089447840538
+Davidson Iteration #4. Eigenvalue: 58.0089388279814
+Davidson Iteration #5. Eigenvalue: 58.0089383713900
+Variation energy: 58.0089383713900 Ha
+4.5.1. END Variation Iteration: 0 [2669.385/196.250] 
+
+4.5.2. BEGIN Variation Iteration: 1 [2669.582/0.000]
+Number of dets: 1,232,192
+Davidson Iteration #1. Eigenvalue: 58.0089388538662
+Davidson Iteration #2. Eigenvalue: 58.0089382844863
+Variation energy: 58.0089382667956 Ha
+4.5.2. END Variation Iteration: 1 [2808.265/138.682] 
+Final variation energy: 58.0089382667956 Ha
+Variation result saved to: var_0.00020_4.000.txt
+4.5. END variation with eps_var: 0.0002000 [2818.879/345.999] 
+
+4.6. BEGIN variation with eps_var: 0.0001000 [2818.903/0.000]
+
+4.6.1. BEGIN Variation Iteration: 0 [2820.565/0.000]
+Number of dets: 2,880,650
+Davidson Iteration #1. Eigenvalue: 58.0089382846307
+Davidson Iteration #2. Eigenvalue: 58.0082350448803
+Davidson Iteration #3. Eigenvalue: 58.0082344430463
+Davidson Iteration #4. Eigenvalue: 58.0082335203810
+Variation energy: 58.0082335032232 Ha
+4.6.1. END Variation Iteration: 0 [3391.521/570.956] 
+
+4.6.2. BEGIN Variation Iteration: 1 [3391.908/0.000]
+Number of dets: 2,881,082
+Davidson Iteration #1. Eigenvalue: 58.0082335211677
+Davidson Iteration #2. Eigenvalue: 58.0082333403956
+Variation energy: 58.0082333394506 Ha
+4.6.2. END Variation Iteration: 1 [3791.856/399.947] 
+Final variation energy: 58.0082333394506 Ha
+Variation result saved to: var_0.00010_4.000.txt
+4.6. END variation with eps_var: 0.0001000 [3815.882/996.979] 
+4. END variation with rcut_var: 4.000 [3815.883/1457.787] 
+
+5. BEGIN variation with rcut_var: 4.500 [3815.890/0.000]
+Number of orbitals: 778
+
+5.1. BEGIN Generate HCI queue. [3816.226/0.000]
+5.1. END Generate HCI queue. [3817.283/1.057] 
+
+5.2. BEGIN variation with eps_var: 0.002000 [3818.076/0.000]
+HF energy: 58.5926749682501 Ha
+
+5.2.1. BEGIN Variation Iteration: 0 [3818.999/0.000]
+Number of dets: 19,841
+Davidson Iteration #1. Eigenvalue: 58.5926749682501
+Davidson Iteration #2. Eigenvalue: 58.0268668743263
+Davidson Iteration #3. Eigenvalue: 58.0256058663923
+Davidson Iteration #4. Eigenvalue: 58.0240375674622
+Variation energy: 58.0240375186916 Ha
+5.2.1. END Variation Iteration: 0 [3823.973/4.973] 
+
+5.2.2. BEGIN Variation Iteration: 1 [3823.982/0.000]
+Number of dets: 27,053
+Davidson Iteration #1. Eigenvalue: 58.0240375745439
+Davidson Iteration #2. Eigenvalue: 58.0189338312486
+Davidson Iteration #3. Eigenvalue: 58.0188900658159
+Davidson Iteration #4. Eigenvalue: 58.0188328459763
+Davidson Iteration #5. Eigenvalue: 58.0188321711380
+Variation energy: 58.0188321711380 Ha
+5.2.2. END Variation Iteration: 1 [3827.299/3.317] 
+
+5.2.3. BEGIN Variation Iteration: 2 [3827.306/0.000]
+Number of dets: 28,277
+Davidson Iteration #1. Eigenvalue: 58.0188328999199
+Davidson Iteration #2. Eigenvalue: 58.0182721379357
+Davidson Iteration #3. Eigenvalue: 58.0182717183200
+Davidson Iteration #4. Eigenvalue: 58.0182684880387
+Variation energy: 58.0182684706261 Ha
+5.2.3. END Variation Iteration: 2 [3830.885/3.579] 
+
+5.2.4. BEGIN Variation Iteration: 3 [3830.887/0.000]
+Number of dets: 28,277
+Davidson Iteration #1. Eigenvalue: 58.0182684885620
+Davidson Iteration #2. Eigenvalue: 58.0182684448972
+Variation energy: 58.0182684447840 Ha
+5.2.4. END Variation Iteration: 3 [3833.201/2.314] 
+Final variation energy: 58.0182684447840 Ha
+Variation result saved to: var_0.00200_4.500.txt
+5.2. END variation with eps_var: 0.002000 [3833.435/15.359] 
+
+5.3. BEGIN variation with eps_var: 0.001000 [3833.437/0.000]
+
+5.3.1. BEGIN Variation Iteration: 0 [3833.507/0.000]
+Number of dets: 75,551
+Davidson Iteration #1. Eigenvalue: 58.0182684448990
+Davidson Iteration #2. Eigenvalue: 58.0117448292020
+Davidson Iteration #3. Eigenvalue: 58.0116742767601
+Davidson Iteration #4. Eigenvalue: 58.0115916503868
+Davidson Iteration #5. Eigenvalue: 58.0115912537042
+Variation energy: 58.0115912537042 Ha
+5.3.1. END Variation Iteration: 0 [3843.187/9.680] 
+
+5.3.2. BEGIN Variation Iteration: 1 [3843.203/0.000]
+Number of dets: 75,551
+Davidson Iteration #1. Eigenvalue: 58.0115916638455
+Davidson Iteration #2. Eigenvalue: 58.0115906772082
+Variation energy: 58.0115906543728 Ha
+5.3.2. END Variation Iteration: 1 [3849.885/6.681] 
+Final variation energy: 58.0115906543728 Ha
+Variation result saved to: var_0.00100_4.500.txt
+5.3. END variation with eps_var: 0.001000 [3850.512/17.075] 
+
+5.4. BEGIN variation with eps_var: 0.0005000 [3850.517/0.000]
+
+5.4.1. BEGIN Variation Iteration: 0 [3850.642/0.000]
+Number of dets: 213,542
+Davidson Iteration #1. Eigenvalue: 58.0115906772194
+Davidson Iteration #2. Eigenvalue: 58.0083427343610
+Davidson Iteration #3. Eigenvalue: 58.0083266401627
+Davidson Iteration #4. Eigenvalue: 58.0083108451134
+Davidson Iteration #5. Eigenvalue: 58.0083102575429
+Variation energy: 58.0083102575429 Ha
+5.4.1. END Variation Iteration: 0 [3880.147/29.505] 
+
+5.4.2. BEGIN Variation Iteration: 1 [3880.186/0.000]
+Number of dets: 213,926
+Davidson Iteration #1. Eigenvalue: 58.0083108793602
+Davidson Iteration #2. Eigenvalue: 58.0083083109387
+Variation energy: 58.0083082837852 Ha
+5.4.2. END Variation Iteration: 1 [3900.457/20.270] 
+
+5.4.3. BEGIN Variation Iteration: 2 [3900.461/0.000]
+Number of dets: 213,926
+Davidson Iteration #1. Eigenvalue: 58.0083083114878
+Davidson Iteration #2. Eigenvalue: 58.0083082554982
+Variation energy: 58.0083082509926 Ha
+5.4.3. END Variation Iteration: 2 [3920.749/20.287] 
+Final variation energy: 58.0083082509926 Ha
+Variation result saved to: var_0.00050_4.500.txt
+5.4. END variation with eps_var: 0.0005000 [3922.534/72.017] 
+
+5.5. BEGIN variation with eps_var: 0.0002000 [3922.541/0.000]
+
+5.5.1. BEGIN Variation Iteration: 0 [3922.821/0.000]
+Number of dets: 1,282,556
+Davidson Iteration #1. Eigenvalue: 58.0083082555680
+Davidson Iteration #2. Eigenvalue: 58.0054659513368
+Davidson Iteration #3. Eigenvalue: 58.0054523781478
+Davidson Iteration #4. Eigenvalue: 58.0054461702540
+Davidson Iteration #5. Eigenvalue: 58.0054456855863
+Variation energy: 58.0054456855863 Ha
+5.5.1. END Variation Iteration: 0 [4130.907/208.086] 
+
+5.5.2. BEGIN Variation Iteration: 1 [4131.122/0.000]
+Number of dets: 1,282,652
+Davidson Iteration #1. Eigenvalue: 58.0054461957428
+Davidson Iteration #2. Eigenvalue: 58.0054447966331
+Variation energy: 58.0054447723497 Ha
+5.5.2. END Variation Iteration: 1 [4276.468/145.346] 
+Final variation energy: 58.0054447723497 Ha
+Variation result saved to: var_0.00020_4.500.txt
+5.5. END variation with eps_var: 0.0002000 [4287.221/364.680] 
+
+5.6. BEGIN variation with eps_var: 0.0001000 [4287.226/0.000]
+
+5.6.1. BEGIN Variation Iteration: 0 [4288.794/0.000]
+Number of dets: 3,501,146
+Davidson Iteration #1. Eigenvalue: 58.0054447969958
+Davidson Iteration #2. Eigenvalue: 58.0046698132741
+Davidson Iteration #3. Eigenvalue: 58.0046691338541
+Davidson Iteration #4. Eigenvalue: 58.0046682534070
+Variation energy: 58.0046682310844 Ha
+5.6.1. END Variation Iteration: 0 [5011.467/722.673] 
+
+5.6.2. BEGIN Variation Iteration: 1 [5012.121/0.000]
+Number of dets: 3,502,490
+Davidson Iteration #1. Eigenvalue: 58.0046682545926
+Davidson Iteration #2. Eigenvalue: 58.0046680279167
+Variation energy: 58.0046680267901 Ha
+5.6.2. END Variation Iteration: 1 [5509.697/497.575] 
+Final variation energy: 58.0046680267901 Ha
+Variation result saved to: var_0.00010_4.500.txt
+5.6. END variation with eps_var: 0.0001000 [5539.041/1251.815] 
+5. END variation with rcut_var: 4.500 [5539.042/1723.152] 
+END variation stage [5539.043/5539.027] 
+
+BEGIN perturbation stage [5539.044/0.000]
+
+1. BEGIN perturbation with rcut_var: 4.500 [5539.053/0.000]
+
+1.1. BEGIN perturbation with eps_var: 0.0001000 [5539.060/0.000]
+Loaded 3,502,490 dets from: var_0.00010_4.500.txt
+PT with rcut_pt_max = 6.500, eps_pt_min = 1.000e-06
+Number of max perturbation orbitals: 2378
+
+1.1.1. BEGIN setup hash table [5573.441/0.000]
+Estimated PT terms: 1,465,446,920
+Unable to read nodes info. Treat all nodes equally.
+Proc #0 (on node2003.physics.cornell.edu) stores: 1.042 %
+Proc #48 (on node2007.physics.cornell.edu) stores: 1.042 %
+Proc #49 (on node2007.physics.cornell.edu) stores: 1.042 %
+Proc #53 (on node2007.physics.cornell.edu) stores: 1.042 %
+Proc #54 (on node2007.physics.cornell.edu) stores: 1.042 %
+Proc #55 (on node2007.physics.cornell.edu) stores: 1.042 %
+Proc #50 (on node2007.physics.cornell.edu) stores: 1.042 %
+Proc #78 (on node2009.physics.cornell.edu) stores: 1.042 %
+Proc #63 (on node2008.physics.cornell.edu) stores: 1.042 %
+Proc #61 (on node2008.physics.cornell.edu) stores: 1.042 %
+Proc #72 (on node2009.physics.cornell.edu) stores: 1.042 %
+Proc #62 (on node2008.physics.cornell.edu) stores: 1.042 %
+Proc #77 (on node2009.physics.cornell.edu) stores: 1.042 %
+Proc #67 (on node2008.physics.cornell.edu) stores: 1.042 %
+Proc #74 (on node2009.physics.cornell.edu) stores: 1.042 %
+Proc #60 (on node2008.physics.cornell.edu) stores: 1.042 %
+Proc #64 (on node2008.physics.cornell.edu) stores: 1.042 %
+Proc #73 (on node2009.physics.cornell.edu) stores: 1.042 %
+Proc #68 (on node2008.physics.cornell.edu) stores: 1.042 %
+Proc #76 (on node2009.physics.cornell.edu) stores: 1.042 %
+Proc #65 (on node2008.physics.cornell.edu) stores: 1.042 %
+Proc #79 (on node2009.physics.cornell.edu) stores: 1.042 %
+Proc #66 (on node2008.physics.cornell.edu) stores: 1.042 %
+Proc #75 (on node2009.physics.cornell.edu) stores: 1.042 %
+Proc #81 (on node2009.physics.cornell.edu) stores: 1.042 %
+Proc #83 (on node2009.physics.cornell.edu) stores: 1.042 %
+Proc #69 (on node2008.physics.cornell.edu) stores: 1.042 %
+Proc #70 (on node2008.physics.cornell.edu) stores: 1.042 %
+Proc #3 (on node2003.physics.cornell.edu) stores: 1.042 %
+Proc #80 (on node2009.physics.cornell.edu) stores: 1.042 %
+Proc #71 (on node2008.physics.cornell.edu) stores: 1.042 %
+Proc #6 (on node2003.physics.cornell.edu) stores: 1.042 %
+Proc #1 (on node2003.physics.cornell.edu) stores: 1.042 %
+Proc #2 (on node2003.physics.cornell.edu) stores: 1.042 %
+Proc #5 (on node2003.physics.cornell.edu) stores: 1.042 %
+Proc #4 (on node2003.physics.cornell.edu) stores: 1.042 %
+Proc #11 (on node2003.physics.cornell.edu) stores: 1.042 %
+Proc #7 (on node2003.physics.cornell.edu) stores: 1.042 %
+Proc #9 (on node2003.physics.cornell.edu) stores: 1.042 %
+Proc #10 (on node2003.physics.cornell.edu) stores: 1.042 %
+Proc #14 (on node2004.physics.cornell.edu) stores: 1.042 %
+Proc #27 (on node2005.physics.cornell.edu) stores: 1.042 %
+Proc #15 (on node2004.physics.cornell.edu) stores: 1.042 %
+Proc #21 (on node2004.physics.cornell.edu) stores: 1.042 %
+Proc #12 (on node2004.physics.cornell.edu) stores: 1.042 %
+Proc #24 (on node2005.physics.cornell.edu) stores: 1.042 %
+Proc #13 (on node2004.physics.cornell.edu) stores: 1.042 %
+Proc #26 (on node2005.physics.cornell.edu) stores: 1.042 %
+Proc #16 (on node2004.physics.cornell.edu) stores: 1.042 %
+Proc #28 (on node2005.physics.cornell.edu) stores: 1.042 %
+Proc #18 (on node2004.physics.cornell.edu) stores: 1.042 %
+Proc #29 (on node2005.physics.cornell.edu) stores: 1.042 %
+Proc #19 (on node2004.physics.cornell.edu) stores: 1.042 %
+Proc #30 (on node2005.physics.cornell.edu) stores: 1.042 %
+Proc #20 (on node2004.physics.cornell.edu) stores: 1.042 %
+Proc #31 (on node2005.physics.cornell.edu) stores: 1.042 %
+Proc #17 (on node2004.physics.cornell.edu) stores: 1.042 %
+Proc #25 (on node2005.physics.cornell.edu) stores: 1.042 %
+Proc #34 (on node2005.physics.cornell.edu) stores: 1.042 %
+Proc #33 (on node2005.physics.cornell.edu) stores: 1.042 %
+Proc #32 (on node2005.physics.cornell.edu) stores: 1.042 %
+Proc #82 (on node2009.physics.cornell.edu) stores: 1.042 %
+Proc #36 (on node2006.physics.cornell.edu) stores: 1.042 %
+Proc #37 (on node2006.physics.cornell.edu) stores: 1.042 %
+Proc #35 (on node2005.physics.cornell.edu) stores: 1.042 %
+Proc #8 (on node2003.physics.cornell.edu) stores: 1.042 %
+Proc #38 (on node2006.physics.cornell.edu) stores: 1.042 %
+Proc #23 (on node2004.physics.cornell.edu) stores: 1.042 %
+Proc #39 (on node2006.physics.cornell.edu) stores: 1.042 %
+Proc #40 (on node2006.physics.cornell.edu) stores: 1.042 %
+Proc #41 (on node2006.physics.cornell.edu) stores: 1.042 %
+Proc #22 (on node2004.physics.cornell.edu) stores: 1.042 %
+Proc #42 (on node2006.physics.cornell.edu) stores: 1.042 %
+Proc #43 (on node2006.physics.cornell.edu) stores: 1.042 %
+Proc #44 (on node2006.physics.cornell.edu) stores: 1.042 %
+Proc #45 (on node2006.physics.cornell.edu) stores: 1.042 %
+Proc #46 (on node2006.physics.cornell.edu) stores: 1.042 %
+Proc #84 (on node2010.physics.cornell.edu) stores: 1.042 %
+Proc #85 (on node2010.physics.cornell.edu) stores: 1.042 %
+Proc #86 (on node2010.physics.cornell.edu) stores: 1.042 %
+Proc #87 (on node2010.physics.cornell.edu) stores: 1.042 %
+Proc #88 (on node2010.physics.cornell.edu) stores: 1.042 %
+Proc #89 (on node2010.physics.cornell.edu) stores: 1.042 %
+Proc #90 (on node2010.physics.cornell.edu) stores: 1.042 %
+Proc #91 (on node2010.physics.cornell.edu) stores: 1.042 %
+Proc #92 (on node2010.physics.cornell.edu) stores: 1.042 %
+Proc #93 (on node2010.physics.cornell.edu) stores: 1.042 %
+Proc #95 (on node2010.physics.cornell.edu) stores: 1.042 %
+Proc #94 (on node2010.physics.cornell.edu) stores: 1.042 %
+Proc #51 (on node2007.physics.cornell.edu) stores: 1.042 %
+Proc #52 (on node2007.physics.cornell.edu) stores: 1.042 %
+Proc #56 (on node2007.physics.cornell.edu) stores: 1.042 %
+Proc #57 (on node2007.physics.cornell.edu) stores: 1.042 %
+Proc #58 (on node2007.physics.cornell.edu) stores: 1.042 %
+Proc #59 (on node2007.physics.cornell.edu) stores: 1.042 %
+Proc #47 (on node2006.physics.cornell.edu) stores: 1.042 %
+Reserved 2,991,454,176 total hash buckets.
+1.1.1. END setup hash table [5574.933/1.492] 
+
+1.1.2. BEGIN search for perturbation dets [5574.934/0.000]
+CHECKPOINT search for perturbation dets [6171.434/596.500] 
+Master progress: 1%. Local PT keys: 8,117,018, hash load: 0.26
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 9391 RUNNING AT node2005
+=   EXIT CODE: 9
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+[proxy:0:3@node2006.physics.cornell.edu] HYD_pmcd_pmip_control_cmd_cb (/home/mjo98/mpich-3.2/src/pm/hydra/pm/pmiserv/pmip_cb.c:885): assert (!closed) failed
+[proxy:0:5@node2008.physics.cornell.edu] HYD_pmcd_pmip_control_cmd_cb (/home/mjo98/mpich-3.2/src/pm/hydra/pm/pmiserv/pmip_cb.c:885): assert (!closed) failed
+[proxy:0:5@node2008.physics.cornell.edu] HYDT_dmxu_poll_wait_for_event (/home/mjo98/mpich-3.2/src/pm/hydra/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:0:5@node2008.physics.cornell.edu] main (/home/mjo98/mpich-3.2/src/pm/hydra/pm/pmiserv/pmip.c:206): demux engine error waiting for event
+[proxy:0:7@node2010.physics.cornell.edu] HYD_pmcd_pmip_control_cmd_cb (/home/mjo98/mpich-3.2/src/pm/hydra/pm/pmiserv/pmip_cb.c:885): assert (!closed) failed
+[proxy:0:7@node2010.physics.cornell.edu] HYDT_dmxu_poll_wait_for_event (/home/mjo98/mpich-3.2/src/pm/hydra/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:0:7@node2010.physics.cornell.edu] main (/home/mjo98/mpich-3.2/src/pm/hydra/pm/pmiserv/pmip.c:206): demux engine error waiting for event
+[proxy:0:4@node2007.physics.cornell.edu] HYD_pmcd_pmip_control_cmd_cb (/home/mjo98/mpich-3.2/src/pm/hydra/pm/pmiserv/pmip_cb.c:885): assert (!closed) failed
+[proxy:0:4@node2007.physics.cornell.edu] HYDT_dmxu_poll_wait_for_event (/home/mjo98/mpich-3.2/src/pm/hydra/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:0:4@node2007.physics.cornell.edu] main (/home/mjo98/mpich-3.2/src/pm/hydra/pm/pmiserv/pmip.c:206): demux engine error waiting for event
+[proxy:0:3@node2006.physics.cornell.edu] HYDT_dmxu_poll_wait_for_event (/home/mjo98/mpich-3.2/src/pm/hydra/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:0:3@node2006.physics.cornell.edu] main (/home/mjo98/mpich-3.2/src/pm/hydra/pm/pmiserv/pmip.c:206): demux engine error waiting for event
+[proxy:0:6@node2009.physics.cornell.edu] HYD_pmcd_pmip_control_cmd_cb (/home/mjo98/mpich-3.2/src/pm/hydra/pm/pmiserv/pmip_cb.c:885): assert (!closed) failed
+[proxy:0:6@node2009.physics.cornell.edu] HYDT_dmxu_poll_wait_for_event (/home/mjo98/mpich-3.2/src/pm/hydra/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:0:6@node2009.physics.cornell.edu] main (/home/mjo98/mpich-3.2/src/pm/hydra/pm/pmiserv/pmip.c:206): demux engine error waiting for event
+[proxy:0:1@node2004.physics.cornell.edu] HYD_pmcd_pmip_control_cmd_cb (/home/mjo98/mpich-3.2/src/pm/hydra/pm/pmiserv/pmip_cb.c:885): assert (!closed) failed
+[proxy:0:1@node2004.physics.cornell.edu] HYDT_dmxu_poll_wait_for_event (/home/mjo98/mpich-3.2/src/pm/hydra/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:0:1@node2004.physics.cornell.edu] main (/home/mjo98/mpich-3.2/src/pm/hydra/pm/pmiserv/pmip.c:206): demux engine error waiting for event
+[proxy:0:0@node2003.physics.cornell.edu] HYD_pmcd_pmip_control_cmd_cb (/home/mjo98/mpich-3.2/src/pm/hydra/pm/pmiserv/pmip_cb.c:885): assert (!closed) failed
+[proxy:0:0@node2003.physics.cornell.edu] HYDT_dmxu_poll_wait_for_event (/home/mjo98/mpich-3.2/src/pm/hydra/tools/demux/demux_poll.c:76): callback returned error status
+[proxy:0:0@node2003.physics.cornell.edu] main (/home/mjo98/mpich-3.2/src/pm/hydra/pm/pmiserv/pmip.c:206): demux engine error waiting for event
+srun: error: node2006: task 3: Exited with exit code 7
+srun: error: node2010: task 7: Exited with exit code 7
+srun: error: node2008: task 5: Exited with exit code 7
+srun: error: node2007: task 4: Exited with exit code 7
+srun: error: node2004: task 1: Exited with exit code 7
+srun: error: node2009: task 6: Exited with exit code 7
+srun: error: node2003: task 0: Exited with exit code 7
+[mpiexec@node2003.physics.cornell.edu] HYDT_bscu_wait_for_completion (/home/mjo98/mpich-3.2/src/pm/hydra/tools/bootstrap/utils/bscu_wait.c:76): one of the processes terminated badly; aborting
+[mpiexec@node2003.physics.cornell.edu] HYDT_bsci_wait_for_completion (/home/mjo98/mpich-3.2/src/pm/hydra/tools/bootstrap/src/bsci_wait.c:23): launcher returned error waiting for completion
+[mpiexec@node2003.physics.cornell.edu] HYD_pmci_wait_for_completion (/home/mjo98/mpich-3.2/src/pm/hydra/pm/pmiserv/pmiserv_pmci.c:218): launcher returned error waiting for completion
+[mpiexec@node2003.physics.cornell.edu] main (/home/mjo98/mpich-3.2/src/pm/hydra/ui/mpich/mpiexec.c:344): process manager error waiting for completion
