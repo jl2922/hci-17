@@ -19,6 +19,7 @@ bridges.sh
 .nfs*
 dft.sh
 .fuse_*
+*.json
 
 # Compiled Object files
 *.slo
