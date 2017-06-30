@@ -425,7 +425,7 @@ void HEGSolver::perturbation() {
   std::pair<PTKey, double> skeleton;  // For reducing the amount of MPI data transfer.
   skeleton.first.first = wf.get_terms().front().det.encode(SpinDet::EncodeScheme::FIXED);
   BigUnorderedMap<PTKey, double, boost::hash<PTKey>> pt_sums(skeleton);
-  pt_sums.reserve(n_pt_dets_estimate * 2);
+  pt_sums.reserve(static_cast<unsigned long long>(n_pt_dets_estimate * 1.6));
   unsigned long long hash_buckets = pt_sums.bucket_count();
   if (Parallel::get_id() == 0) printf("Reserved %'llu total hash buckets.\n", hash_buckets);
   Time::end("setup hash table");
