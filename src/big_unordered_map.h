@@ -185,6 +185,7 @@ void BigUnorderedMap<K, V, H>::set_proc_buckets() {
     node_names[source] = node_name;
     node_sizes[source] = nodes.get<std::size_t>(
         boost::property_tree::ptree::path_type(node_name, '/'), NODE_SIZE_DEFAULT);
+    node_sizes[source] -= 2;  // Fixed memory cost.
     total_size += node_sizes[source];
     node_procs[node_name]++;
     recv_cnt++;
