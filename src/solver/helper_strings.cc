@@ -56,32 +56,37 @@ UnsignedInts HelperStrings::find_potential_connections(const std::size_t i) {
   // One up one dn excitation.
   SpinDet det_up(det.up);
   SpinDet det_dn(det.dn);
+  std::vector<std::size_t> one_ups;
 
   for (std::size_t i = 0; i < up_elecs.size(); i++) {
     det_up.set_orb(up_elecs[i], false);
     const auto& key_up = det_up.encode();
     const auto& kv_up = ab_m1.find(key_up);
     if (kv_up != ab_m1.end()) {
-      for (const std::size_t det_id : kv_up->second.first) one_up[det_id] = true;
-      for (std::size_t j = 0; j < dn_elecs.size(); j++) {
-        det_dn.set_orb(dn_elecs[j], false);
-        const auto& key_dn = det_dn.encode();
-        if (ab_m1.find(key_dn) != ab_m1.end()) {
-          for (const std::size_t det_id : ab_m1.find(key_dn)->second.second) {
-            if (one_up[det_id] && !connected[det_id]) {
-              connected[det_id] = true;
-              connections.push_back(det_id);
-            }
-          }
-        }
-        det_dn.set_orb(dn_elecs[j], true);
+      for (const std::size_t det_id : kv_up->second.first) {
+        one_up[det_id] = true;
+        one_ups.push_back(det_id);
       }
-      for (const std::size_t det_id : kv_up->second.first) one_up[det_id] = false;
     }
     det_up.set_orb(up_elecs[i], true);
   }
 
+  for (std::size_t j = 0; j < dn_elecs.size(); j++) {
+    det_dn.set_orb(dn_elecs[j], false);
+    const auto& key_dn = det_dn.encode();
+    if (ab_m1.find(key_dn) != ab_m1.end()) {
+      for (const std::size_t det_id : ab_m1.find(key_dn)->second.second) {
+        if (one_up[det_id] && !connected[det_id]) {
+          connected[det_id] = true;
+          connections.push_back(det_id);
+        }
+      }
+    }
+    det_dn.set_orb(dn_elecs[j], true);
+  }
+
   // Reset connected and return.
+  for (const std::size_t det_id : one_ups) one_up[det_id] = false;
   for (const std::size_t det_id : connections) connected[det_id] = false;
   return connections;
 }
