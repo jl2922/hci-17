@@ -22,6 +22,8 @@ std::vector<double> Solver::apply_hamiltonian(
   std::vector<double> res(n, 0.0);
   std::vector<long double> res_precise(n, 0.0);
   const auto& dets = wf.get_dets();
+  unsigned long long n_connections = 0;
+  static unsigned long long n_connections_prev = 0;
   for (std::size_t i = 0; i < n; i++) {
     // if (i % Parallel::get_n() != static_cast<std::size_t>(Parallel::get_id())) continue;
     const Det& det_i = dets[i];
@@ -30,8 +32,14 @@ std::vector<double> Solver::apply_hamiltonian(
       if (j < i) continue;
       const Det& det_j = dets[j];
       const double H_ij = hamiltonian(det_i, det_j);
+      if (H_ij == 0) continue;
       res_precise[i] += H_ij * vec[j];
-      if (i != j) res_precise[j] += H_ij * vec[i];
+      if (i != j) {
+        res_precise[j] += H_ij * vec[i];
+        n_connections += 2;
+      } else {
+        n_connections++;
+      }
     }
   }
 #ifdef __INTEL_COMPILER
@@ -39,6 +47,11 @@ std::vector<double> Solver::apply_hamiltonian(
 #else
   Parallel::reduce_to_sum(res_precise);
 #endif
+  Parallel::reduce_to_sum(n_connections);
+  if (Parallel::get_id() == 0 && n_connections != n_connections_prev) {
+    printf("Number of connections: %'llu\n", n_connections);
+    n_connections_prev = n_connections;
+  }
   for (std::size_t i = 0; i < n; i++) res[i] = static_cast<double>(res_precise[i]);
   return res;
 }
