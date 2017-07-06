@@ -43,9 +43,13 @@ class Time {
   }
 
   // To be called during an event after an important step.
-  static void checkpoint(const std::string& event) {
+  static void checkpoint(const std::string& event, const std::string& msg = "") {
     printf(
-        "CHECKPOINT %s [%.3f/%.3f] \n", event.c_str(), get_duration("INIT"), get_duration(event));
+        "CHECKPOINT %s: %s [%.3f/%.3f] \n",
+        event.c_str(),
+        msg.c_str(),
+        get_duration("INIT"),
+        get_duration(event));
   }
 
  private:

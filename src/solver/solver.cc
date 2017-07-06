@@ -24,6 +24,8 @@ std::vector<double> Solver::apply_hamiltonian(
   const auto& dets = wf.get_dets();
   unsigned long long n_connections = 0;
   static unsigned long long n_connections_prev = 0;
+  unsigned long long same_spin_count = 0, opposite_spin_count = 0;
+
   for (std::size_t i = 0; i < n; i++) {
     // if (i % Parallel::get_n() != static_cast<std::size_t>(Parallel::get_id())) continue;
     const Det& det_i = dets[i];
@@ -33,6 +35,11 @@ std::vector<double> Solver::apply_hamiltonian(
       const Det& det_j = dets[j];
       const double H_ij = hamiltonian(det_i, det_j);
       if (H_ij == 0) continue;
+      if (det_i.up == det_j.up || det_i.dn == det_j.dn) {
+        same_spin_count++;
+      } else {
+        opposite_spin_count++;
+      }
       res_precise[i] += H_ij * vec[j];
       if (i != j) {
         res_precise[j] += H_ij * vec[i];
@@ -42,13 +49,17 @@ std::vector<double> Solver::apply_hamiltonian(
       }
     }
   }
+  Time::checkpoint("Diagonalization", "hamiltonian applied");
 #ifdef __INTEL_COMPILER
   for (std::size_t i = 0; i < n; i++) Parallel::reduce_to_sum(res_precise[i]);
 #else
   Parallel::reduce_to_sum(res_precise);
 #endif
   Parallel::reduce_to_sum(n_connections);
+  Parallel::reduce_to_sum(same_spin_count);
+  Parallel::reduce_to_sum(opposite_spin_count);
   if (Parallel::get_id() == 0 && n_connections != n_connections_prev) {
+    printf("Same spin: %'llu, opposite spin: %'llu\n", same_spin_count, opposite_spin_count);
     printf("Number of connections: %'llu\n", n_connections);
     n_connections_prev = n_connections;
   }
@@ -110,14 +121,16 @@ double Solver::diagonalize(std::size_t max_iterations) {
     diagonal.push_back(hamiltonian(det, det));
     initial_vector.push_back(term.coef);
   }
+  Time::start("Diagonalization");
   HelperStrings helper_strings(wf.get_dets());
+  Time::checkpoint("Diagonalization", "helper strings generated");
   std::function<std::vector<double>(std::vector<double>)> apply_hamiltonian_func =
       std::bind(&Solver::apply_hamiltonian, this, std::placeholders::_1, helper_strings);
 
   Davidson davidson(diagonal, apply_hamiltonian_func, wf.size());
   if (Parallel::get_id() == 0) davidson.set_verbose(true);
   davidson.diagonalize(initial_vector, max_iterations);
-
+  Time::end("Diagonalization");
   double energy_var = davidson.get_lowest_eigenvalue();
   const auto& coefs_new = davidson.get_lowest_eigenvector();
   wf.set_coefs(coefs_new);
