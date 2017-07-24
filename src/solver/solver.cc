@@ -105,12 +105,13 @@ void Solver::variation() {
     }
 
     const auto& filtered_dets = filter_dets(new_dets, eps_var);
-    if (Parallel::get_id() == 0) {
-      printf("Number of filtered dets: %'llu\n", static_cast<BigUnsignedInt>(filtered_dets.size()));
-    }
     for (const auto& filtered_det : filtered_dets) {
       var_dets_set.insert(filtered_det.encode());
       wf.append_term(filtered_det, 0.0);
+    }
+    if (Parallel::get_id() == 0) {
+      printf("Number of filtered dets: %'llu\n", static_cast<BigUnsignedInt>(filtered_dets.size()));
+      printf("Number of total dets: %'llu\n", static_cast<BigUnsignedInt>(var_dets_set.size()));
     }
 
     energy_var_new = diagonalize(filtered_dets.size() > 0 ? 5 : 10);
