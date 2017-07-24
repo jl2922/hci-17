@@ -88,27 +88,32 @@ void Solver::variation() {
 
     // Find connected determinants.
     std::list<Det> new_dets;
+    std::unordered_set<OrbitalsPair, boost::hash<OrbitalsPair>> new_dets_set;
     for (const auto& term : wf.get_terms()) {
       const auto& connected_dets = find_connected_dets(term.det, fabs(0.1 * eps_var / term.coef));
       for (const auto& new_det : connected_dets) {
-        if (var_dets_set.count(new_det.encode()) == 0) {
-          var_dets_set.insert(new_det.encode());
+        if (var_dets_set.count(new_det.encode()) == 0 &&
+            new_dets_set.count(new_det.encode()) == 0) {
+          new_dets_set.insert(new_det.encode());
           new_dets.push_back(new_det);
         }
       }
     }
 
     if (Parallel::get_id() == 0) {
-      printf("Number of new dets: %'llu\n", static_cast<BigUnsignedInt>(var_dets_set.size()));
+      printf("Number of new dets: %'llu\n", static_cast<BigUnsignedInt>(new_dets.size()));
     }
 
-    new_dets = filter_dets(new_dets, eps_var);
+    const auto& filtered_dets = filter_dets(new_dets, eps_var);
     if (Parallel::get_id() == 0) {
-      printf("Number of filtered dets: %'llu\n", static_cast<BigUnsignedInt>(new_dets.size()));
+      printf("Number of filtered dets: %'llu\n", static_cast<BigUnsignedInt>(filtered_dets.size()));
+    }
+    for (const auto& filtered_det : filtered_dets) {
+      var_dets_set.insert(filtered_det.encode());
+      wf.append_term(filtered_det, 0.0);
     }
 
-    for (const auto& det : new_dets) wf.append_term(det, 0.0);
-    energy_var_new = diagonalize(new_dets.size() > 0 ? 5 : 10);
+    energy_var_new = diagonalize(filtered_dets.size() > 0 ? 5 : 10);
     if (Parallel::get_id() == 0) printf("Variation energy: %#.15g Ha\n", energy_var_new);
     Time::end("Variation Iteration: " + std::to_string(iteration));
     iteration++;
