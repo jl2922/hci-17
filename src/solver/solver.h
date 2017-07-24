@@ -39,6 +39,8 @@ class Solver {
 
   void variation();
 
+  std::list<Det> filter_dets(const std::list<Det>&, const double eps);
+
   double diagonalize(std::size_t);
 
   virtual void perturbation() {}

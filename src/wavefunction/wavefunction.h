@@ -33,6 +33,13 @@ class Wavefunction {
     return dets;
   }
 
+  std::vector<double> get_coefs() const {
+    std::vector<double> coefs;
+    coefs.reserve(terms.size());
+    for (const auto& term : terms) coefs.push_back(term.coef);
+    return coefs;
+  }
+
   void sort_by_coefs() {
     terms.sort([](const Term& a, const Term& b) -> bool { return fabs(a.coef) > fabs(b.coef); });
   }

@@ -30,8 +30,11 @@ void HelperStrings::setup_ab_m1() {
 }
 
 UnsignedInts HelperStrings::find_potential_connections(const std::size_t i) {
+  return find_potential_connections(dets[i]);
+}
+
+UnsignedInts HelperStrings::find_potential_connections(const Det& det) {
   UnsignedInts connections;
-  const Det& det = dets[i];
   const auto& up_elecs = det.up.get_elec_orbs();
   const auto& dn_elecs = det.dn.get_elec_orbs();
 

@@ -89,7 +89,7 @@ void Solver::variation() {
     // Find connected determinants.
     std::list<Det> new_dets;
     for (const auto& term : wf.get_terms()) {
-      const auto& connected_dets = find_connected_dets(term.det, fabs(eps_var / term.coef));
+      const auto& connected_dets = find_connected_dets(term.det, fabs(0.1 * eps_var / term.coef));
       for (const auto& new_det : connected_dets) {
         if (var_dets_set.count(new_det.encode()) == 0) {
           var_dets_set.insert(new_det.encode());
@@ -97,10 +97,17 @@ void Solver::variation() {
         }
       }
     }
-    for (const auto& det : new_dets) wf.append_term(det, 0.0);
+
     if (Parallel::get_id() == 0) {
-      printf("Number of dets: %'llu\n", static_cast<BigUnsignedInt>(var_dets_set.size()));
+      printf("Number of new dets: %'llu\n", static_cast<BigUnsignedInt>(var_dets_set.size()));
     }
+
+    new_dets = filter_dets(new_dets, eps_var);
+    if (Parallel::get_id() == 0) {
+      printf("Number of filtered dets: %'llu\n", static_cast<BigUnsignedInt>(new_dets.size()));
+    }
+
+    for (const auto& det : new_dets) wf.append_term(det, 0.0);
     energy_var_new = diagonalize(new_dets.size() > 0 ? 5 : 10);
     if (Parallel::get_id() == 0) printf("Variation energy: %#.15g Ha\n", energy_var_new);
     Time::end("Variation Iteration: " + std::to_string(iteration));
@@ -109,6 +116,28 @@ void Solver::variation() {
 
   energy_var = energy_var_new;
   if (Parallel::get_id() == 0) printf("Final variation energy: %#.15g Ha\n", energy_var);
+}
+
+std::list<Det> Solver::filter_dets(const std::list<Det>& new_dets, const double eps_var) {
+  Time::start("Filter");
+  std::vector<Det> dets = wf.get_dets();
+  std::vector<double> coefs = wf.get_coefs();
+  HelperStrings helper_strings(dets);
+  std::list<Det> filtered_dets;
+  Time::checkpoint("Filter", "helper strings generated");
+  for (const Det& det_i : new_dets) {
+    double pt_sum = 0.0;
+    auto connections = helper_strings.find_potential_connections(det_i);
+    for (const auto& j : connections) {
+      const Det& det_j = dets[j];
+      const double H_ij = hamiltonian(det_i, det_j);
+      pt_sum += H_ij * coefs[j];
+    }
+    Parallel::reduce_to_sum(pt_sum);
+    if (fabs(pt_sum) > eps_var) filtered_dets.push_back(det_i);
+  }
+  Time::end("Filter");
+  return filtered_dets;
 }
 
 double Solver::diagonalize(std::size_t max_iterations) {

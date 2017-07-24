@@ -19,6 +19,8 @@ class HelperStrings {
 
   UnsignedInts find_potential_connections(const std::size_t i);
 
+  UnsignedInts find_potential_connections(const Det& det);
+
  private:
   // alpha and beta strings, O(n_dets).
   std::unordered_map<Orbitals, std::pair<UnsignedInts, UnsignedInts>, boost::hash<Orbitals>> ab;
