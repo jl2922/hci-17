@@ -105,6 +105,7 @@ void Solver::variation() {
     }
 
     const auto& filtered_dets = filter_dets(new_dets, eps_var);
+    new_dets.clear();
     for (const auto& filtered_det : filtered_dets) {
       var_dets_set.insert(filtered_det.encode());
       wf.append_term(filtered_det, 0.0);
