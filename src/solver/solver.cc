@@ -90,7 +90,7 @@ void Solver::variation() {
     std::list<Det> new_dets;
     std::unordered_set<OrbitalsPair, boost::hash<OrbitalsPair>> new_dets_set;
     for (const auto& term : wf.get_terms()) {
-      const auto& connected_dets = find_connected_dets(term.det, fabs(0.1 * eps_var / term.coef));
+      const auto& connected_dets = find_connected_dets(term.det, fabs(0.5 * eps_var / term.coef));
       for (const auto& new_det : connected_dets) {
         if (var_dets_set.count(new_det.encode()) == 0 &&
             new_dets_set.count(new_det.encode()) == 0) {
@@ -126,6 +126,7 @@ void Solver::variation() {
 }
 
 std::list<Det> Solver::filter_dets(const std::list<Det>& new_dets, const double eps_var) {
+  // Filter perturbation correction.
   Time::start("Filter");
   std::vector<Det> dets = wf.get_dets();
   std::vector<double> coefs = wf.get_coefs();
@@ -141,7 +142,8 @@ std::list<Det> Solver::filter_dets(const std::list<Det>& new_dets, const double 
       pt_sum += H_ij * coefs[j];
     }
     Parallel::reduce_to_sum(pt_sum);
-    if (fabs(pt_sum) > eps_var) filtered_dets.push_back(det_i);
+    const double H_ii = hamiltonian(det_i, det_i);
+    if (fabs(pt_sum * pt_sum / (energy_var - H_ii)) > eps_var) filtered_dets.push_back(det_i);
   }
   Time::end("Filter");
   return filtered_dets;
