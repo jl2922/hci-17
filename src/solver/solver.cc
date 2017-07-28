@@ -84,13 +84,12 @@ void Solver::variation() {
   int iteration = 0;  // For print.
   while (fabs(energy_var - energy_var_new) > THRESHOLD) {
     Time::start("Variation Iteration: " + std::to_string(iteration));
-    energy_var = energy_var_new;
 
     // Find connected determinants.
     std::list<Det> new_dets;
     std::unordered_set<OrbitalsPair, boost::hash<OrbitalsPair>> new_dets_set;
     for (const auto& term : wf.get_terms()) {
-      const auto& connected_dets = find_connected_dets(term.det, fabs(0.2 * eps_var / term.coef));
+      const auto& connected_dets = find_connected_dets(term.det, fabs(1.0 * eps_var / term.coef));
       for (const auto& new_det : connected_dets) {
         if (var_dets_set.count(new_det.encode()) == 0 &&
             new_dets_set.count(new_det.encode()) == 0) {
@@ -105,7 +104,8 @@ void Solver::variation() {
     }
 
     new_dets_set.clear();
-    const auto& filtered_dets = filter_dets(new_dets, eps_var);
+    const auto& filtered_dets = filter_dets(new_dets, eps_var / 1000);
+    // const auto filtered_dets = new_dets;
     new_dets.clear();
     for (const auto& filtered_det : filtered_dets) {
       var_dets_set.insert(filtered_det.encode());
@@ -116,6 +116,7 @@ void Solver::variation() {
       printf("Number of total dets: %'llu\n", static_cast<BigUnsignedInt>(var_dets_set.size()));
     }
 
+    energy_var = energy_var_new;
     energy_var_new = diagonalize(filtered_dets.size() > 0 ? 5 : 10);
     if (Parallel::get_id() == 0) printf("Variation energy: %#.15g Ha\n", energy_var_new);
     Time::end("Variation Iteration: " + std::to_string(iteration));
@@ -183,7 +184,8 @@ unsigned long long Solver::estimate_n_pt_dets(const double eps_pt) {
   const std::size_t n = wf.size();
   unsigned long long estimation = 0;
   auto it = wf.get_terms().begin();
-  const std::size_t sample_interval = std::max(n / 500, SAMPLE_INTERVAL_MIN);
+  const std::size_t sample_interval = std::max(n / 1000, SAMPLE_INTERVAL_MIN);
+  std::unordered_set<OrbitalsPair, boost::hash<OrbitalsPair>> pt_dets_set;
   for (std::size_t i = 0; i < n; i++) {
     const auto& term = *it++;
     if ((i % (sample_interval * Parallel::get_n())) != sample_interval * Parallel::get_id()) {
@@ -191,7 +193,11 @@ unsigned long long Solver::estimate_n_pt_dets(const double eps_pt) {
     }
     const auto& connected_dets = find_connected_dets(term.det, eps_pt / fabs(term.coef));
     for (const auto& det : connected_dets) {
-      if (var_dets_set.count(det.encode()) == 0) estimation++;
+      const auto& code = det.encode();
+      if (var_dets_set.count(code) == 0 && pt_dets_set.count(code) == 0) {
+        estimation++;
+        pt_dets_set.insert(code);
+      }
     }
   }
   estimation *= sample_interval;
