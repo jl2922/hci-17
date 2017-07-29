@@ -89,7 +89,7 @@ void Solver::variation() {
     std::list<Det> new_dets;
     std::unordered_set<OrbitalsPair, boost::hash<OrbitalsPair>> new_dets_set;
     for (const auto& term : wf.get_terms()) {
-      const auto& connected_dets = find_connected_dets(term.det, fabs(1.0 * eps_var / term.coef));
+      const auto& connected_dets = find_connected_dets(term.det, eps_var / fabs(term.coef));
       for (const auto& new_det : connected_dets) {
         if (var_dets_set.count(new_det.encode()) == 0 &&
             new_dets_set.count(new_det.encode()) == 0) {
@@ -104,8 +104,8 @@ void Solver::variation() {
     }
 
     new_dets_set.clear();
-    const auto& filtered_dets = filter_dets(new_dets, eps_var / 1000);
-    // const auto filtered_dets = new_dets;
+    // const auto& filtered_dets = filter_dets(new_dets, eps_var);
+    const auto filtered_dets = new_dets;
     new_dets.clear();
     for (const auto& filtered_det : filtered_dets) {
       var_dets_set.insert(filtered_det.encode());

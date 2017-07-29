@@ -141,7 +141,7 @@ void HEGSolver::generate_hci_queue(const double rcut) {
 void HEGSolver::save_variation_result() {
   if (Parallel::get_id() != 0) return;
   std::ofstream var_file;
-  std::string filename = str(boost::format("var_%.5f_%.3f.txt") % eps_var % rcut_var);
+  std::string filename = str(boost::format("var_%.3e_%.3e.txt") % eps_var % rcut_var);
   var_file.open(filename);
   var_file << boost::format("%.15g %.15g\n") % energy_hf % energy_var;
   var_file << boost::format("%d %d %d\n") % n_up % n_dn % wf.size();
@@ -155,7 +155,7 @@ void HEGSolver::save_variation_result() {
 
 bool HEGSolver::load_variation_result() {
   std::ifstream var_file;
-  std::string filename = str(boost::format("var_%.5f_%.3f.txt") % eps_var % rcut_var);
+  std::string filename = str(boost::format("var_%.3e_%.3e.txt") % eps_var % rcut_var);
   std::size_t wf_size;
   int orb_id;
   double coef;
